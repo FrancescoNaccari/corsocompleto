@@ -1,0 +1,213 @@
+/* Your styles here */
+body {
+    margin: 0;
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+    font-size: large;
+    line-height: 1.65;
+
+
+}
+
+/*headerr/ creare una classe sul div dopo il nav con le specifiche padding-bottom: 60px;
+    padding: 35px; , cosi da risolvere il problema della risoluzione (elementi da eliminare sul header sono:  height: 48vh;
+    padding: 30px; ) */
+header {
+    background-image: url('../images/banner.jpg');
+
+    font-family: 'Montserrat', sans-serif;
+
+    background-position: center;
+    background-size: cover;
+    line-height: 1.50;
+    height: 48vh;
+    padding: 30px;
+    margin-bottom: 5px;
+}
+
+h1 {
+    color: #25a2c3;
+    font-weight: bold;
+    font-size: 45px;
+    line-height: 1;
+    margin: 20px;
+    padding-top: 40px;
+    margin-top: 0;
+
+}
+
+.button {
+    text-align: center;
+    margin: 20px;
+    margin-top: 60px;
+
+}
+
+
+#button {
+    background-color: #f04c2f;
+    margin: 20px;
+    color: white;
+    border: #f04c2f;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 16px;
+    padding-left: 35px;
+    padding-right: 35px;
+    text-decoration: none;
+
+}
+
+.para {
+    margin: 0;
+    font-size: 26px;
+}
+
+.logo {
+    background-color: black;
+    padding: 50px
+}
+
+#logo {
+    width: 195px;
+}
+
+/*main */
+
+/*article1 */
+article {
+
+    font-size: 25px;
+    font-weight: 300;
+
+
+}
+
+h4 {
+    color: #25a2c3;
+    font-weight: 600;
+    margin: 12px;
+    margin-top: 25px;
+
+}
+
+#notebook {
+    border-radius: 220px;
+    width: 350px;
+    margin-top: 30px;
+}
+
+
+article p {
+    margin: 0;
+
+}
+
+
+/*citazione */
+.citazione {
+    background-color: #e22d0e;
+    color: white;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    padding: 35px;
+    padding-bottom: 65px;
+
+}
+
+h2 {
+    font-size: 40px;
+
+}
+
+cite {
+    font-size: 22px;
+    padding: 25px;
+    padding-top: 30px;
+}
+
+div p {
+    margin: 0;
+}
+
+.p1 {
+    font-size: 27px;
+    font-weight: 500;
+    margin-top: 30px;
+
+}
+
+.p2 {}
+
+/*article2 */
+
+header,
+article {
+    padding: 35px;
+
+}
+
+.article2 {
+    padding: 0;
+}
+
+.treimmagine {
+    width: 100%;
+
+
+
+}
+.h5{
+    margin-bottom: 15px;
+}
+.immagine1 {
+    margin: 30px;
+    border: 1px solid #dee1e3;
+    border-radius: 5px;
+
+}
+
+h5 {
+    color: #25a2c3;
+    font-weight: 600;
+    margin: 12px;
+
+
+}
+
+.trefoto {
+    margin: 20px;
+    padding-bottom: 30px;
+    font-size: 21px;
+
+}
+
+/* footer*/
+.footer{
+    background-color: #25a2c3;
+    color: white; 
+    padding: 15px;
+    padding-bottom: 60px;
+    margin-top: 90px;
+   
+    
+}
+.a{ text-decoration-color: white;
+    color: white; 
+
+}
+  
+hr{
+    width: 50%;
+    
+  
+}
+.pfooter{
+    font-size: 16px;
+padding: 15px;
+}
+.indirizzo{
+    padding-bottom: 15px;
+    }
+

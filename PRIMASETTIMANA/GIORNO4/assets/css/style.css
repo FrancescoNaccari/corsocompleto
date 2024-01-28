@@ -1,0 +1,120 @@
+/* IMPOSTAZIONI GENERALI */
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    background-image: url('../img/sfondo.png');
+    background-repeat: repeat;
+    background-position: center;
+
+
+}
+
+
+
+
+/* HEADER */
+
+.testa {
+    margin: 20px;
+    padding: 30px;
+    text-align: center;
+
+    background: linear-gradient(rgba(0, 160, 198, 1), rgba(3, 109, 134, 1));
+    box-shadow: 0px 8px 10px black;
+    color: white;
+
+    text-transform: uppercase;
+    font-weight: bold;
+
+
+}
+
+nav ul li {
+    list-style: none;
+
+}
+
+.divnavli ul li a:link,
+.divnavli ul li a:visited {
+    color: white;
+    text-decoration: none;
+
+}
+
+.divnavli ul li a:hover {
+    color: red;
+
+}
+
+.divnavli ul li a::before {
+    content: "\22c6\0020";
+}
+
+/* MAIN */
+
+.main {
+    text-align: center;
+    margin: 20px;
+    padding: 30px;
+    background-color: white;
+    box-shadow: 0px 8px 10px;
+
+
+
+}
+
+code {
+    background-color: #e3e3e3;
+}
+
+.greey {
+    color: gray;
+    display: inline-block;
+}
+
+.viola {
+    color: purple
+}
+
+
+
+/* ELEMENTI NEL MAIN - ARTICLE */
+
+
+/* TABELLE */
+table {
+    border-collapse: collapse;
+
+}
+thead {
+    text-align: center;
+    vertical-align: middle;
+    background-color: rgb(6, 82, 196);
+
+}
+th {
+    font-weight: 300;
+    padding: 5px;
+}
+tbody {
+    text-align: center;
+    vertical-align: middle;
+
+}
+table tr:nth-child(even) {
+    background-color: lightgrey;
+}
+tr {
+    padding: 5px;
+    border: 1px 1px grey;
+}
+table tr:last-child {
+    border-bottom: 2px solid rgba(3, 109, 134, 1);
+}
+/* FORM */
+
+/* ELEMENTI NELL' ASIDE */
+
+/* FOOTER */
