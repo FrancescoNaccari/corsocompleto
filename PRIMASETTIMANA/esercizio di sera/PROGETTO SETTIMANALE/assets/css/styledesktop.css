@@ -1,7 +1,7 @@
 /* Your styles here */
 body {
     margin: 0;
-    text-align: center;
+
     font-family: 'Open Sans', sans-serif;
     font-size: large;
     line-height: 1.65;
@@ -14,25 +14,26 @@ body {
     padding: 30px; ) */
 header {
     background-image: url('../images/banner.jpg');
-
+    text-align: center;
     font-family: 'Montserrat', sans-serif;
 
-    background-position: center;
+
     background-size: cover;
     line-height: 1.50;
     margin-bottom: 5px;
 }
 
-.divnav{
-    padding-bottom: 60px;
-    padding: 20px;
 
+.divnav {
+
+    width: 100%;
+    padding: 10% 0;
 }
 
 h1 {
     color: #25a2c3;
     font-weight: bold;
-    font-size: 45px;
+    font-size: 40px;
     line-height: 1;
     margin: 20px;
     padding-top: 40px;
@@ -64,8 +65,10 @@ h1 {
 }
 
 .para {
+    padding: 0 25%;
     margin: 0;
-    font-size: 26px;
+
+
 }
 
 .logo {
@@ -74,7 +77,8 @@ h1 {
 }
 
 #logo {
-    width: 13%;
+    width: 14%;
+    padding-left: 40px;
 }
 
 /*main */
@@ -82,24 +86,41 @@ h1 {
 /*article1 */
 article {
 
-    font-size: 25px;
+padding: 0 20%;
+    
     font-weight: 300;
 
 
 }
 
+.divarticle1 {
+    display: inline;
+    text-align: center;
+    
+}
+
 h4 {
     color: #25a2c3;
     font-weight: 600;
-    margin: 12px;
+    margin: 0;
     margin-top: 25px;
 
 }
+
+.notebook {
+   display: inline-block;
+padding: 1%;
+text-align: left;
+padding-left: 1%;
+
+}
+
 
 #notebook {
     border-radius: 220px;
     width: 350px;
     margin-top: 30px;
+padding: 10%;
 }
 
 
@@ -107,6 +128,15 @@ article p {
     margin: 0;
 
 }
+.divpc{
+
+}
+.divtesto{
+    padding: 10%;
+    padding-left: 10%;
+    padding-right: 50%;
+}
+
 
 
 /*citazione */
@@ -162,9 +192,11 @@ article {
 
 
 }
-.h5{
+
+.h5 {
     margin-bottom: 15px;
 }
+
 .immagine1 {
     margin: 30px;
     border: 1px solid #dee1e3;
@@ -188,31 +220,34 @@ h5 {
 }
 
 /* footer*/
-.footer{
+.footer {
     background-color: #25a2c3;
-    color: white; 
+    color: white;
     padding: 15px;
     padding-bottom: 60px;
     margin-top: 90px;
     font-style: normal;
-   
-    
-}
-.a{ text-decoration-color: white;
-    color: white; 
+
 
 }
-  
-hr{
+
+.a {
+    text-decoration-color: white;
+    color: white;
+
+}
+
+hr {
     width: 45%;
-    
-  
-}
-.pfooter{
-    font-size: 16px;
-padding: 15px;
-}
-.indirizzo{
-    padding-bottom: 15px;
-    }
 
+
+}
+
+.pfooter {
+    font-size: 16px;
+    padding: 15px;
+}
+
+.indirizzo {
+    padding-bottom: 15px;
+}
