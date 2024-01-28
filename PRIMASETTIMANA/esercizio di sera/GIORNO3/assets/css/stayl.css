@@ -6,12 +6,14 @@ body {
  
 }
 
+
 .logo {
     width: 150px;
 }
 
 #yellow {padding-top: 20px;
     border-top: 2px solid #ffd877  ;
+    background-color: rgb(255, 255, 62);
 }
 
 .colorgreen {
