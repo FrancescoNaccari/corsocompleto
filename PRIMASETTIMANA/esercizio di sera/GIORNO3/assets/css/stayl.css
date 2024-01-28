@@ -1,0 +1,48 @@
+
+
+body {
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+ 
+}
+
+.logo {
+    width: 150px;
+}
+
+#yellow {padding-top: 20px;
+    border-top: 2px solid #ffd877  ;
+}
+
+.colorgreen {
+    color: rgb(43, 99, 101);
+}
+
+.focaccia{
+    width: 100%;
+    
+}
+
+main{
+    width: 60%;
+    margin: auto;
+}
+
+.lineavert{
+    padding-left: 20px;
+    border-left: 1px solid #ffd877;
+}
+.sinistra{
+    text-align: justify;
+}
+
+.gray{
+    color: gray;
+}
+.red{
+    color: red;
+}
+
+#margine{
+    margin: 0%;
+}
