@@ -3,6 +3,14 @@
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+function area(l1, l2) {
+    let area = l1 * l2;
+    return area;
+}
+
+console.log(area(2, 3));
+
+
 
 /* ESERCIZIO 2
  Scrivi una funzione di nome "crazySum", che riceve due numeri interi come parametri.
@@ -12,6 +20,17 @@
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
+function crazySum(n1, n2) {
+    if (n1 === n2) {
+        return (n1 + n2) * 3;
+    } else {
+        return (n1 + n2);
+    }
+    
+};
+
+
+console.log(crazySum(5, 2));
 /* ESERCIZIO 3
  Scrivi una funzione di nome "crazyDiff" che calcola la differenza assoluta tra un numero fornito come parametro e 19.
  Deve inoltre tornare la differenza assoluta moltiplicata per tre qualora il numero fornito sia maggiore di 19.
@@ -19,12 +38,19 @@
 
 /* SCRIVI QUI LA TUA RISPOSTA */
 
+function crazyDiff(n1){
+    if( n1 > 19){
+return (Math.abs(n1-19)*3)
+    } else Math.abs(n1-19)
+}
+console.log(crazyDiff(25));
 /* ESERCIZIO 4
  Scrivi una funzione di nome "boundary" che accetta un numero intero n come parametro, e ritorna true se n è compreso tra 20 e 100 (incluso) oppure
  se n è uguale a 400.
 */
 
 /* SCRIVI QUI LA TUA RISPOSTA */
+
 
 /* ESERCIZIO 5
  Scrivi una funzione di nome "epify" che accetta una stringa come parametro.
