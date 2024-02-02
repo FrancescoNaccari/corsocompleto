@@ -120,11 +120,12 @@ const numericArray = [
 ]
 
 for (let i=0; i <numericArray.length;i++){
-  while (numericArray[1] <32){
+  while (numericArray[1] <=32){
     console.log(numericArray);
     numericArray++;
   }
 }
+console.log(numericArray)
 
 /* ESERCIZIO 10
     Partendo dall'array fornito e utilizzando un costrutto switch, genera un nuovo array composto dalle posizioni di ogni carattere all'interno
