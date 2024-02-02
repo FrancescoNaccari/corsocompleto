@@ -68,32 +68,38 @@ body {
 /*articole2 */
 .navset,
 .setimg {
-    margin: 2.5%;
+    margin: 1%;
     background-color: white;
     
 }
-
+.divset{
+padding-left: 40px;
+}
 .navset p {
     display: inline;
     padding: 0.5%;
 font-size: 20px;
 }
 
+#contenitore{
+    text-align: center;
+
+    
+}
 
 .contenitore {
     display: inline-block;
-    padding: 13px;
-    padding-right: auto;
-    padding-left: auto;
-    
+    padding-left:45px;
+   
 }
 
 .contenitore img {
 
     min-height: 250px;
-    max-height: 250px;
+    max-height: 350px;
     box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.64);
     border-radius: 8%;
+    
 
 }
 .pazzurro{
@@ -103,6 +109,7 @@ font-size: 20px;
 }
 article.setimg{
     padding-top: 1px;
+    padding-bottom: 8px;
    
  
 }
