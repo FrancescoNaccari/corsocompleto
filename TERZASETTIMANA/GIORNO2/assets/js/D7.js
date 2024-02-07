@@ -52,10 +52,13 @@ console.log(pari)
 */
 const numerici=[5,66,41,27]
 
-const somma=numerici.forEach((element,index ) => {
-  const n2=(element+element,0 )
-   return n2
- }) 
+const somma=() => {
+  let risultato =0;
+  numerici.forEach((element)=> {
+    risultato += element;
+  })
+   return risultato
+ }
 
 console.log(somma)
 
