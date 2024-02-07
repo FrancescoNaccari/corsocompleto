@@ -65,7 +65,7 @@ addToTheSecond()
 */
 
 const addParagraph = function () { 
-    let div=document.querySelector('div');
+    const div=document.querySelectorall('div')[0];
     const p=document.createElement('p');
     p.innerText='Questo è un paragrafo';
     div.appendChild(p);
