@@ -1,0 +1,45 @@
+body{
+    margin: 0;
+    background-color: sienna;
+  
+}
+
+h1{
+    color: blanchedalmond;
+    font-size: xx-large;
+text-align: center;
+}
+#tombola{
+    
+}
+.cella{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    display: inline-block;
+    border-radius: 50%;
+    border: 8px solid red;
+    margin: 15px ;
+}
+
+.cella span{
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: blanchedalmond;
+    font-size: xx-large;
+
+}
+
+.usciti{
+    background-color:black
+}
+
+#button{
+  text-align: center;
+}
+cite{
+    text-align: center;
+}
