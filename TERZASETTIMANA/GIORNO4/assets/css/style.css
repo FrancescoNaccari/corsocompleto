@@ -14,9 +14,9 @@ body {
 }
 
 h1 {
-	font-size: 64px;
-	font-weight: 900;
-	margin: 1rem 0;
+    font-size: 64px;
+    font-weight: 900;
+    margin: 1rem 0;
 }
 
 h2 {
@@ -26,31 +26,45 @@ h2 {
 }
 
 .day {
-	display: inline-block;
-	width: 14%;
-	height: 100px;
-	position: relative;
-	border: 1px solid transparent;
-	border-radius: 10px;
-	cursor: pointer;
+    display: inline-block;
+    width: 14%;
+    height: 100px;
+    position: relative;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .day:hover {
-	background-color: #15132e;
+    background-color: #15132e;
 }
 
 .day h3 {
-	text-align: center;
-	font-size: 26px;
-	margin: 0;
-	position: absolute;
-	top: 50%;
-	left: 0;
-	right: 0;
+    text-align: center;
+    font-size: 26px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
 }
+
 .day.selected {
     border-color: #7a408a;
 }
+
+.dot {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: #7a408a;
+}
+
 form {
 	display: inline;
 }
@@ -87,6 +101,14 @@ input:focus::placeholder {
 
 #newMeetingName {
 	width: 200px;
+}
+
+#newMeetingDay.hasDay {
+    font-size: 28px;
+    font-weight: 700;
+    background-color: #0c0b1d;
+    border-radius: 5px;
+    padding: 0 5px;
 }
 
 #newMeetingTime::-webkit-calendar-picker-indicator {
