@@ -293,11 +293,21 @@ footer a {
 
     header {
         text-align: left;
+        position: relative;
+        font-size: 1.3em;
+        
+    }
 
+    header div {
+        display: inline-block;
     }
 
     header nav {
 
+        position: absolute;
+        right: 25px;
+        top: 50%;
+        transform: translateY(-50%);
         margin-left: 15em;
     }
 
@@ -358,8 +368,8 @@ footer a {
     }
 
     header {
-        margin-left: 7em;
-        margin-right: 7em;
+        margin-left: 5.3em;
+        margin-right: 5.3em;
     }
 }
 
