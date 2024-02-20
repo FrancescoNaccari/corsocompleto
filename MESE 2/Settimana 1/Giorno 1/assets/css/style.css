@@ -298,9 +298,7 @@ footer a {
         
     }
 
-    header div {
-        display: inline-block;
-    }
+    
 
     header nav {
 
@@ -340,6 +338,7 @@ footer a {
         display: inline-block;
         vertical-align: middle;
         height: 180px;
+       
     }
 
     .video {
