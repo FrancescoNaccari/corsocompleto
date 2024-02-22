@@ -35,8 +35,7 @@ h2 {
     justify-content: center;
     align-items: center;
     box-shadow: 2px 2px 10px 0px;
-    
-    animation: smash 8s 1s;
+    animation: smash 8s infinite 1s;
 }
 
 .yellow {
