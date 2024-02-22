@@ -1,0 +1,56 @@
+body {
+    font-family: "Indie Flower", cursive;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+    text-align: center;
+    background-color: #666666;
+     font-size: 30px;
+}
+
+.conteiner {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 15px;
+    
+}
+h2{
+    margin: 0;
+}
+.yellow,
+.green,
+.viol {
+    margin: 20px;
+    width: 22%;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 2px 2px 10px 0px;
+   
+}
+
+.yellow {
+    background: linear-gradient(to bottom, #F8F8C6, #BDBEA2);
+ rotate: -5deg;
+
+}
+
+.green {
+    background: linear-gradient(to bottom, #CAFACA, #9EB5A1);
+    rotate: 7deg;
+}
+
+.viol {
+    background: linear-gradient(to bottom, #C6C6F1, #8B8C9B);
+    rotate: -8deg;
+}
+
+.yellow:hover ,.green:hover,
+.viol:hover{
+    scale:1.2; rotate: 0deg;
+
+}
+
+
