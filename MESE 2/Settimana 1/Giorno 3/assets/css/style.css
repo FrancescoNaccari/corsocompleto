@@ -253,10 +253,30 @@ h3 {
 
     .container-nav {
         flex-direction: column;
-        height: 158vh;
+        height: 160vh;
         justify-content: start;
+        width: 115%;
+
 
     }
+
+    .shop {
+
+        position: sticky;
+        top: 0;
+    }
+
+    #nav1 {
+        position: sticky;
+        top: 130PX;
+    }
+
+    #nav2 {
+        position: sticky;
+        top: 365PX;
+    }
+
+
 
     .card:nth-last-child(2) {
         display: none;
@@ -279,7 +299,7 @@ h3 {
     .shop,
     #nav2 {
         order: 0;
-margin: 0;
+        margin: 0;
     }
 
     .container-booton-nav {
@@ -292,17 +312,50 @@ margin: 0;
     .botton-nav {
         margin: 10px;
         width: 100%;
+        height: 11vh;
     }
 
     .shop {
-      
+
         margin: 10px;
 
     }
 
     .logo {
-        height: 55px;
+        height: 11vh;
         margin-top: 20px;
     }
+
+    .pulsante-card {
+        padding: 0px 10px 0px 10px;
+        width: 50%;
+    }
+
+    h1 {
+        font-size: 54px;
+        text-align: start;
+        margin-top: 0;
+    }
+
+    main {
+        margin: 35px;
+    }
+
+    .aside-conteiner {
+        border-radius: 70px 70px 0 0;
+    }
+}
+
+@media screen and (min-width:1200px) {
+
+    .container-main {
+
+        align-items: start;
+    }
+
+    .card:nth-last-child(2), .card:last-child {
+        display: flex;
+    }
+
    
 }
