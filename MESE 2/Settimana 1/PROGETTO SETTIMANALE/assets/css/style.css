@@ -1,0 +1,192 @@
+body {
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+
+}
+
+/*header*/
+.logo {
+    width: 15%;
+}
+
+.logo img {
+    width: 100%;
+}
+
+nav,
+.hero-section {
+    background-color: #ffc017;
+    border-bottom: 1px solid black;
+}
+
+nav {
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 8vh;
+
+}
+
+.nav-tag {
+    display: flex;
+    justify-content: space-around;
+    width: 40%;
+}
+
+
+button {
+    background-color: black;
+    color: white;
+    border-radius: 30px 30px 30px 30px;
+    padding: 0 30px;
+}
+
+/*Main*/
+h1 {
+    font-family: "Spectral", serif;
+    font-size: 6em;
+    font-weight: 500;
+    font-style: normal;
+    margin-bottom: 0;
+}
+
+.hero-section {
+    display: flex;
+    justify-content: end;
+}
+
+.hero-descrition {
+    display: flex;
+    flex-direction: column;
+    justify-items: start;
+    align-items: flex-start;
+    width: 46%;
+}
+
+.hero-descrition button {
+    height: 40px;
+    margin-top: 50px;
+    padding: 0 60px;
+}
+
+.hero-descrition p {
+    font-size: 18px;
+    width: 65%;
+    margin-top: 15px;
+
+}
+
+.conteiner-trending {
+    margin: 0 5em;
+}
+
+.trending  {
+    display: flex;
+}
+
+.conteiner-card {
+
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+}
+
+.card img {
+width: 9%;
+    margin: 10px;
+}
+.rotonda img{
+       border-radius: 50%;
+}
+.quadrato img{
+    border-radius: 6px ;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 28%;
+
+}
+
+.card div {
+    display: flex;
+    align-items: center;
+}
+
+.gray,
+span {
+    color: #191919;
+}
+
+
+span{
+    opacity: 0.7;
+}
+
+.gray {
+opacity: 0.3;
+    
+    font-size: 2.5em;
+}
+
+
+
+.card h2 {
+    font-size: 1em;
+    font-weight: 800;
+
+}
+
+.size-p-card {
+    font-size: 15px;
+    font-weight: 500;
+ 
+}
+
+.opacity {
+    opacity: 0.7;
+    font-size: 1em;
+}
+
+.conteiner-card h2 {
+    margin: 0;
+}
+
+/*Section*/
+
+.conteiner-articol-card{
+    display: flex;
+    width: 80%;
+}
+.section-img img{
+    width: 100%;
+}
+.section-img{
+    width: 30%;
+}
+.card2{
+    width: 40%;
+}
+.card2 > p{
+    margin: 0;
+    font-size: 11px;
+} 
+.bookmark{
+    display: flex;
+    justify-content: space-between;
+}
+.star{
+    display: flex;
+} 
+.star span{
+    background-color: #1919192c;
+    padding: 0 10px;
+    border-radius: 30%;
+    
+}
