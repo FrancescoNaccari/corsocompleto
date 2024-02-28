@@ -1,0 +1,165 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  line-height: 1.2;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+
+a:link,
+a:visited {
+  text-decoration: none;
+  color: #f4f4f4;
+}
+
+.bottone {
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 15px;
+  margin-right: 10px;
+  font-size: 0.6rem;
+  transition-duration: 0.5s;
+}
+.bottone:hover {
+  transform: scale(0.9);
+}
+
+.blu {
+  background-color: #0e6cff;
+}
+
+.arancione {
+  background-color: #ff8700;
+}
+
+.verde {
+  background-color: #4caf50;
+}
+
+header {
+  background-color: #640fc5;
+}
+header .conteiner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 80%;
+  margin: 0 auto;
+  padding: 25px 0;
+}
+header .conteiner nav ul {
+  display: flex;
+}
+header .conteiner nav ul li {
+  list-style-type: none;
+  padding: 0 10px;
+}
+header .conteiner nav ul li a:hover {
+  color: #ff8700 !important;
+}
+
+.jumbotron {
+  background-color: #640fc5;
+}
+.jumbotron .conteiner {
+  width: 80%;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+.jumbotron .conteiner .contenuto {
+  width: 60%;
+}
+.jumbotron .conteiner .contenuto h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  width: 50%;
+  color: #28064f;
+  margin-bottom: 0;
+  animation: muzzu2 2s ease-in;
+}
+.jumbotron .conteiner .contenuto p {
+  color: #f4f4f4;
+  font-size: 1.2rem;
+  animation: muzzu3 2s ease-in;
+}
+.jumbotron .conteiner .contenuto .bottoni {
+  display: flex;
+  margin-top: 20px;
+  animation: muzzu4 2s ease-in;
+}
+.jumbotron .conteiner .img {
+  position: relative;
+  width: 30%;
+  bottom: -50px;
+  animation: muzzu 1s ease-in;
+}
+.jumbotron .conteiner .img img {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #b77dff;
+  box-shadow: 2px 2px 8px 4px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes muzzu {
+  from {
+    position: relative;
+    top: 50vh;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+@keyframes muzzu2 {
+  from {
+    position: relative;
+    top: -20vh;
+    opacity: 0;
+  }
+  to {
+    top: 80;
+    opacity: 1;
+  }
+}
+@keyframes muzzu3 {
+  from {
+    position: relative;
+    top: -10vh;
+    opacity: 0;
+  }
+  to {
+    top: 80px;
+    opacity: 1;
+  }
+}
+@keyframes muzzu4 {
+  from {
+    position: relative;
+    left: -10vh;
+    opacity: 0;
+  }
+  to {
+    left: 80px;
+    opacity: 1;
+  }
+}
+main {
+  margin-top: 100px;
+}
+main .conteiner {
+  display: flex;
+  justify-content: space-evenly;
+}
+main .conteiner .card {
+  width: 23%;
+}
+main .conteiner .card img {
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+
+/*# sourceMappingURL=style.css.map */

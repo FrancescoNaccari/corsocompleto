@@ -1,0 +1,17 @@
+@import "color";
+
+main {
+  margin-top: 100px;
+  .conteiner {
+    display: flex;
+    justify-content: space-evenly;
+    .card {
+      width: 23%;
+      img {
+        width: 100%;
+        border-radius: 10px;
+        border: 1px solid black;
+      }
+    }
+  }
+}
