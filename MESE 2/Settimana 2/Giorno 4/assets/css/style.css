@@ -1,0 +1,71 @@
+.navbar {
+    --bs-navbar-toggler-border-color: #754ffe !important;
+    --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28112, 41, 99, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
+}
+
+.cerchio {
+    width: 50px;
+    height: 50px;
+    position: relative;
+}
+
+.cerchio i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cerchio img {
+    border-radius: 50%;
+    width: 100%;
+}
+
+.bg-purple {
+    background-color: blueviolet;
+}
+
+.end-5 {
+    right: 5px !important;
+}
+.Jumbotron {
+    background-color: #754ffe;
+}
+
+.verde {
+    background-color: #19cb97;
+}
+.oro {
+    background-color: #ffeeda;
+    color: #c17e30;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+.avatar {
+    width: 50px;
+    height: 50px;
+}
+.avatar img {
+    border-radius: 50%;
+    width: 100%;
+}
+
+.stella {
+    color: #ffaa46;
+}
+.viola {
+    color: #754ffe;
+}
+.footer li a {
+    text-decoration: none;
+    color: black;
+}
+.footer li {
+    list-style-type: none;
+    margin-left: 5px;
+}
