@@ -12,9 +12,10 @@ filter: none!important;
     opacity:0.5;
 }
 
-.img:hover{
+.overfooter:hover ,.img:hover{
     scale: 1.1;
     opacity:1;
+    color: white;
 }
 .over:hover{
     scale: 0.8;
@@ -26,10 +27,16 @@ filter: none!important;
     color: black!important;
     
 }
+
 .grey{
     background-color: #212529;
     font-weight: 600;   
 }
+
+.piccolo{
+    font-size: 10px;
+}
+
 
 @media screen and (min-width:768px){
     .spostamentoleft{
