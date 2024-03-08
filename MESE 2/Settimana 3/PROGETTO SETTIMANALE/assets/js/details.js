@@ -1,29 +1,23 @@
-const nome = document.getElementById('inputName');
-const brand = document.getElementById('inputBrand');
-const prezzo = document.getElementById('inputPrezzo');
-const url = document.getElementById('inputUrl');
-const descrizione = document.getElementById('inputDescrizione');
-const elimina = document.getElementById('elimina');
-const salva = document.getElementById('salva');
-let id;
+const nome = document.getElementById('name');
+const brand = document.getElementById('brand');
+const prezzo = document.getElementById('price');
+const url = document.getElementById('immagine');
+const descrizione = document.getElementById('description');
 
 const dataUrl = "https://striveschool-api.herokuapp.com/api/product/"
-let articoli = [];
 const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWVhZWFjZTJkN2IxMTAwMTkwZTZmZmYiLCJpYXQiOjE3MDk4OTQzNTAsImV4cCI6MTcxMTEwMzk1MH0.-LYhNItgTaLVM8XEyzpt9FXTfDp-bf_-2wPP2VF5s6A"
-
-
 
 window.addEventListener('load', init)
 
-const caricaApi = async () => {
+const cercaApi = async (id) => {
     try {
-        const carica = await fetch(dataUrl, {
+        const carica = await fetch(dataUrl+id, {
             headers: {
                 "Authorization": token
             }
         })
         const risposta = await carica.json();
-        articoli = risposta;
+        return risposta
     }
 
     catch (error) {
@@ -51,45 +45,20 @@ const cancellArticolo = async (id) => {
     }
 }
 
-
-
-elimina.addEventListener('click', (e) => {
-    e.preventDefault()
-    let conferma = confirm('Sei sicura di voler eliminare l\'articolo?')
-    if (id) {
-        let conferma = confirm('Sei sicuro di voler eliminare l\'articolo?');
-
-        if (conferma) {
-            cancellArticolo(id);
-        }
-    } else {
-        console.error("ID dell'articolo non valido o mancante");
-    }
-    if (conferma) {
-        cancellArticolo()
-    }
-
-})
-
-function recuperoDati(id) {
-    articoli.forEach((element) => {
-        if (element._id == id) {
-            nome.value = element.name
-            brand.value = element.brand
-            prezzo.value = element.price
-            url.value = element.imageUrl
-            descrizione.value = element.description
-
-        }
-    })
+async function recuperoDati(id) {
+    const articolo = await cercaApi(id)
+    nome.innerText = articolo.name
+    brand.innerText = articolo.brand
+    prezzo.innerText = articolo.price
+    url.src = articolo.imageUrl
+    descrizione.innerText = articolo.description
 }
 
 
 
 async function init() {
-    await caricaApi()
     const urlParamas = new URLSearchParams(window.location.search)
-    id = urlParamas.get('id')
+    const id = urlParamas.get('id')
     if (id) {
         recuperoDati(id)
     }
@@ -120,17 +89,3 @@ const aggiornaProdotto = async (nuovoProdotto) => {
         console.error("Errore generico durante la modifica del prodotto:", error);
     }
 }
-
-salva.addEventListener('click', async (e) => {
-    e.preventDefault();
-
-    const nomeVal = nome.value;
-    const brandVal = brand.value;
-    const prezzoVal = prezzo.value;
-    const urlVal = url.value;
-    const descrizioneVal = descrizione.value;
-
-    const nuovoProdotto = { name: nomeVal, brand: brandVal, price: prezzoVal, imageUrl: urlVal, description: descrizioneVal };
-
-    await aggiornaProdotto(nuovoProdotto);
-});

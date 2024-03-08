@@ -6,7 +6,7 @@ const dataUrl = "https://striveschool-api.herokuapp.com/api/product/"
 let articoli = [];
 const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWVhZWFjZTJkN2IxMTAwMTkwZTZmZmYiLCJpYXQiOjE3MDk4OTQzNTAsImV4cCI6MTcxMTEwMzk1MH0.-LYhNItgTaLVM8XEyzpt9FXTfDp-bf_-2wPP2VF5s6A"
 const primoProdotto = {
-    "name": "Nokia 3010",
+    "name": "Nokia 3310",
     "description": "Indestructible cellphone",
     "brand": "Nokia",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Nokia_3310_Blue_R7309170_%28retouch%29.png/125px-Nokia_3310_Blue_R7309170_%28retouch%29.png",
@@ -59,8 +59,8 @@ const prodotto = async () => {
 
 
 contenutoCard = (element, col) => {
-    col.innerHTML = `<div class="card " style="width: 18rem;">
-<img src="${element.imageUrl}" class="card-img-top" ; alt="...">
+    col.innerHTML = `<div class="card d-flex align-items-center text-center" >
+<img src="${element.imageUrl}" class="card-img-top w-50 " ; alt="...">
 <div class="card-body">
   <h5 class="card-title">${element.name}</h5>
   <p class="card-text">${element.description}</p>
