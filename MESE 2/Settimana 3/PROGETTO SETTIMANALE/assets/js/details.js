@@ -24,26 +24,26 @@ const cercaApi = async (id) => {
         console.log(error);
     }
 }
-const cancellArticolo = async (id) => {
-    try {
-        let risposta = await fetch(dataUrl + id, {
-            method: 'DELETE',
-            headers: {
-                "Authorization": token,
-                "Content-Type": "application/json"
-            }
-        });
+// const cancellArticolo = async (id) => {
+//     try {
+//         let risposta = await fetch(dataUrl + id, {
+//             method: 'DELETE',
+//             headers: {
+//                 "Authorization": token,
+//                 "Content-Type": "application/json"
+//             }
+//         });
 
-        if (risposta.ok) {
-            console.log(`Articolo con ID ${id} eliminato con successo`);
-            window.location.href = 'index.html'
-        } else {
-            console.error(`Errore durante la cancellazione dell'articolo con ID ${id}`);
-        }
-    } catch (error) {
-        console.log(error);
-    }
-}
+//         if (risposta.ok) {
+//             console.log(`Articolo con ID ${id} eliminato con successo`);
+//             window.location.href = 'index.html'
+//         } else {
+//             console.error(`Errore durante la cancellazione dell'articolo con ID ${id}`);
+//         }
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
 
 async function recuperoDati(id) {
     const articolo = await cercaApi(id)
