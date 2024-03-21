@@ -1,4 +1,4 @@
 <div class="bg-body-secondary m-2 ps-4 mb-3 pb-4" *ngIf="isLoaded">
     <h1 class="pt-5">In evidenza: {{post.title}}</h1>
-    <a href="#">ciao</a>
+    <a [routerLink]="['postDetail', post.id]">Leggi di più...</a>
 </div>

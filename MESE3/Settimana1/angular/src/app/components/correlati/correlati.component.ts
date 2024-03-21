@@ -35,7 +35,7 @@ export class CorrelatiComponent {
       this.included.push(index)
     }
     for (let i = 0; i < this.included.length; i++) {
-      let postsIndex = this.included[i] - 1;
+      let postsIndex = this.included[i] ;
       this.related.push(this.posts[postsIndex])
     }
     this.isLoaded = true

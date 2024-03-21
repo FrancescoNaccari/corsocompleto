@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { RouterModule, Route } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
@@ -12,6 +12,24 @@ import { EvidenzaComponent } from './components/evidenza/evidenza.component';
 import { CorrelatiComponent } from './components/correlati/correlati.component';
 import { ConsigliatiComponent } from './components/consigliati/consigliati.component';
 
+const routes: Route[] = [
+  {
+    path: '',
+    component: HomeComponent
+  },
+  {
+    path: 'active',
+    component: ActivePostsComponent
+  },
+  {
+    path: 'inactive',
+    component: IncactivePostsComponent
+  },
+  {
+    path: 'postDetail/:id',
+    component: PostsDetailComponent
+  }
+]
 
 @NgModule({
   declarations: [
@@ -28,7 +46,8 @@ import { ConsigliatiComponent } from './components/consigliati/consigliati.compo
 
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [],
   bootstrap: [AppComponent]

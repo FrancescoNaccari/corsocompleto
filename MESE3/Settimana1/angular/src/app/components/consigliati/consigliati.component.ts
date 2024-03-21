@@ -41,7 +41,7 @@ export class ConsigliatiComponent {
   }
   consigliatiPosts() {
     for (let i = 0; i < this.included.length; i++) {
-      let postsIndex = this.included[i] - 1;
+      let postsIndex = this.included[i] ;
       this.consigliati.push(this.posts[postsIndex])
     }
   }

@@ -9,7 +9,7 @@
             <h3 class="mb-0">{{ relate.title }}</h3>
             <p class="mb-1 text-secondary">Reactions: {{ relate.reactions }}</p>
             <p class="mb-auto">{{ relate.body.slice(0, 150) }}...</p>
-            <a href="#">Leggi di più...</a>
+            <a [routerLink]="['postDetail', relate.id]">Leggi di più...</a>
         </div>
     </div>
 </div>
