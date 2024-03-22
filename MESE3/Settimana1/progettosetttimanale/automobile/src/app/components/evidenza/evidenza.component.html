@@ -1,0 +1,22 @@
+<div class="container-fluid mt-4 text-center" *ngIf="isLoaded">
+  <div class="row">
+    <div *ngFor="let relate of related" class="col-5 mx-5 d-flex flex-column border p-0">
+      <div>
+        <img
+          src="https://www.kimballstock.com/pix/car/p/{{ relate.modelImage }}"
+          alt=""
+        />
+      </div>
+      <div class="border ">
+        <h2 class="my-2">{{ relate.brand }} {{ relate.model }}</h2>
+        <div class="d-flex justify-content-center">
+          <h4 class="mb-1 mx-3">ANNO: {{ relate.year }}</h4>
+          <h4 class="mb-auto">PREZZO: {{ relate.price }}€</h4>
+        </div>
+
+        <p class="mb-auto">PRONTA CONSEGNA: {{ relate.available }}</p>
+        <a class="btn border m-2 rounded-5 bg-black text-white" ariaCurrentWhenActive="page" routerLinkActive="active" routerLink="/dettagli">Mostra più dettagli</a>
+      </div>
+    </div>
+  </div>
+</div>
