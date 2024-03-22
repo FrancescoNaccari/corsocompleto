@@ -35,7 +35,7 @@ const routes: Route[] = [
     component: AudiComponent
   },
   {
-    path: 'dettagli',
+    path: 'dettagli/:id',
     component:DettagliComponent
   }
   

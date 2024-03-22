@@ -1,21 +1,36 @@
 <div class="container my-5">
-    <h1 class="text-center mb-2 display-1 fw-bold">Le nostre auto Audi</h1>
-    <div class="row">
-        <div class="card col-12 my-2 p-3 text-center" *ngFor="let post of posts">
-            <div>
-                <img
-                  src="https://www.kimballstock.com/pix/car/p/{{ post.modelImage }}"
-                  alt=""
-                />
-              </div>
-              <h3 class="mb-0">{{ post.brand }} {{ post.model }}</h3>
-              <div class="d-flex justify-content-center">
-                <h2 class="mb-1 me-3">ANNO: {{ post.year }}</h2>
-                <h2 class="mb-auto">PREZZO: {{ post.price }}€</h2>
-              </div>
-        
-              <p>PRONTA CONSEGNA: {{ post.available }}</p>
-              <a class="btn border m-2 rounded-5 bg-black text-white" ariaCurrentWhenActive="page" routerLinkActive="active" routerLink="/dettagli">Mostra più dettagli</a>
-            </div>
+  <h1 class="text-center mb-2 display-1 fw-bold">Le nostre auto Audi</h1>
+  <div class="row">
+    <div
+      class="card col-12 my-2 p-3 text-center shadow"
+      *ngFor="let post of posts"
+    >
+      <div>
+        <img
+          src="https://www.kimballstock.com/pix/car/p/{{ post.modelImage }}"
+          alt=""
+        />
+      </div>
+      <div [ngClass]="post.available ? 'bg-success' : 'bg-danger'">
+         <h3 class="mb-0">{{ post.brand }} {{ post.model }}</h3>
+      <div class="d-flex justify-content-center">
+        <h2 class="mb-1 me-3">ANNO: {{ post.year }}</h2>
+        <h2 class="mb-auto">PREZZO: {{ post.price }}€</h2>
+      </div>
+
+      <p class="mb-auto">
+        <span *ngIf="post.available; else notAvailable">PRONTA CONSEGNA: Disponibile</span>
+        <ng-template #notAvailable>PRONTA CONSEGNA: Non disponibile</ng-template>
+      </p>
+      <a
+        class="btn border m-2 rounded-5 bg-black text-white"
+        ariaCurrentWhenActive="page"
+        routerLinkActive="active"
+        [routerLink]="['/dettagli',post.model]"
+        >Mostra più dettagli</a
+      >
+      </div>
+     
     </div>
-    </div>
+  </div>
+</div>

@@ -11,7 +11,7 @@ export class FiatComponent {
 
   constructor() {
     this.getPosts().then((data) => {
-      this.posts = data.filter((value) => value.brand=='Fiat')
+      this.posts = data.filter((value) => value.brand == 'Fiat')
 
     })
   }
