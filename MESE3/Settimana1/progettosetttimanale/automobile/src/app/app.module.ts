@@ -13,6 +13,7 @@ import { JumbotronComponent } from './components/jumbotron/jumbotron.component';
 import { MarchiComponent } from './components/marchi/marchi.component';
 import { EvidenzaComponent } from './components/evidenza/evidenza.component';
 import { DettagliComponent } from './components/dettagli/dettagli.component';
+import { AnteprimaComponent } from './components/anteprima/anteprima.component';
 
 
 
@@ -55,6 +56,7 @@ const routes: Route[] = [
     MarchiComponent,
     EvidenzaComponent,
     DettagliComponent,
+    AnteprimaComponent,
     
    
   ],
