@@ -14,6 +14,7 @@ import { MarchiComponent } from './components/marchi/marchi.component';
 import { EvidenzaComponent } from './components/evidenza/evidenza.component';
 import { DettagliComponent } from './components/dettagli/dettagli.component';
 import { AnteprimaComponent } from './components/anteprima/anteprima.component';
+import { Error404Component } from './components/error404/error404.component';
 
 
 
@@ -37,10 +38,18 @@ const routes: Route[] = [
   },
   {
     path: 'dettagli/:id',
-    component:DettagliComponent
+    component: DettagliComponent
+  },
+  {
+    path: 'error404',
+    component: Error404Component
+  },
+  {
+    path: '**',
+    redirectTo: 'error404'
   }
-  
- 
+
+
 ]
 
 @NgModule({
@@ -57,8 +66,9 @@ const routes: Route[] = [
     EvidenzaComponent,
     DettagliComponent,
     AnteprimaComponent,
-    
-   
+    Error404Component,
+
+
   ],
   imports: [
     BrowserModule,

@@ -7,15 +7,15 @@
           alt="" width="75%"
         />
       </div>
-      <div class="border " [ngClass]="relate.available ? 'bg-success' : 'bg-danger'">
+      <div class="border " >
         <h2 class="my-2">{{ relate.brand }} {{ relate.model }}</h2>
         <div class="d-flex justify-content-center">
           <h4 class="mb-1 mx-3">ANNO: {{ relate.year }}</h4>
           <h4 class="mb-auto">PREZZO: {{ relate.price }}€</h4>
         </div>
 
-        <p class="mb-auto">
-            <span *ngIf="relate.available; else notAvailable">PRONTA CONSEGNA: Disponibile</span>
+        <p class="mb-auto"[ngClass]="relate.available ? 'bg-success' : 'bg-danger'">
+            <span *ngIf="relate.available ; else notAvailable">PRONTA CONSEGNA: Disponibile</span>
             <ng-template #notAvailable>PRONTA CONSEGNA: Non disponibile</ng-template>
           </p>
         <a class="btn border m-2 rounded-5 bg-black text-white over" ariaCurrentWhenActive="page" routerLinkActive="active" [routerLink]="['/dettagli',relate.model]">Mostra più dettagli</a>

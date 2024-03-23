@@ -11,14 +11,14 @@
           alt=""
         />
       </div>
-      <div [ngClass]="car.available ? 'bg-success' : 'bg-danger'">
+      <div >
          <h3 class="mb-0">{{ car.brand }} {{ car.model }}</h3>
       <div class="d-flex justify-content-center">
         <h2 class="mb-1 me-3">ANNO: {{ car.year }}</h2>
         <h2 class="mb-auto">PREZZO: {{ car.price }}€</h2>
       </div>
 
-      <p class="mb-auto">
+      <p class="mb-auto"[ngClass]="car.available ? 'bg-success' : 'bg-danger'">
         <span *ngIf="car.available; else notAvailable">PRONTA CONSEGNA: Disponibile</span>
         <ng-template #notAvailable>PRONTA CONSEGNA: Non disponibile</ng-template>
       </p>
