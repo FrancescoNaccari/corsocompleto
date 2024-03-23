@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Post } from 'src/app/models/post.interface';
+import { Car } from 'src/app/models/car.interface';
 
 @Component({
   selector: 'app-evidenza',
@@ -7,35 +7,35 @@ import { Post } from 'src/app/models/post.interface';
   styleUrls: ['./evidenza.component.scss']
 })
 export class EvidenzaComponent {
-  posts: Post[] = [];
-  related: Post[] = []
+  cars: Car[] = [];
+  related: Car[] = []
   included: number[] = []
   isLoaded = false
 
   constructor() {
-    this.getpost()
+    this.getCar()
 
   };
 
-  async getpost() {
+  async getCar() {
     let response = await fetch('assets/db.json')
     let data = await response.json()
-    this.posts = data
-    this.correlatiPosts()
+    this.cars = data
+    this.correlatiCars()
     
   }
 
-  correlatiPosts() {
+  correlatiCars() {
     for (let i = 0; i < 2; i++) {
-      let index = Math.floor(Math.random() * this.posts.length);
+      let index = Math.floor(Math.random() * this.cars.length);
       if (this.included.includes(index)) {
-        index = Math.floor(Math.random() * this.posts.length)
+        index = Math.floor(Math.random() * this.cars.length)
       }
       this.included.push(index)
     }
     for (let i = 0; i < this.included.length; i++) {
-      let postsIndex = this.included[i] ;
-      this.related.push(this.posts[postsIndex])
+      let carsIndex = this.included[i] ;
+      this.related.push(this.cars[carsIndex])
     }
     this.isLoaded = true
   }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Post } from 'src/app/models/post.interface'; 
+import { Car } from 'src/app/models/car.interface'; 
 
 @Component({
   selector: 'app-anteprima',
@@ -8,18 +8,18 @@ import { Post } from 'src/app/models/post.interface';
 })
 export class AnteprimaComponent {
 
-  post!: Post[];
-  loghi:Post[]=[];
+  car!: Car[];
+  loghi:Car[]=[];
 
     constructor() {
-      this.getpost()
+      this.getCar()
       
       };
     
-    async getpost() {
+    async getCar() {
       const response = await fetch('assets/db.json')
       const data = await response.json()
-      this.post= data;
+      this.car= data;
     
       
  

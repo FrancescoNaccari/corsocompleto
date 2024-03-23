@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Post } from 'src/app/models/post.interface'; 
+import { Car } from 'src/app/models/car.interface';
 
 @Component({
   selector: 'app-marchi',
@@ -7,19 +7,19 @@ import { Post } from 'src/app/models/post.interface';
   styleUrls: ['./marchi.component.scss']
 })
 export class MarchiComponent {
-  post!: Post[];
-  loghi:Post[]=[];
+  car!: Car[];
+  loghi:Car[]=[];
 
     constructor() {
-      this.getpost()
+      this.getcar()
       
       };
     
-    async getpost() {
+    async getcar() {
       const response = await fetch('assets/db.json')
       const data = await response.json()
-      this.post= data;
-     this.loghi=this.post.slice(0, 3)
+      this.car= data;
+     this.loghi=this.car.slice(0, 3)
       
  
     }

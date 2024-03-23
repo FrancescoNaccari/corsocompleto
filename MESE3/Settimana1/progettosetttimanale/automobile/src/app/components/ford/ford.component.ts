@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Post } from 'src/app/models/post.interface';
+import { Car } from 'src/app/models/car.interface';
 
 @Component({
   selector: 'app-ford',
@@ -7,18 +7,18 @@ import { Post } from 'src/app/models/post.interface';
   styleUrls: ['./ford.component.scss']
 })
 export class FordComponent {
-  posts!: Post[];
+  cars!: Car[];
 
   constructor() {
-    this.getPosts().then((data) => {
-      this.posts = data.filter((value) => value.brand=='Ford')
+    this.getCars().then((data) => {
+      this.cars = data.filter((value) => value.brand=='Ford')
 
     })
   }
 
-  async getPosts() {
+  async getCars() {
     let query = await fetch('assets/db.json')
-    let response: Post[] = await query.json()
+    let response: Car[] = await query.json()
     return response
   }
 }

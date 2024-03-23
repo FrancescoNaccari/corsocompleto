@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Post } from 'src/app/models/post.interface';
+import { Car } from 'src/app/models/car.interface';
 
 @Component({
   selector: 'app-dettagli',
@@ -9,28 +9,28 @@ import { Post } from 'src/app/models/post.interface';
   styleUrls: ['./dettagli.component.scss']
 })
 export class DettagliComponent implements OnInit {
-  postId!: string;
-  post!: Post;
+  carId!: string;
+  car!: Car;
 private sub!:Subscription
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.sub=this.route.params.subscribe(params => {
-      this.postId = params['id'];
-  this.getpost()
+      this.carId = params['id'];
+  this.getCar()
       
       
     });
   
   }   
   
-  async getpost() {
+  async getCar() {
         let response = await fetch('assets/db.json')
-        let data:Post[]= await response.json()
+        let data:Car[]= await response.json()
       
-        let post=data.find((element)=>element.model==this.postId)
-        if (post){
-          this.post=post
+        let car=data.find((element)=>element.model==this.carId)
+        if (car){
+          this.car=car
         }
         
       }
