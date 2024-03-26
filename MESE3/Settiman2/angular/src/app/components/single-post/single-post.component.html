@@ -1,0 +1,19 @@
+<div class="container mt-5">
+
+    <div class="row">
+        <div class="card col-12 my-2 p-3" *ngFor="let posts of inputpost">
+           <div class="d-flex"><strong
+            class="d-inline-block mb-2 text-primary-emphasis text-uppercase"
+            *ngFor="let tag of posts.tags">{{ tag }}&nbsp;</strong></div>
+            
+        <h3 class="mb-0">{{ posts.title }}</h3>
+        <p class="mb-1 text-secondary">Reactions: {{ posts.reactions }}</p>
+        <p class="mb-5">{{ posts.body }}</p>
+        <div class=" d-flex justify-content-between">
+            <a [routerLink]="['postDetail', posts.id]">Leggi di più...</a>
+            <button class="btn btn-info">Mostra/Nascondi Form</button>
+        </div>
+        
+        </div>
+    </div>
+    </div>
