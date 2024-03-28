@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="row d-flex">
+        <div class="col-9 container">
+            <div class="row">
+                <div
+                    class="card m-1 d-flex flex-column justify-content-between align-content-between"
+                    style="width: 15rem"
+                    *ngFor="let articol of articolo"
+                >
+                    <img
+                        src="{{ articol.images[0] }}"
+                        class="card-img-top "
+                        alt="..."
+                    />
+                    <div class="card-body">
+                        <h5 class="card-title">{{ articol.title }}</h5>
+                        <p class="card-text">
+                            {{ articol.description }}
+                        </p>
+                    </div>
+                    <div class="mb-3 d-flex justify-content-between">
+                        <button type="button">{{ articol.price }}€</button>
+                        <button type="button">{{ articol.price }}€</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-3">fff</div>
+    </div>
+</div>
