@@ -33,4 +33,9 @@ todo: any;
       });
     });
   }
+  checks(todo: Todo) {
+    this.todoSrv.toggle(todo.id);
+  }
+
+  
 }
