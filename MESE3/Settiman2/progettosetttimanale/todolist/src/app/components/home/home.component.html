@@ -1,0 +1,10 @@
+<div class="container">
+  <div *ngFor="let item of tutti">
+    <div *ngIf="item.todo" [ngClass]="item.completed ? 'bg-success' : 'bg-danger'">
+      <h2>{{ item.todo }}</h2>
+    </div>
+    <div *ngIf="item.title">
+      <p>{{ item.title }}</p>
+    </div>
+  </div>
+</div>
