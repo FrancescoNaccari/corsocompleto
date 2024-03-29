@@ -1,1 +1,11 @@
-<p>incompleti works!</p>
+<div class="container ">
+    <div class="m-1" *ngFor="let item of incompleTodo">
+      
+      <div class="d-flex"  *ngIf="item.todo" [ngClass]="item.completed ? 'bg-success' : 'bg-danger'">
+  <input type="checkbox" [checked]="item.completed"  (change)="checks(item)">
+       <div><h2>{{ item.todo }}</h2>
+        <p> Assigned: to {{getName(item.userId)}}</p></div> 
+      </div>
+    
+    </div>
+  </div>

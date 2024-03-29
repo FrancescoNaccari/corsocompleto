@@ -1,10 +1,21 @@
-<div class="container">
-  <div *ngFor="let item of tutti">
-    <div *ngIf="item.todo" [ngClass]="item.completed ? 'bg-success' : 'bg-danger'">
-      <h2>{{ item.todo }}</h2>
-    </div>
-    <div *ngIf="item.title">
-      <p>{{ item.title }}</p>
-    </div>
+<div class="container mt-3 pt-3">
+   <div class="container-fluid px-5 ">
+    <div *ngFor="let item of todos">
+      <div
+          class="d-flex m-1 "
+          *ngIf="item.todo"
+          [ngClass]="item.completed ? 'bg-success' : 'bg-danger'"
+      >
+          <input class="m-2"
+              type="checkbox"
+              [checked]="item.completed"
+              (change)="checks(item)"
+          />
+          <div class="ms-3">
+              <h2>{{ item.todo }}</h2>
+              <p>Assigned: to {{ getName(item.userId) }}</p>
+          </div>
+      </div>
   </div>
+   </div>
 </div>

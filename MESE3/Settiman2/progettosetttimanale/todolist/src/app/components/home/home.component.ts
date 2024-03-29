@@ -10,22 +10,33 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  todos!:Todo[]
-  users!:User[]
-constructor(private todosrv:TodoService, private usersSrv:UserService){}
-
-ngOnInit(): void {
-  this.loadTodo()
-  this.loadUsers()
-}
-
-loadTodo(){
-this.todosrv.getTodo().subscribe(todos=>this.todos=todos)
-
-}
-loadUsers(){
-  this.usersSrv.getUsers().subscribe(users=>this.users=users)
+  todos!: Todo[]
+  users!: User[]
   
+  constructor(private todosrv: TodoService, private usersSrv: UserService) { }
+
+  ngOnInit(): void {
+    this.todosrv.tNews.subscribe((value) => {
+      this.todos = value
+    })
+    this.todosrv.getTodo().subscribe((value) => {
+      this.todosrv.setTodo(value)
+    })
+    this.loadUsers()
+   
+  }
+  loadUsers() {
+    this.usersSrv.getUsers().subscribe(users => this.users = users)
+
+  }
+  checks(todo: Todo) {
+    this.todosrv.toggle(todo.id);
   }
 
+  getName(userId: number): string {
+    return this.todosrv.getName(userId);
+  }
 }
+
+
+
