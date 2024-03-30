@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from 'src/app/interfaces/todo.interface';
 import { TodoService } from 'src/app/services/todo.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-incompleti',
@@ -10,7 +11,7 @@ import { TodoService } from 'src/app/services/todo.service';
 
 export class IncompletiComponent implements OnInit {
   incompleTodo: Todo[] = []
-  constructor(private incompletatiSrv: TodoService) { }
+  constructor(private incompletatiSrv: TodoService, private usersSrc: UserService) { }
 
   ngOnInit(): void {
     this.incompletatiSrv.tNews.subscribe((value) => {
@@ -19,7 +20,7 @@ export class IncompletiComponent implements OnInit {
   }
 
   getName(userId: number): string {
-    return this.incompletatiSrv.getName(userId);
+    return this.usersSrc.getName(userId);
   }
 
   checks(todo: Todo) {

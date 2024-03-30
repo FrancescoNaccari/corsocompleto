@@ -24,7 +24,10 @@ export class HomeComponent implements OnInit {
    
   }
   loadUsers() {
-    this.usersSrv.getUsers().subscribe(users => this.users = users)
+    this.usersSrv.getUsers().subscribe(users => {
+      this.users = users
+      this.usersSrv.setUsers(this.users)
+    })
 
   }
   checks(todo: Todo) {
@@ -32,7 +35,7 @@ export class HomeComponent implements OnInit {
   }
 
   getName(userId: number): string {
-    return this.todosrv.getName(userId);
+    return this.usersSrv.getName(userId);
   }
 }
 

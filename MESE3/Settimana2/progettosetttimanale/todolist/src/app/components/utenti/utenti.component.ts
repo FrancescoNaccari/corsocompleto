@@ -28,6 +28,7 @@ export class UtentiComponent implements OnInit {
   loadUsers() {
     this.userSrv.getUsers().subscribe(users => {
       this.users = users;
+      this.userSrv.setUsers(this.users)
       this.loadUserTodos();
     });
   }
