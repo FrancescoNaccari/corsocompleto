@@ -13,10 +13,13 @@ export class TodoService {
   users: User[] = []
   todNew: Todo[] = []
   tNews: BehaviorSubject<Todo[]> = new BehaviorSubject <Todo[]>([])
-  constructor(private http: HttpClient, private usersSrv: UserService) {
-    let fetch: any = [] //risultato fetch
-    this.todNew = fetch;
+  constructor(private http: HttpClient, private usersSrv: UserService ) {
+    this.getTodo().subscribe(fetch=>{
+       this.todNew = fetch;
     this.tNews.next(this.todNew)
+    })
+   
+   
   }
 
   getTodo(): Observable<Todo[]> {

@@ -12,12 +12,17 @@ import { UserService } from 'src/app/services/user.service';
 export class UtentiComponent implements OnInit {
   users: User[] = [];
   userTodosMap: Map<number, Todo[]> = new Map();
-todo: any;
+  todo:Todo[]=[];
 
   constructor(private userSrv: UserService, private todoSrv: TodoService) { }
 
   ngOnInit(): void {
-    this.loadUsers()
+    this.todoSrv.tNews.subscribe((value) => {
+      console.log('suc411414554',value)
+      this.todo = value
+     this.loadUsers()
+    })
+   
   }
 
   loadUsers() {
@@ -28,13 +33,15 @@ todo: any;
   }
   loadUserTodos(): void {
     this.users.forEach(user => {
-      this.todoSrv.getTodosByUserId(user.id).subscribe(todos => {
-        this.userTodosMap.set(user.id, todos);
-      });
+      let filter=this.todo.filter(element=>element.userId==user.id)
+        this.userTodosMap.set(user.id, filter);
+  
     });
   }
   checks(todo: Todo) {
+    console.log('suca')
     this.todoSrv.toggle(todo.id);
+
   }
 
   

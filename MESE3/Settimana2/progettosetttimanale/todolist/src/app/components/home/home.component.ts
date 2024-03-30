@@ -19,9 +19,7 @@ export class HomeComponent implements OnInit {
     this.todosrv.tNews.subscribe((value) => {
       this.todos = value
     })
-    this.todosrv.getTodo().subscribe((value) => {
-      this.todosrv.setTodo(value)
-    })
+    
     this.loadUsers()
    
   }
