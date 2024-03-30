@@ -1,12 +1,12 @@
 <div class="container mt-3 pt-3">
-   <div class="container-fluid px-5 ">
-    <div *ngFor="let item of todos">
+   <div class="container-fluid px-5 shadow">
+    <div  *ngFor="let item of todos">
       <div
-          class="d-flex m-1 "
+          class="d-flex m-2 text-black"
           *ngIf="item.todo"
-          [ngClass]="item.completed ? 'bg-success' : 'bg-danger'"
+          [ngClass]="item.completed ? 'btncolgreen' : 'btncolred'"
       >
-          <input class="m-2"
+          <input class="m-2 over"
               type="checkbox"
               [checked]="item.completed"
               (change)="checks(item)"

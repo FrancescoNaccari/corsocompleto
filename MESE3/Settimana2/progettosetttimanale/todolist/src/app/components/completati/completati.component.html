@@ -1,11 +1,20 @@
 <div class="container">
-    <div class="m-1" *ngFor="let item of compleTodo">
-      
-      <div class="d-flex"  *ngIf="item.todo" [ngClass]="item.completed ? 'bg-success' : 'bg-danger'">
-  <input type="checkbox" [checked]="item.completed" (change)="checks(item)">
-       <div><h2>{{ item.todo }}</h2>
-        <p> Assigned: to {{getName(item.userId)}}</p></div> 
-      </div>
-    
+    <div class="m-1 shadow " *ngFor="let item of compleTodo">
+        <div
+            class="d-flex text-black"
+            *ngIf="item.todo"
+            [ngClass]="item.completed ? 'btncolgreen' : 'btncolred'"
+        >
+            <input
+                type="checkbox"
+                class="m-3 over"
+                [checked]="item.completed"
+                (change)="checks(item)"
+            />
+            <div>
+                <h2>{{ item.todo }}</h2>
+                <p>Assigned: to {{ getName(item.userId) }}</p>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
