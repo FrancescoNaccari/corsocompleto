@@ -13,6 +13,7 @@ export class TodoService {
   users: User[] = []
   todNew: Todo[] = []
   tNews: BehaviorSubject<Todo[]> = new BehaviorSubject <Todo[]>([])
+
   constructor(private http: HttpClient, private usersSrv: UserService ) {
     this.getTodo().subscribe(fetch=>{
        this.todNew = fetch;

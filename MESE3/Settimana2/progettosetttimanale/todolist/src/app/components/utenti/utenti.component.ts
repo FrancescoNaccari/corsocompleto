@@ -18,7 +18,7 @@ export class UtentiComponent implements OnInit {
 
   ngOnInit(): void {
     this.todoSrv.tNews.subscribe((value) => {
-      console.log('suc411414554',value)
+     
       this.todo = value
      this.loadUsers()
     })
@@ -39,7 +39,7 @@ export class UtentiComponent implements OnInit {
     });
   }
   checks(todo: Todo) {
-    console.log('suca')
+    
     this.todoSrv.toggle(todo.id);
 
   }

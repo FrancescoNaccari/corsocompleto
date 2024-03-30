@@ -2,9 +2,9 @@
    <div class="container-fluid px-5 ">
     <div  *ngFor="let item of todos">
       <div
-          class="d-flex m-2 shadow text-black"
+          class="d-flex m-2 shadow "
           *ngIf="item.todo"
-          [ngClass]="item.completed ? 'btncolgreen' : 'btncolred'"
+          [ngClass]="item.completed ? 'bg-black text-white' : 'bg-warning text-black'"
       >
           <input class="m-2 over"
               type="checkbox"

@@ -11,9 +11,9 @@
         </div>
         <div class="container m-5 d-flex flex-column">
             <div
-                class="container shadow m-1 text-black p-1 w-75 d-flex align-content-center "
+                class="container shadow m-1 p-1 w-75 d-flex align-content-center "
                 *ngFor="let todo of userTodosMap.get(user.id)"
-                [ngClass]="todo.completed ? 'btncolgreen' : 'btncolred'"
+                [ngClass]="todo.completed ? 'bg-black text-white' : 'bg-warning text-black'"
             >
                 <input
                     class="m-2 mt-2 over"

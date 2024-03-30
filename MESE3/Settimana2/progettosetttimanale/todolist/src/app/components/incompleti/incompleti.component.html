@@ -1,9 +1,9 @@
 <div class="container">
     <div class="m-1" *ngFor="let item of incompleTodo">
         <div
-            class="d-flex text-black shadow"
+            class="d-flex shadow"
             *ngIf="item.todo"
-            [ngClass]="item.completed ? 'btncolgreen' : 'btncolred'"
+            [ngClass]="item.completed ? 'bg-black text-white' : 'bg-warning text-black' "
         >
             <input
                 type="checkbox"
