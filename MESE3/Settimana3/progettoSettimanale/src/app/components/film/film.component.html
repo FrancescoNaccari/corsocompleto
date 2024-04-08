@@ -8,10 +8,10 @@
   <h1 class="text-center text-white my-3 pb-3">Film popolari</h1>
   <div class="row gy-3">
     <div class="col-3" *ngFor="let movie of film">
-      <div class="card h-100 shadow d-flex flex-column align-items-between">
+      <div class="card h-100 shadow d-flex flex-column align-items-between" style="width: rem;">
        
           <img src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" class="card-img-top"
-            alt="{{ movie.title }}, poster" style="object-fit: cover; height: 350px" />
+            alt="{{ movie.title }}, poster"  />
           <div class="card-body text-center">
             <div>
               <h5 class="card-title">{{ movie.title }}</h5>

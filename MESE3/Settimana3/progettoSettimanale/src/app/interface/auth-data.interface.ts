@@ -3,6 +3,9 @@ export interface AuthData {
     user: {
         name: string,
         id: number,
-        email: string
-    }
+        email: string,
+        tel:number,
+        eta:number,
+        thumbnailUrl:string
+        }
 }

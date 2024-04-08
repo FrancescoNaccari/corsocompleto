@@ -4,19 +4,38 @@
       "email": "dario@dario.com",
       "password": "$2a$10$ZLY63quWnMVo0lO951uFdOJRfUxeo8U6YJ/Cue06Vgp4Ad8S/CjaC",
       "name": "Dario",
-      "id": 2
+      "id": 2,
+      "tel": "3256474217",
+      "eta": "50",
+      "thumbnailUrl":"https://dailydownforce.com/wp-content/uploads/2023/11/NFJJ.png"
+     
     },
     {
       "email": "mario@rossi.com",
       "password": "$2a$10$RsIosJKYgHyT8uo.bosI5uYpN0PVmA6xdnhjT4jIFcbKbVS2RsiRC",
       "name": "Mario Rossi",
-      "id": 3
+      "id": 3,
+      "tel": "7986545213",
+      "eta": "35",
+      "thumbnailUrl":"https://i.pinimg.com/280x280_RS/86/40/af/8640af253a628471f932d90e05434e9b.jpg"
     },
     {
       "email": "francesco.n92@gmail.com",
       "password": "$2a$10$lyDrTd9G2J0SkbUYDhoPHOeCzmaU3O24ciFXXTVNtB8I1Qsjd4uDu",
       "name": "Francesco Naccari",
-      "id": 4
+      "id": 4,
+      "tel": "3891709840",
+      "eta": "31",
+      "thumbnailUrl":"https://hips.hearstapps.com/hmg-prod/images/avatar-way-of-water-1671126214.jpg?crop=0.845xw:1.00xh;0,0&resize=1200:*"
+    },
+    {
+      "email": "pippo@gmail.com",
+      "password": "$2a$10$uGKhxhBftCdMukinjuRnrOXFMn5cDGecwb/MgaceMTut4emdDHoK6",
+      "name": "Pippo ",
+      "tel": "3214569778",
+      "id": 5,
+      "eta": "25",
+      "thumbnailUrl":"https://i.pinimg.com/474x/0e/8e/34/0e8e343b19d4d032e108c31905d1bb39.jpg"
     }
   ],
   "favorites": [
@@ -77,13 +96,28 @@
     },
     {
       "userId": 4,
-      "movieId": 632357,
-      "id": 39
+      "movieId": 635302,
+      "id": 40
     },
     {
       "userId": 4,
-      "movieId": 635302,
-      "id": 40
+      "movieId": 632357,
+      "id": 41
+    },
+    {
+      "userId": 4,
+      "movieId": 813258,
+      "id": 55
+    },
+    {
+      "userId": 4,
+      "movieId": 586047,
+      "id": 56
+    },
+    {
+      "userId": 5,
+      "movieId": 460465,
+      "id": 57
     }
   ],
   "genres": [
