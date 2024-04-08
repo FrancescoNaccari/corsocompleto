@@ -80,23 +80,8 @@
     },
     {
       "userId": 4,
-      "movieId": 460465,
-      "id": 36
-    },
-    {
-      "userId": 4,
-      "movieId": 578701,
-      "id": 38
-    },
-    {
-      "userId": 4,
       "movieId": 635302,
       "id": 40
-    },
-    {
-      "userId": 4,
-      "movieId": 632357,
-      "id": 41
     },
     {
       "userId": 4,
@@ -112,11 +97,6 @@
       "userId": 4,
       "movieId": 804435,
       "id": 60
-    },
-    {
-      "userId": 4,
-      "movieId": 567189,
-      "id": 61
     }
   ],
   "genres": [
