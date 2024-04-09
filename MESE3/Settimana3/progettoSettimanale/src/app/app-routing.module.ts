@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './auth/login/login.component';
-import { RegisterComponent } from './auth/register/register.component';
+
 import { Error404Component } from './components/error404/error404.component';
 import { UsersComponent } from './components/users/users.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -18,10 +18,6 @@ const routes: Routes = [
   {
     path:"login",
     component: LoginComponent
-  },
-  {
-    path:"register",
-    component: RegisterComponent
   },
   {
     path:"users",

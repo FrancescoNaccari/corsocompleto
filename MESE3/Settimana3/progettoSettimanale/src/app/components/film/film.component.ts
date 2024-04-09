@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { AuthData } from 'src/app/interface/auth-data.interface';
 import { Movies } from 'src/app/interface/movies.interface';
 import { FilmService } from 'src/app/service/film.service';
+import { SocialUser } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-film',
@@ -12,7 +13,7 @@ import { FilmService } from 'src/app/service/film.service';
 })
 export class FilmComponent implements OnInit {
 
-  user!:AuthData|null;
+  user!:AuthData|null|SocialUser;
 
   constructor( private mvSrv: FilmService, private authSrv: AuthService) {
     this.authSrv.user$.subscribe((value) => {
@@ -22,11 +23,26 @@ export class FilmComponent implements OnInit {
 
   film!: Movies[]
 
+  checkTypeOfAuthData(object: any): object is AuthData {
+    return 'user' in object
+  }
+
+  checkTypeOfSocialUser(object:any): object is SocialUser {
+    return 'id' in object
+  }
+
   ngOnInit(): void {
     this.mvSrv.getFilms().subscribe(async (data) => {
       this.film = data
       if (this.user) {
-        let favorites = await this.mvSrv.getFilmsFavorites(Number(this.user.user.id))
+        let favorites:any;
+        if (this.checkTypeOfAuthData(this.user)) {
+          let favorites2 = await this.mvSrv.getFilmsFavorites(Number(this.user.user.id))
+          favorites = favorites2
+        } else if (this.checkTypeOfSocialUser(this.user)) {
+          let favorites2 = await this.mvSrv.getFilmsFavorites(Number(this.user.id))
+          favorites = favorites2
+        }
         for (let i=0; i < favorites.length; i++) {
           let index = this.film.findIndex((value) => value.id === favorites[i].movieId)
           if (index !== -1) {
@@ -44,7 +60,11 @@ export class FilmComponent implements OnInit {
       if (index !== -1) {
         this.film[index].video = !this.film[index].video
       }
-      this.mvSrv.toggle(fav.id, Number(this.user.user.id));
+      if (this.checkTypeOfAuthData(this.user)) {
+        this.mvSrv.toggle(fav.id, Number(this.user.user.id));
+      } else if (this.checkTypeOfSocialUser(this.user)) {
+        this.mvSrv.toggle(fav.id, Number(this.user.id));
+      }
     }
   }
 }

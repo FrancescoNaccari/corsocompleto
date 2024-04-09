@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/auth/auth.service';
 import { AuthData } from 'src/app/interface/auth-data.interface';
+import { SocialUser } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +10,7 @@ import { AuthData } from 'src/app/interface/auth-data.interface';
 })
 export class NavbarComponent implements OnInit{
 
-  user!: AuthData | null 
+  user!: AuthData | null | SocialUser
 
   constructor(private authsrv: AuthService) {}
 
@@ -20,6 +21,14 @@ export class NavbarComponent implements OnInit{
   }
   logout() {
     this.authsrv.logout()
+  }
+
+  checkTypeOfAuthData(object: any): object is AuthData {
+    return 'user' in object
+  }
+
+  checkTypeOfSocialUser(object:any): object is SocialUser {
+    return 'id' in object
   }
 
 }

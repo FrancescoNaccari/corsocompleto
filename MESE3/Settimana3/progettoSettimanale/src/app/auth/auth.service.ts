@@ -7,6 +7,7 @@ import { catchError, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { AuthData } from '../interface/auth-data.interface';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 
 @Injectable({
     providedIn: 'root',
@@ -16,11 +17,17 @@ export class AuthService {
     jwtHelper = new JwtHelperService();
 
     // elementi per gestire la procedura di login
-    private authSub = new BehaviorSubject<AuthData | null>(null);
+    private authSub = new BehaviorSubject<AuthData | null | SocialUser>(null);
     user$ = this.authSub.asObservable();
-    timeOut: any;
+    
 
-    constructor(private http: HttpClient, private router: Router) {}
+    constructor(private http: HttpClient, private router: Router, private authService: SocialAuthService) {
+        this.authService.authState.subscribe((user) => {
+            this.authSub.next(user);
+            localStorage.setItem('user', JSON.stringify(user));
+            this.router.navigate(['/']);
+        });
+    }
 
     login(data: { email: string; password: string }) {
         return this.http.post<AuthData>(`${this.apiURL}login`, data).pipe(

@@ -5,6 +5,7 @@ import { Movies } from 'src/app/interface/movies.interface';
 import { User } from 'src/app/interface/user.interface';
 import { FilmService } from 'src/app/service/film.service';
 import { UserService } from 'src/app/service/user.service';
+import { SocialUser } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-profile',
@@ -12,7 +13,7 @@ import { UserService } from 'src/app/service/user.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  user!: AuthData | null;
+  user!: AuthData | SocialUser | null;
   film!: Movies[];
   favourites: Movies[] = []; 
  
@@ -21,12 +22,24 @@ export class ProfileComponent implements OnInit {
       this.user = value;
     })
   }
+
+  checkTypeOfAuthData(object: any): object is AuthData {
+    return 'user' in object
+  }
+
+  checkTypeOfSocialUser(object:any): object is SocialUser {
+    return 'id' in object
+  }
  
   ngOnInit(): void {
     this.authsrv.user$.subscribe(async (data) => {
       this.user = data;
       if (data !== null) {
-        this.loadFavorites(data.user.id);
+        if (this.checkTypeOfAuthData(data)) {
+          this.loadFavorites(data.user.id);
+        } else if (this.checkTypeOfSocialUser(data)) {
+          this.loadFavorites(Number(data.id));
+        }
       }
     });
   }
@@ -54,7 +67,11 @@ export class ProfileComponent implements OnInit {
           this.film.splice(index, 1);
         }
        
-        await this.mvSrv.toggle(fav.id, Number(this.user.user.id));
+        if (this.checkTypeOfAuthData(this.user)) {
+          await this.mvSrv.toggle(fav.id, Number(this.user.user.id));
+        } else if (this.checkTypeOfSocialUser(this.user)) {
+          await this.mvSrv.toggle(fav.id, Number(this.user.id));
+        }
       }
     }
   }
