@@ -20,11 +20,11 @@ public class Esercizio3 {
 
         //
         System.out.println("inserisci il primo parametro");
-        double a1=scanner.nextByte();
+        double a1=scanner.nextDouble();
         System.out.println("inserisci il secondo parametro");
-        double a2=scanner.nextByte();
+        double a2=scanner.nextDouble();
         System.out.println("inserisci il terzo parametro");
-        double a3=scanner.nextByte();
+        double a3=scanner.nextDouble();
         double area=areaTriangolo(a1,a2,a3);
         System.out.println(area);
 
