@@ -32,8 +32,8 @@ public class Esercizio1 {
     }
 
     public static int moltiplicazione(int num1, int num2){
-        int num3 = num1 * num2;
-        return num3;
+
+        return num1 * num2;
     }
 
     public static String concatena(String stringa, int num){
