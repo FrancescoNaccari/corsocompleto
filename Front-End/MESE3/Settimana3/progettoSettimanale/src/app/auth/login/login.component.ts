@@ -46,17 +46,11 @@ export class LoginComponent {
     }
 
 
-
-
-
     authSubscription!: Subscription;
 
     googleSignin(googleWrapper: any) {
         googleWrapper.click();
     }
-
-
-
 
 
 
