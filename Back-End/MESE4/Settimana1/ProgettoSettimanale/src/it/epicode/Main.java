@@ -91,7 +91,7 @@ public class Main {
         }
         int scelta;
         do {
-            System.out.println("Sceglio un numero tra 1 e 5(elementi multimediali creati in precedenza), per terminare il programma inserire 0 ");
+            System.out.println("Sceglio un numero tra 1 e 5(elementi multimediali creati in precedenza)\n Per terminare "+"il programma inserire 0 ");
             scelta=scanner.nextInt();
             if (scelta==0){
                 System.out.println("Hai scelto di terminare il programma");
