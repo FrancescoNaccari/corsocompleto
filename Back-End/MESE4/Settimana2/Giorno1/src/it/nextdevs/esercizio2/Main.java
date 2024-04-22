@@ -1,8 +1,12 @@
 package it.nextdevs.esercizio2;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.Scanner;
 
 public class Main {
+    static Logger logger= LoggerFactory.getLogger("logger");
     public static void main(String[] args) {
 
         Scanner scanner=new Scanner(System.in);
@@ -11,17 +15,17 @@ public class Main {
         double km;
         double litri;
 
-        System.out.println("inserisci i km fatti");
+        logger.info("inserisci i km fatti");
         km= scanner.nextDouble();
 
-        System.out.println("inserisci i litri");
+        logger.info("inserisci i litri");
         litri= scanner.nextDouble();
 
         try {
             double consumoEffettuato = calcoConsumo.consumo(km, litri);
-            System.out.println("Il consumo effettuato è di " + consumoEffettuato + " km/litro");
+            logger.info("Il consumo effettuato è di " + consumoEffettuato + " km/litro");
         } catch (DivisionePer0Exception e) {
-            System.err.println("Errore: " + e.getMessage());
+            logger.error("Errore: " + e.getMessage());
         }
     }
 

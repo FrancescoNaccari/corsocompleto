@@ -22,7 +22,7 @@
     <logger name="logger1" level="warn" additivity="false">
         <appender-ref ref="FILE" />
     </logger>
-    <logger name="logger" level="debug" additivity="false" >
+    <logger name="logger" level="debug" >
         <appender-ref ref="mio" />
     </logger>
     <root level="debug">

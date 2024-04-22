@@ -16,3 +16,7 @@
 2024-04-22 16:14:41,240 ERROR [main] logger [Main.java:46] -- Inserire un numero valido da 1 a 10
 2024-04-22 16:14:41,763 ERROR [main] logger [Main.java:46] -- Inserire un numero valido da 1 a 10
 2024-04-22 16:14:41,763 INFO [main] logger [Main.java:54] -- Programma terminato.
+2024-04-22 20:12:52,120 INFO [main] logger [Main.java:18] -- inserisci i km fatti
+2024-04-22 20:13:16,984 INFO [main] logger [Main.java:18] -- inserisci i km fatti
+2024-04-22 20:13:21,740 INFO [main] logger [Main.java:21] -- inserisci i litri
+2024-04-22 20:13:24,733 INFO [main] logger [Main.java:26] -- Il consumo effettuato è di 0.6666666666666666 km/litro
