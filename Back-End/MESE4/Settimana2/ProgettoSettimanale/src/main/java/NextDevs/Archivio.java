@@ -16,12 +16,21 @@ public class Archivio  {
 
 
 
-    public void aggiungiProdotto(Catalogo prodotto){
-    catalogo.add(prodotto);
+    public void aggiungiProdotto(Catalogo prodotto)throws IllegalArgumentException{
+        if (catalogo.stream().noneMatch(prodottoP -> prodottoP.getCodiceISBN().equals(prodotto.getCodiceISBN()))) {
+            catalogo.add(prodotto);
+            System.out.println("Aggiunto prodotto all'archivio. ISBN: " + prodotto.getCodiceISBN());
+        } else {
+            throw new IllegalArgumentException("ISBN duplicato: "+prodotto.getCodiceISBN());
+        }
     }
 
-    public boolean rimuoviProdotto(String codiceISBN){
-        return catalogo.removeIf(elemento->elemento.getCodiceISBN().equals(codiceISBN));
+    public void rimuoviProdotto(String codiceISBN)throws Exception {
+        if (catalogo.removeIf(prodotto -> prodotto.getCodiceISBN().equals(codiceISBN))) {
+            System.out.println("Prodotto rimosso con successo. ISBN: " + codiceISBN);
+        } else {
+            throw new Exception("Prodotto non trovato");
+        };
     }
 
     public Optional<Catalogo> cercaPerISBN(String codiceISBN){

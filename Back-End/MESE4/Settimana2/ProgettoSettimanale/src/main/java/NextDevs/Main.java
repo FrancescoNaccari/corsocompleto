@@ -10,39 +10,85 @@ public class Main {
     public static void main(String[] args) {
 
         Archivio archivio=new Archivio();
+        //LIBRI
+        try {
         archivio.aggiungiProdotto(new Libro("78965412131","Harry Potter e la pietra filosofale",
                 LocalDate.of(1997,6,26),302,"J.K.Rowling","Fantasy"));
-
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+       try {
         archivio.aggiungiProdotto(new Libro("78964581213","Harry Potter e la camera dei segreti",
                 LocalDate.of(1998,7,2),326,"J.K.Rowling","Fantasy"));
-
+       } catch (Exception e) {
+           System.err.println(e.getMessage());
+       }
+       try {
         archivio.aggiungiProdotto(new Libro("77898542213","Harry Potter e il prigioniero di azkaban",
                 LocalDate.of(1999,7,8),396,"J.K.Rowling","Fantasy"));
-
+       } catch (Exception e) {
+           System.err.println(e.getMessage());
+       }
+       try {
         archivio.aggiungiProdotto(new Libro("77898515634","Harry Potter e il calice di fuoco",
                 LocalDate.of(2000,7,8),655,"J.K.Rowling","Fantasy"));
-
+       } catch (Exception e) {
+           System.err.println(e.getMessage());
+       }
+       try {
         archivio.aggiungiProdotto(new Libro("77898576351","Harry potter e l'ordine della fenice",
                 LocalDate.of(2003,6,21),853,"J.K.Rowling","Fantasy"));
-
+       } catch (Exception e) {
+           System.err.println(e.getMessage());
+       }
+       try {
         archivio.aggiungiProdotto(new Libro("77898547625","Harry potter e il principe mezzosangue",
                 LocalDate.of(2005,7,16),576,"J.K.Rowling","Fantasy"));
-
+       } catch (Exception e) {
+           System.err.println(e.getMessage());
+       }
+       try {
         archivio.aggiungiProdotto(new Libro("77898547777","Harry potter e i doni della morte ",
                 LocalDate.of(2007,7,21),656,"J.K.Rowling","Fantasy"));
-
+       } catch (Exception e) {
+           System.err.println(e.getMessage());
+       }
+       try {
         archivio.aggiungiProdotto(new Libro("77898547512","Harry potter e la maledizione dell'erede",
                 LocalDate.of(2016,7,30),353,"J.K.Rowling","Fantasy"));
+       } catch (Exception e) {
+           System.err.println(e.getMessage());
+       }
 
 
-
-
+       //RIVISTE
+        try {
         archivio.aggiungiProdotto(new Rivista("12657412137","Motociclismo",
                 LocalDate.of(2024,4,26),35,Periodicita.SETTIMANALE));
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        try {
         archivio.aggiungiProdotto(new Rivista("32657478367","Focus",
                 LocalDate.of(2024,3,15),30,Periodicita.MENSILE));
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+        try {
         archivio.aggiungiProdotto(new Rivista("33787412687","Panorama",
                 LocalDate.of(2024,1,26),60,Periodicita.SETTIMANALE));
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+
+        System.out.println("----------------------------------");
+
+        try {
+            archivio.rimuoviProdotto("77898547512");
+            System.out.println("Rimozione avvenuta con successo");
+        } catch (Exception e) {
+            System.err.println("Errore: "+e.getMessage());
+        }
 
         System.out.println("----------------------------------");
         System.out.println("Ricerca per ISBN: "+archivio.cercaPerISBN("7896541213"));
