@@ -5,7 +5,6 @@
 77898576351,Harry potter e l'ordine della fenice,2003-06-21,853,J.K.Rowling,Fantasy
 77898547625,Harry potter e il principe mezzosangue,2005-07-16,576,J.K.Rowling,Fantasy
 77898547777,Harry potter e i doni della morte ,2007-07-21,656,J.K.Rowling,Fantasy
-77898547512,Harry potter e la maledizione dell'erede,2016-07-30,353,J.K.Rowling,Fantasy
 12657412137,Motociclismo,2024-04-26,35,SETTIMANALE
 32657478367,Focus,2024-03-15,30,MENSILE
 33787412687,Panorama,2024-01-26,60,SETTIMANALE

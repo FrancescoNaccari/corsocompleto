@@ -117,8 +117,9 @@ public class Main {
             List<Catalogo> archivioCaricato=archivio.caricamentoSulDisco("archivioDati.txt");
             System.out.println("Archivio caricato da disco:");
             archivioCaricato.forEach(System.out::println);
+            System.out.println("File caricato con successo ");
         } catch (IOException e) {
             System.out.println("Errore nel caricamento del file");
         }
-   }
+    }
 }
