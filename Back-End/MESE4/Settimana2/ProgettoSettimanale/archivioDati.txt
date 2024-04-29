@@ -1,10 +1,10 @@
-78965412131,Harry Potter e la pietra filosofale,1997-06-26,302,J.K.Rowling,Fantasy
-78964581213,Harry Potter e la camera dei segreti,1998-07-02,326,J.K.Rowling,Fantasy
-77898542213,Harry Potter e il prigioniero di azkaban,1999-07-08,396,J.K.Rowling,Fantasy
-77898515634,Harry Potter e il calice di fuoco,2000-07-08,655,J.K.Rowling,Fantasy
-77898576351,Harry potter e l'ordine della fenice,2003-06-21,853,J.K.Rowling,Fantasy
-77898547625,Harry potter e il principe mezzosangue,2005-07-16,576,J.K.Rowling,Fantasy
-77898547777,Harry potter e i doni della morte ,2007-07-21,656,J.K.Rowling,Fantasy
-12657412137,Motociclismo,2024-04-26,35,SETTIMANALE
-32657478367,Focus,2024-03-15,30,MENSILE
-33787412687,Panorama,2024-01-26,60,SETTIMANALE
+#78965412131@Harry Potter e la pietra filosofale@1997-06-26@302@J.K.Rowling@Fantasy
+#78964581213@Harry Potter e la camera dei segreti@1998-07-02@326@J.K.Rowling@Fantasy
+#77898542213@Harry Potter e il prigioniero di azkaban@1999-07-08@396@J.K.Rowling@Fantasy
+#77898515634@Harry Potter e il calice di fuoco@2000-07-08@655@J.K.Rowling@Fantasy
+#77898576351@Harry potter e l'ordine della fenice@2003-06-21@853@J.K.Rowling@Fantasy
+#77898547625@Harry potter e il principe mezzosangue@2005-07-16@576@J.K.Rowling@Fantasy
+#77898547777@Harry potter e i doni della morte @2007-07-21@656@J.K.Rowling@Fantasy
+#12657412137@Motociclismo@2024-04-26@35@SETTIMANALE
+#32657478367@Focus@2024-03-15@30@MENSILE
+#33787412687@Panorama@2024-01-26@60@SETTIMANALE

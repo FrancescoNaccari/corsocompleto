@@ -43,20 +43,21 @@ public class Catalogo {
     }
 
     public String libro(Libro lbr){
-        return codiceISBN+
-                ","+titolo+
-                ","+annoPubblicazione+
-                ","+numeroPagine+
-                ","+lbr.getAutore()+
-                ","+lbr.getGenere();
+        return
+                "#"+codiceISBN+
+                "@"+titolo+
+                "@"+annoPubblicazione+
+                "@"+numeroPagine+
+                "@"+lbr.getAutore()+
+                "@"+lbr.getGenere();
     }
 
     public String rivista(Rivista rvst){
-        return codiceISBN+
-                ","+titolo+
-                ","+annoPubblicazione+
-                ","+numeroPagine+
-                ","+rvst.getPeriodicita();
+        return "#"+codiceISBN+
+                "@"+titolo+
+                "@"+annoPubblicazione+
+                "@"+numeroPagine+
+                "@"+rvst.getPeriodicita();
     }
 
 

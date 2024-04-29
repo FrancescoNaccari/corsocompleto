@@ -66,7 +66,7 @@ public class Archivio  {
     public List<Catalogo> caricamentoSulDisco(String nomeFile)throws IOException{
         List<String>lines=FileUtils.readLines(new File(nomeFile),"UTF-8");
         return lines.stream().map(line->{
-            String[] parts = line.split(",");
+            String[] parts = line.split("@");
             if (parts.length==6){
 
                 String codiceISBN=parts[0];
