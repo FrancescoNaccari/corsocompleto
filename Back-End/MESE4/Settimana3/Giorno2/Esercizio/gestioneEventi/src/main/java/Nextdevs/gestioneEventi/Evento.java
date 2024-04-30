@@ -8,7 +8,17 @@ import java.time.LocalDate;
 public class Evento {
 
     @Id
-    @GeneratedValue
+    /* @GeneratedValue*/
+   // @GeneratedValue(strategy=GenerationType.IDENTITY)
+
+    /* @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "eventi_id_sequence")
+    @SequenceGenerator(name="eventi_id_sequence",initialValue = 1,allocationSize = 1)*/
+
+//da usare quando la generation type è SEQUENCE
+     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "eventi_id_table")
+    @TableGenerator(name = "eventi_id_table",initialValue = 0,allocationSize = 1)
+
+
     private Integer id;
      @Column(name = "titolo")
      private String titolo;

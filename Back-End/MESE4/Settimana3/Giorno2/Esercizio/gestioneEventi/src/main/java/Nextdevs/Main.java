@@ -35,10 +35,10 @@ public class Main {
         e2.setNumeroMassimoPartecipanti(50);
         dao.save(e2);
 
-        Evento s3=dao.getById(10);
-        System.out.println(s3);
-        s3.setDescrizione("Riunione pubblica");
-        dao.save(s3);
+//        Evento s3=dao.getById(10);
+//        System.out.println(s3);
+//        s3.setDescrizione("Riunione pubblica");
+//        dao.save(s3);
 
 
       //  dao.delete(s3);

@@ -25,14 +25,14 @@ public class Main {
         //salvataggio di un studente senza matricola(generata automaticamente da jpa)
         dao.save(s1);
         //estrazione del db di uno studente con una determinata matricola
-        Studente s2= dao.getById(1);
-        System.out.println(s2);
-
-        s2.setIndirizzo("via verdi");
-        //update di un record in tabella
-        dao.save(s2);
-
-        //cancellazione di uno studente
-        dao.delete(s1);
+//        Studente s2= dao.getById(1);
+//        System.out.println(s2);
+//
+//        s2.setIndirizzo("via verdi");
+//        //update di un record in tabella
+//        dao.save(s2);
+//
+//        //cancellazione di uno studente
+//        dao.delete(s1);
     }
 }

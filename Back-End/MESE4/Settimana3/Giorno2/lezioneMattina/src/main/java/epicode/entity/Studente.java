@@ -8,7 +8,7 @@ import java.time.LocalDate;
 public class Studente {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private int matricola;
 
     @Column(nullable = false,length = 30)
