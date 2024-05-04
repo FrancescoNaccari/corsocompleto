@@ -1,12 +1,12 @@
 package NextDevs.Entity;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "cataloghi")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public class Catalogo {
+public abstract class Catalogo {
     @Id
     @Column(name = "codice_isbn")
     private String codiceISBN;

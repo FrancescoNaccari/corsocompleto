@@ -41,6 +41,12 @@ public class CatalogoDao {
                 .getResultList();
     }
 
+    public  List<Catalogo> findByTitolo(String titolo){
+        return em.createQuery("SELECT c FROM Catalogo c WHERE titolo LIKE :titolo ", Catalogo.class)
+                .setParameter("titolo","%"+titolo+"%")
+                .getResultList();
+
+    }
     public void delete(Catalogo catalogo){
         EntityTransaction et=em.getTransaction();
         et.begin();

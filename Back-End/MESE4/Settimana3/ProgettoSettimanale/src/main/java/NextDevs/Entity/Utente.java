@@ -11,13 +11,13 @@ import java.util.List;
 public class Utente {
     @Id
     @GeneratedValue
-    private Integer id;
+    @Column(name = "numero_di_tessera")
+    private Integer numeroDiTessera;
     private String nome;
     private String cognome;
     @Column(name = "data_di_nascita")
     private LocalDate dataDiNascita;
-    @Column(name = "numero_di_tessera")
-    private Integer numeroDiTessera;
+
 
     @OneToMany(mappedBy = "utente")
     private List<Prestito>prestiti;
@@ -51,9 +51,7 @@ public class Utente {
         this.numeroDiTessera = numeroDiTessera;
     }
 
-    public Integer getId() {
-        return id;
-    }
+
 
     public String getNome() {
         return nome;
