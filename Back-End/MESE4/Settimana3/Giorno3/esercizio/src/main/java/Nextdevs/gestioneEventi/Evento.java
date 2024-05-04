@@ -1,11 +1,14 @@
 package Nextdevs.gestioneEventi;
 
+import Nextdevs.enums.TipoEvento;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Table(name="eventi")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Evento {
 
     @Id

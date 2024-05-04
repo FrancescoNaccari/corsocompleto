@@ -1,11 +1,14 @@
 package Nextdevs.gestioneEventi;
 
+import Nextdevs.enums.Sesso;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Table(name = "persone")
+@NamedQuery(name = "getPersonaByName", query = "select p from Persona p Where p.nome=:nome")
 public class Persona {
 
     @Id
@@ -26,6 +29,15 @@ public class Persona {
 
     @OneToMany(mappedBy = "persona")
     private List<Partecipazione> partecipazioni;
+
+    @OneToMany(mappedBy ="vincitore")
+    private List<GaraDiAtletica> gareVinte;
+
+    @ManyToMany
+    @JoinTable(name = "atleta_gara",
+            joinColumns=@JoinColumn(name = "atletica_id"),
+            inverseJoinColumns = @JoinColumn(name = "gara_id"))
+    private List<GaraDiAtletica> gareDiAtletica;
 
     public Persona(Integer id, String nome, String cognome, String email, LocalDate dataNascita, Sesso sesso) {
         this.id = id;
@@ -102,7 +114,6 @@ public class Persona {
                 ", email='" + email + '\'' +
                 ", dataNascita=" + dataNascita +
                 ", sesso=" + sesso +
-                ", listapartecipazione=" + partecipazioni +
                 '}';
     }
 }

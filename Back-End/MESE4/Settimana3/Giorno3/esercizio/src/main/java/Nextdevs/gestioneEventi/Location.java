@@ -44,13 +44,7 @@ public class Location {
         return id;
     }
 
-//    public Evento getEvento() {
-//        return evento;
-//    }
-//
-//    public void setEvento(Evento evento) {
-//        this.evento = evento;
-//    }
+
 
     @Override
     public String toString() {

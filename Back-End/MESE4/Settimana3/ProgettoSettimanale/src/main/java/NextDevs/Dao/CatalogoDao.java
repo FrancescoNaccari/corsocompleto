@@ -1,0 +1,46 @@
+package NextDevs.Dao;
+
+import NextDevs.Entity.Catalogo;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import java.util.List;
+
+public class CatalogoDao {
+    private EntityManager em;
+
+    public CatalogoDao(EntityManager em) {
+        this.em = em;
+    }
+    public void save(Catalogo catalogo){
+        EntityTransaction et=em.getTransaction();
+        et.begin();
+        em.persist(catalogo);
+        et.commit();
+    }
+
+    public Catalogo getById(String codiceISBN){
+
+        return em.find(Catalogo.class,codiceISBN);
+    }
+
+    public void update(Catalogo catalogo){
+        EntityTransaction et=em.getTransaction();
+        et.begin();
+        em.merge(catalogo);
+        et.commit();
+    }
+
+    public List<Catalogo> findAll(){
+      return em.createQuery("SELECT c FROM Catalogo c",Catalogo.class).getResultList();
+    }
+
+    public void delete(Catalogo catalogo){
+        EntityTransaction et=em.getTransaction();
+        et.begin();
+        em.remove(catalogo);
+        et.commit();
+
+    }
+
+}

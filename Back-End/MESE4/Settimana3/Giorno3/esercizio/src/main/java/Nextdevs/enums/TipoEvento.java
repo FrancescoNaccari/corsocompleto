@@ -1,4 +1,4 @@
-package Nextdevs.gestioneEventi;
+package Nextdevs.enums;
 
 public enum TipoEvento {
     PUBBLICO,PRIVATO

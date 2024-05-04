@@ -1,0 +1,92 @@
+package NextDevs.Entity;
+
+import javax.persistence.*;
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "cataloghi")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public class Catalogo {
+    @Id
+    @Column(name = "codice_isbn")
+    private String codiceISBN;
+    private String titolo;
+    @Column(name = "anno_pubblicazione")
+    private LocalDate annoPubblicazione;
+    @Column(name = "numero_pagine")
+    private int numeroPagine;
+
+    public Catalogo(String codiceISBN, String titolo, LocalDate annoPubblicazione, int numeroPagine) {
+        this.codiceISBN = codiceISBN;
+        this.titolo = titolo;
+        this.annoPubblicazione = annoPubblicazione;
+        this.numeroPagine = numeroPagine;
+    }
+
+    public Catalogo() {
+
+    }
+
+    public String getCodiceISBN() {
+        return codiceISBN;
+    }
+
+
+    public String getTitolo() {
+        return titolo;
+    }
+
+    public LocalDate getAnnoPubblicazione() {
+        return annoPubblicazione;
+    }
+
+    public int getNumeroPagine() {
+        return numeroPagine;
+    }
+
+    public void setCodiceISBN(String codiceISBN) {
+        this.codiceISBN = codiceISBN;
+    }
+
+    public void setTitolo(String titolo) {
+        this.titolo = titolo;
+    }
+
+    public void setAnnoPubblicazione(LocalDate annoPubblicazione) {
+        this.annoPubblicazione = annoPubblicazione;
+    }
+
+    public void setNumeroPagine(int numeroPagine) {
+        this.numeroPagine = numeroPagine;
+    }
+
+    @Override
+    public String toString() {
+        return "Catalogo{" +
+                "codiceISBN=" + codiceISBN +
+                ", titolo='" + titolo + '\'' +
+                ", annoPubblicazione=" + annoPubblicazione +
+                ", numeroPagine=" + numeroPagine +
+                '}';
+    }
+
+    public String libro(Libro lbr){
+        return
+                "#"+codiceISBN+
+                "@"+titolo+
+                "@"+annoPubblicazione+
+                "@"+numeroPagine+
+                "@"+lbr.getAutore()+
+                "@"+lbr.getGenere();
+    }
+
+    public String rivista(Rivista rvst){
+        return "#"+codiceISBN+
+                "@"+titolo+
+                "@"+annoPubblicazione+
+                "@"+numeroPagine+
+                "@"+rvst.getPeriodicita();
+    }
+
+
+}
