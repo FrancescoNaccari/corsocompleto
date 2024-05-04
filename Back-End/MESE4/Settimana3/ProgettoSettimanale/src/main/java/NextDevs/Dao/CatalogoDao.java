@@ -40,6 +40,12 @@ public class CatalogoDao {
                 .setParameter("anno",anno)
                 .getResultList();
     }
+    
+    public List<Catalogo> findByAutore(String autore){
+        return em.createQuery("SELECT c FROM Catalogo c WHERE autore LIKE :autore ", Catalogo.class)
+                .setParameter("autore","%"+autore+"%")
+                .getResultList();
+    }
 
     public  List<Catalogo> findByTitolo(String titolo){
         return em.createQuery("SELECT c FROM Catalogo c WHERE titolo LIKE :titolo ", Catalogo.class)
