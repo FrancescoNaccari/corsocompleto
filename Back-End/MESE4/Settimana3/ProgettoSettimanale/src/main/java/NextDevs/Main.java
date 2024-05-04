@@ -12,6 +12,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.time.LocalDate;
+import java.util.List;
 
 
 public class Main {
@@ -24,27 +25,27 @@ public class Main {
         RivistaDao rivistaDao=new RivistaDao(em);
 
 
-        Libro libro1=new Libro();
-        libro1.setCodiceISBN("78965412131");
-        libro1.setTitolo("Harry Potter e la pietra filosofale");
-        libro1.setAnnoPubblicazione(LocalDate.of(1997,6,26));
-        libro1.setNumeroPagine(302);
-        libro1.setAutore("J.K.Rowling");
-        libro1.setGenere("Fantasy");
-
-        try {
-            catalogoDao.save(libro1);
-            System.out.println("Prodotto salvato con successo");
-        }catch (Exception e){
-            System.out.println("Prodotto duplicato");
-        }
-
-
-
+//        Libro libro1=new Libro();
+//        libro1.setCodiceISBN("78965412131");
+//        libro1.setTitolo("Harry Potter e la pietra filosofale");
+//        libro1.setAnnoPubblicazione(1997);
+//        libro1.setNumeroPagine(302);
+//        libro1.setAutore("J.K.Rowling");
+//        libro1.setGenere("Fantasy");
+//
+//        try {
+//            catalogoDao.save(libro1);
+//            System.out.println("Prodotto salvato con successo");
+//        }catch (Exception e){
+//            System.out.println("Prodotto duplicato");
+//        }
+//
+//
+//
 //        Libro libro2 =new Libro();
 //        libro2.setCodiceISBN("78964581213");
 //        libro2.setTitolo("Harry Potter e la camera dei segreti\"");
-//        libro2.setAnnoPubblicazione(LocalDate.of(1998,7,2));
+//        libro2.setAnnoPubblicazione(1998);
 //        libro2.setNumeroPagine(326);
 //        libro2.setAutore("J.K.Rowling");
 //        libro2.setGenere("Fantasy");
@@ -56,13 +57,13 @@ public class Main {
 //            System.out.println("Prodotto duplicato");
 //        }
 //
-
-
+//
+//
 //        Rivista rivista1=new Rivista();
 //        rivista1.setCodiceISBN("12657412137");
 //        rivista1.setTitolo("Motociclismo");
 //        rivista1.setNumeroPagine(35);
-//        rivista1.setAnnoPubblicazione(  LocalDate.of(2024,4,26));
+//        rivista1.setAnnoPubblicazione( 2024);
 //        rivista1.setPeriodicita( Periodicita.SETTIMANALE);
 //
 //        try {
@@ -74,35 +75,47 @@ public class Main {
 
 
 
+//        try {
+//            Catalogo catalogo= catalogoDao.getById("125");
+//            if (catalogo !=null) {
+//                catalogoDao.delete(catalogo);
+//                System.out.println("Prodotto eliminato con successo");
+//            }else {
+//                throw new RuntimeException("Prodotto non esistente");
+//            }
+//        }catch (Exception e){
+//            System.err.println("Errore: "+e.getMessage());
+//        }
+//
+//        try {
+//            Catalogo catalogo= catalogoDao.getById("78964581213");
+//            if (catalogo !=null) {
+//                catalogoDao.delete(catalogo);
+//                System.out.println("Prodotto eliminato con successo");
+//
+//            }else {
+//                throw new RuntimeException("Prodotto non esistente");
+//            }
+//        }catch (Exception e){
+//            System.err.println("Errore: "+e.getMessage());
+//        }
 
 
-        
-
-        try {
-            Catalogo catalogo= catalogoDao.getById("125");
-            if (catalogo !=null) {
-                catalogoDao.delete(catalogo);
-                System.out.println("Prodotto eliminato con successo");
-            }else {
-                throw new RuntimeException("Prodotto non esistente");
-            }
-        }catch (Exception e){
-            System.err.println("Errore: "+e.getMessage());
+        Catalogo findCatalogo=catalogoDao.getById("78965412131");
+        if (findCatalogo !=null){
+            System.out.println(findCatalogo);
+        }else {
+            System.err.println("Prodotto non esiste");
         }
 
-        try {
-            Catalogo catalogo= catalogoDao.getById("78964581213");
-            if (catalogo !=null) {
-                catalogoDao.delete(catalogo);
-                System.out.println("Prodotto eliminato con successo");
 
-            }else {
-                throw new RuntimeException("Prodotto non esistente");
-            }
-        }catch (Exception e){
-            System.err.println("Errore: "+e.getMessage());
+        //PRODOTTI PER ANNO 1997
+        List<Catalogo> catalogosByAnno=catalogoDao.findByAnno(1997);
+        if (catalogosByAnno.isEmpty()){
+            System.out.println("Nessun prodotto trovato per quest'anno ");
+        }else {
+            catalogosByAnno.forEach(System.out::println);
         }
-
 
 
 

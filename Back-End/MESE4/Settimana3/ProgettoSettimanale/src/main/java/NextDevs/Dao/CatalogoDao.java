@@ -35,6 +35,12 @@ public class CatalogoDao {
       return em.createQuery("SELECT c FROM Catalogo c",Catalogo.class).getResultList();
     }
 
+    public List<Catalogo>findByAnno(Integer anno){
+        return em.createQuery("SELECT c FROM Catalogo c WHERE anno_pubblicazione=:anno ", Catalogo.class)
+                .setParameter("anno",anno)
+                .getResultList();
+    }
+
     public void delete(Catalogo catalogo){
         EntityTransaction et=em.getTransaction();
         et.begin();

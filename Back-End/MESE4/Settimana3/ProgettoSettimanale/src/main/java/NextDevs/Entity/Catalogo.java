@@ -12,11 +12,11 @@ public class Catalogo {
     private String codiceISBN;
     private String titolo;
     @Column(name = "anno_pubblicazione")
-    private LocalDate annoPubblicazione;
+    private Integer annoPubblicazione;
     @Column(name = "numero_pagine")
     private int numeroPagine;
 
-    public Catalogo(String codiceISBN, String titolo, LocalDate annoPubblicazione, int numeroPagine) {
+    public Catalogo(String codiceISBN, String titolo, Integer annoPubblicazione, int numeroPagine) {
         this.codiceISBN = codiceISBN;
         this.titolo = titolo;
         this.annoPubblicazione = annoPubblicazione;
@@ -36,7 +36,7 @@ public class Catalogo {
         return titolo;
     }
 
-    public LocalDate getAnnoPubblicazione() {
+    public Integer getAnnoPubblicazione() {
         return annoPubblicazione;
     }
 
@@ -52,7 +52,7 @@ public class Catalogo {
         this.titolo = titolo;
     }
 
-    public void setAnnoPubblicazione(LocalDate annoPubblicazione) {
+    public void setAnnoPubblicazione(Integer annoPubblicazione) {
         this.annoPubblicazione = annoPubblicazione;
     }
 

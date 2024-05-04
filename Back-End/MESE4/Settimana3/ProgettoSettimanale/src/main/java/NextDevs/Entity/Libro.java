@@ -2,7 +2,7 @@ package NextDevs.Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "libri")
@@ -12,7 +12,7 @@ public class Libro extends Catalogo {
     private String genere;
 
 
-    public Libro(String codiceISBN, String titolo, LocalDate annoPubblicazione, int numeroPagine, String autore, String genere) {
+    public Libro(String codiceISBN, String titolo, Integer annoPubblicazione, int numeroPagine, String autore, String genere) {
         super(codiceISBN, titolo, annoPubblicazione, numeroPagine);
         this.autore = autore;
         this.genere = genere;
