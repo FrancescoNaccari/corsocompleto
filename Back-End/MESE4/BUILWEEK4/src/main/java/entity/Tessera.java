@@ -11,8 +11,10 @@ public class Tessera {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "numero_tessera")
     private String numeroTessera;
+
     @Column(name = "data_emissione")
     private Date dataEmissione;
+
     @Column(name = "data_scadenza")
     private Date dataScadenza;
 
@@ -21,14 +23,15 @@ public class Tessera {
     private Utente utente;
 
 
+
+    public Tessera() {
+    }
+
     public Tessera(String numeroTessera, Date dataEmissione, Date dataScadenza, Utente utente) {
         this.numeroTessera = numeroTessera;
         this.dataEmissione = dataEmissione;
         this.dataScadenza = dataScadenza;
         this.utente = utente;
-    }
-
-    public Tessera() {
     }
 
     public String getNumeroTessera() {

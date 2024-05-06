@@ -35,19 +35,25 @@ public class Biglietto {
     private boolean annullato;
 
 
-    public Biglietto(String codiceUnivoco, Date dataEmissione, double prezzo, Utente utente) {
+
+
+    public Biglietto() {
+    }
+
+    public Biglietto(String codiceUnivoco, Date dataEmissione, double prezzo, Utente utente, Viaggio viaggio, boolean annullato) {
         this.codiceUnivoco = codiceUnivoco;
         this.dataEmissione = dataEmissione;
         this.prezzo = prezzo;
         this.utente = utente;
-    }
-
-    public Biglietto() {
+        this.viaggio = viaggio;
+        this.annullato = annullato;
     }
 
     public Integer getId() {
         return id;
     }
+
+
 
     public String getCodiceUnivoco() {
         return codiceUnivoco;
@@ -81,6 +87,22 @@ public class Biglietto {
         this.utente = utente;
     }
 
+    public Viaggio getViaggio() {
+        return viaggio;
+    }
+
+    public void setViaggio(Viaggio viaggio) {
+        this.viaggio = viaggio;
+    }
+
+    public boolean isAnnullato() {
+        return annullato;
+    }
+
+    public void setAnnullato(boolean annullato) {
+        this.annullato = annullato;
+    }
+
     @Override
     public String toString() {
         return "Biglietto{" +
@@ -89,6 +111,8 @@ public class Biglietto {
                 ", dataEmissione=" + dataEmissione +
                 ", prezzo=" + prezzo +
                 ", utente=" + utente +
+                ", viaggio=" + viaggio +
+                ", annullato=" + annullato +
                 '}';
     }
 }

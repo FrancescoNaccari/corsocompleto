@@ -20,18 +20,17 @@ public class Rivenditore {
     private List<Biglietto> biglietti;
 
 
+    public Rivenditore() {
+    }
+
     public Rivenditore(List<Abbonamento> abbonamenti, List<Biglietto> biglietti) {
         this.abbonamenti = abbonamenti;
         this.biglietti = biglietti;
     }
 
-    public Rivenditore() {
-    }
-
     public Integer getId() {
         return id;
     }
-
 
     public List<Abbonamento> getAbbonamenti() {
         return abbonamenti;

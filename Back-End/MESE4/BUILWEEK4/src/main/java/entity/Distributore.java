@@ -23,6 +23,11 @@ public class Distributore {
     @OneToMany(mappedBy = "distributore")
     private List<Biglietto> biglietti;
 
+
+
+    public Distributore() {
+    }
+
     public Distributore(boolean attivo, boolean fuoriServizio, List<Abbonamento> abbonamenti, List<Biglietto> biglietti) {
         this.attivo = attivo;
         this.fuoriServizio = fuoriServizio;
@@ -30,13 +35,9 @@ public class Distributore {
         this.biglietti = biglietti;
     }
 
-    public Distributore() {
-    }
-
     public Integer getId() {
         return id;
     }
-
 
     public boolean isAttivo() {
         return attivo;

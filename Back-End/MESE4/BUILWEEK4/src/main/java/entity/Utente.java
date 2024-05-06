@@ -1,7 +1,6 @@
 package entity;
 
 import entity.biglietto.Biglietto;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -29,6 +28,11 @@ public class Utente {
     @OneToMany(mappedBy = "utente")
     private List<Abbonamento> abbonamenti;
 
+
+
+    public Utente() {
+    }
+
     public Utente(String nome, String cognome, Tessera tessera, List<Biglietto> biglietti, List<Abbonamento> abbonamenti) {
         this.nome = nome;
         this.cognome = cognome;
@@ -37,14 +41,9 @@ public class Utente {
         this.abbonamenti = abbonamenti;
     }
 
-    public Utente() {
-    }
-
     public Integer getId() {
         return id;
     }
-
-
 
     public String getNome() {
         return nome;
