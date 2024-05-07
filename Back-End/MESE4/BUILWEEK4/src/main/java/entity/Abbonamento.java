@@ -3,6 +3,7 @@ package entity;
 import enums.TipoAbbonamento;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -21,13 +22,13 @@ public class Abbonamento {
     private String codiceUnivoco;
 
     @Column(name = "data_emissione")
-    private Date dataEmissione;
+    private LocalDate dataEmissione;
 
     @Column
     private double prezzo;
 
     @Column(name = "data_scadenza")
-    private Date dataScadenza;
+    private LocalDate dataScadenza;
 
     @ManyToOne
     @JoinColumn(name = "utente_id")
@@ -46,7 +47,7 @@ public class Abbonamento {
     public Abbonamento() {
     }
 
-    public Abbonamento(TipoAbbonamento tipoAbbonamento, String codiceUnivoco, Date dataEmissione, double prezzo, Date dataScadenza, Utente utente, Rivenditore rivenditore, Distributore distributore) {
+    public Abbonamento(TipoAbbonamento tipoAbbonamento, String codiceUnivoco, LocalDate dataEmissione, double prezzo, LocalDate dataScadenza, Utente utente, Rivenditore rivenditore, Distributore distributore) {
         this.tipoAbbonamento = tipoAbbonamento;
         this.codiceUnivoco = codiceUnivoco;
         this.dataEmissione = dataEmissione;
@@ -77,11 +78,11 @@ public class Abbonamento {
         this.codiceUnivoco = codiceUnivoco;
     }
 
-    public Date getDataEmissione() {
+    public LocalDate getDataEmissione() {
         return dataEmissione;
     }
 
-    public void setDataEmissione(Date dataEmissione) {
+    public void setDataEmissione(LocalDate dataEmissione) {
         this.dataEmissione = dataEmissione;
     }
 
@@ -93,11 +94,11 @@ public class Abbonamento {
         this.prezzo = prezzo;
     }
 
-    public Date getDataScadenza() {
+    public LocalDate getDataScadenza() {
         return dataScadenza;
     }
 
-    public void setDataScadenza(Date dataScadenza) {
+    public void setDataScadenza(LocalDate dataScadenza) {
         this.dataScadenza = dataScadenza;
     }
 

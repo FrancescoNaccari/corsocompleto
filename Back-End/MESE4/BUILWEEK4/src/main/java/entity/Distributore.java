@@ -10,7 +10,7 @@ import java.util.List;
 public class Distributore {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer id;
 
     private boolean attivo;

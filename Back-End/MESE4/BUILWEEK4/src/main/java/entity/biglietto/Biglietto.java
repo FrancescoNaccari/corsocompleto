@@ -1,10 +1,12 @@
 package entity.biglietto;
 
+import entity.Distributore;
+import entity.Rivenditore;
 import entity.Utente;
 import entity.mezzi.Viaggio;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 
 @Entity
@@ -18,7 +20,7 @@ public class Biglietto {
     private String codiceUnivoco;
 
     @Column( name = "data_emissione")
-    private Date dataEmissione;
+    private LocalDate dataEmissione;
 
     @Column
     private double prezzo;
@@ -34,13 +36,18 @@ public class Biglietto {
 
     private boolean annullato;
 
+    @ManyToOne
+    @JoinColumn(name = "distributore_id")
+    private Distributore distributore;
 
-
+    @ManyToOne
+    @JoinColumn(name = "rivenditore_id")
+    private Rivenditore rivenditore;
 
     public Biglietto() {
     }
 
-    public Biglietto(String codiceUnivoco, Date dataEmissione, double prezzo, Utente utente, Viaggio viaggio, boolean annullato) {
+    public Biglietto(String codiceUnivoco, LocalDate dataEmissione, double prezzo, Utente utente, Viaggio viaggio, boolean annullato) {
         this.codiceUnivoco = codiceUnivoco;
         this.dataEmissione = dataEmissione;
         this.prezzo = prezzo;
@@ -63,11 +70,11 @@ public class Biglietto {
         this.codiceUnivoco = codiceUnivoco;
     }
 
-    public Date getDataEmissione() {
+    public LocalDate getDataEmissione() {
         return dataEmissione;
     }
 
-    public void setDataEmissione(Date dataEmissione) {
+    public void setDataEmissione(LocalDate dataEmissione) {
         this.dataEmissione = dataEmissione;
     }
 

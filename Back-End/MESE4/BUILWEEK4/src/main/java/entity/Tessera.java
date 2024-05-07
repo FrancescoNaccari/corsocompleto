@@ -1,6 +1,7 @@
 package entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -8,30 +9,32 @@ import java.util.Date;
 
 public class Tessera {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
+    private Integer id;
+
     @Column(name = "numero_tessera")
     private String numeroTessera;
 
     @Column(name = "data_emissione")
-    private Date dataEmissione;
+    private LocalDate dataEmissione;
 
     @Column(name = "data_scadenza")
-    private Date dataScadenza;
-
-    @OneToOne
-    @JoinColumn(name = "utente_id")
-    private Utente utente;
+    private LocalDate dataScadenza;
 
 
 
     public Tessera() {
     }
 
-    public Tessera(String numeroTessera, Date dataEmissione, Date dataScadenza, Utente utente) {
+    public Tessera(String numeroTessera, LocalDate dataEmissione, LocalDate dataScadenza) {
         this.numeroTessera = numeroTessera;
         this.dataEmissione = dataEmissione;
         this.dataScadenza = dataScadenza;
-        this.utente = utente;
+
+    }
+
+    public Integer getId() {
+        return id;
     }
 
     public String getNumeroTessera() {
@@ -42,29 +45,23 @@ public class Tessera {
         this.numeroTessera = numeroTessera;
     }
 
-    public Date getDataEmissione() {
+    public LocalDate getDataEmissione() {
         return dataEmissione;
     }
 
-    public void setDataEmissione(Date dataEmissione) {
+    public void setDataEmissione(LocalDate dataEmissione) {
         this.dataEmissione = dataEmissione;
     }
 
-    public Date getDataScadenza() {
+    public LocalDate getDataScadenza() {
         return dataScadenza;
     }
 
-    public void setDataScadenza(Date dataScadenza) {
+    public void setDataScadenza(LocalDate dataScadenza) {
         this.dataScadenza = dataScadenza;
     }
 
-    public Utente getUtente() {
-        return utente;
-    }
 
-    public void setUtente(Utente utente) {
-        this.utente = utente;
-    }
 
     @Override
     public String toString() {
@@ -72,7 +69,6 @@ public class Tessera {
                 "numeroTessera='" + numeroTessera + '\'' +
                 ", dataEmissione=" + dataEmissione +
                 ", dataScadenza=" + dataScadenza +
-                ", utente=" + utente +
                 '}';
     }
 }

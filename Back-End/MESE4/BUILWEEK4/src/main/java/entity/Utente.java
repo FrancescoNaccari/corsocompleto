@@ -9,7 +9,7 @@ import java.util.List;
 @Table(name = "utenti")
 public class Utente {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Integer id;
 
     @Column
@@ -19,7 +19,7 @@ public class Utente {
     private String cognome;
 
     @OneToOne
-    @JoinColumn(name = "tessera_numero_tessera")
+    @JoinColumn(name = "tessera_id")
     private Tessera tessera;
 
     @OneToMany(mappedBy = "utente")
@@ -41,7 +41,7 @@ public class Utente {
         this.abbonamenti = abbonamenti;
     }
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 

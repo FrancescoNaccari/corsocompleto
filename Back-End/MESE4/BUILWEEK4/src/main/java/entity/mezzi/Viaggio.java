@@ -1,34 +1,34 @@
 package entity.mezzi;
 
 import entity.biglietto.Biglietto;
-
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
 @Table(name = "viaggi")
 public class Viaggio {
+
+    @Id
+    @GeneratedValue
     private Integer id;
 
     @ManyToOne
     @JoinColumn(name = "tratta_id")
     private Tratta tratta;
 
-    @ManyToOne
-    @JoinColumn(name = "mezzo_id")
-    private Mezzo mezzo;
 
-    private Date data;
+
+    private LocalDate data;
 
     private Integer tempoEffettivoPercorrenza;
 
     @OneToMany(mappedBy = "viaggio")
     private List<Biglietto> bigliettiVidimati;
 
-    public Viaggio(Tratta tratta, Mezzo mezzo, Date data, Integer tempoEffettivoPercorrenza, List<Biglietto> bigliettiVidimati) {
+    public Viaggio(Tratta tratta,  LocalDate data, Integer tempoEffettivoPercorrenza, List<Biglietto> bigliettiVidimati) {
         this.tratta = tratta;
-        this.mezzo = mezzo;
+
         this.data = data;
         this.tempoEffettivoPercorrenza = tempoEffettivoPercorrenza;
         this.bigliettiVidimati = bigliettiVidimati;
@@ -49,19 +49,12 @@ public class Viaggio {
         this.tratta = tratta;
     }
 
-    public Mezzo getMezzo() {
-        return mezzo;
-    }
 
-    public void setMezzo(Mezzo mezzo) {
-        this.mezzo = mezzo;
-    }
-
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 
@@ -72,6 +65,7 @@ public class Viaggio {
     public void setTempoEffettivoPercorrenza(Integer tempoEffettivoPercorrenza) {
         this.tempoEffettivoPercorrenza = tempoEffettivoPercorrenza;
     }
+
 
     public List<Biglietto> getBigliettiVidimati() {
         return bigliettiVidimati;
@@ -86,7 +80,7 @@ public class Viaggio {
         return "Viaggio{" +
                 "id=" + id +
                 ", tratta=" + tratta +
-                ", mezzo=" + mezzo +
+
                 ", data=" + data +
                 ", tempoEffettivoPercorrenza=" + tempoEffettivoPercorrenza +
                 ", bigliettiVidimati=" + bigliettiVidimati +

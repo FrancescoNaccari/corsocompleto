@@ -21,18 +21,16 @@ public class Mezzo {
 
     private int capienza;
 
-    @OneToMany(mappedBy = "mezzo")
-    private List<Viaggio> viaggi;
 
 
     @OneToMany(mappedBy = "mezzo")
     private List<Manutenzione> manutenzioni;
 
-    public Mezzo(TipoMezzo tipoMezzo, Boolean inServizio, int capienza, List<Viaggio> viaggi, List<Manutenzione> manutenzioni) {
+    public Mezzo(TipoMezzo tipoMezzo, Boolean inServizio, int capienza, List<Manutenzione> manutenzioni) {
         this.tipoMezzo = tipoMezzo;
         this.inServizio = inServizio;
         this.capienza = capienza;
-        this.viaggi = viaggi;
+
         this.manutenzioni = manutenzioni;
     }
 
@@ -67,13 +65,7 @@ public class Mezzo {
         this.capienza = capienza;
     }
 
-    public List<Viaggio> getViaggi() {
-        return viaggi;
-    }
 
-    public void setViaggi(List<Viaggio> viaggi) {
-        this.viaggi = viaggi;
-    }
 
     public List<Manutenzione> getManutenzioni() {
         return manutenzioni;
@@ -90,7 +82,7 @@ public class Mezzo {
                 ", tipoMezzo=" + tipoMezzo +
                 ", inServizio=" + inServizio +
                 ", capienza=" + capienza +
-                ", viaggi=" + viaggi +
+
                 ", manutenzioni=" + manutenzioni +
                 '}';
     }
