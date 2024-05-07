@@ -17,8 +17,6 @@ public class Viaggio {
     @JoinColumn(name = "tratta_id")
     private Tratta tratta;
 
-
-
     private LocalDate data;
 
     private Integer tempoEffettivoPercorrenza;

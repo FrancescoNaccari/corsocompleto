@@ -1,7 +1,6 @@
 package entity.biglietto;
 
-import entity.Distributore;
-import entity.Rivenditore;
+import entity.rivenditori.Distributore;
 import entity.Utente;
 import entity.mezzi.Viaggio;
 
@@ -11,23 +10,7 @@ import java.time.LocalDate;
 
 @Entity
 @Table(name = "biglietti")
-public class Biglietto {
-    @Id
-    @GeneratedValue
-    private Integer id;
-
-    @Column( name = "codice_univoco")
-    private String codiceUnivoco;
-
-    @Column( name = "data_emissione")
-    private LocalDate dataEmissione;
-
-    @Column
-    private double prezzo;
-
-    @ManyToOne
-    @JoinColumn(name = "utente_id")
-    private Utente utente;
+public class Biglietto extends Ticket {
 
 
     @ManyToOne
@@ -36,62 +19,15 @@ public class Biglietto {
 
     private boolean annullato;
 
-    @ManyToOne
-    @JoinColumn(name = "distributore_id")
-    private Distributore distributore;
 
-    @ManyToOne
-    @JoinColumn(name = "rivenditore_id")
-    private Rivenditore rivenditore;
-
-    public Biglietto() {
-    }
-
-    public Biglietto(String codiceUnivoco, LocalDate dataEmissione, double prezzo, Utente utente, Viaggio viaggio, boolean annullato) {
-        this.codiceUnivoco = codiceUnivoco;
-        this.dataEmissione = dataEmissione;
-        this.prezzo = prezzo;
-        this.utente = utente;
+    public Biglietto(String codiceUnivoco, double prezzo, LocalDate dataEmissione, Utente utente, Distributore distributore, Viaggio viaggio, boolean annullato) {
+        super(codiceUnivoco, prezzo, dataEmissione, utente, distributore);
         this.viaggio = viaggio;
         this.annullato = annullato;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-
-
-    public String getCodiceUnivoco() {
-        return codiceUnivoco;
-    }
-
-    public void setCodiceUnivoco(String codiceUnivoco) {
-        this.codiceUnivoco = codiceUnivoco;
-    }
-
-    public LocalDate getDataEmissione() {
-        return dataEmissione;
-    }
-
-    public void setDataEmissione(LocalDate dataEmissione) {
-        this.dataEmissione = dataEmissione;
-    }
-
-    public double getPrezzo() {
-        return prezzo;
-    }
-
-    public void setPrezzo(double prezzo) {
-        this.prezzo = prezzo;
-    }
-
-    public Utente getUtente() {
-        return utente;
-    }
-
-    public void setUtente(Utente utente) {
-        this.utente = utente;
+    public Biglietto() {
+        super();
     }
 
     public Viaggio getViaggio() {
@@ -113,12 +49,7 @@ public class Biglietto {
     @Override
     public String toString() {
         return "Biglietto{" +
-                "id=" + id +
-                ", codiceUnivoco='" + codiceUnivoco + '\'' +
-                ", dataEmissione=" + dataEmissione +
-                ", prezzo=" + prezzo +
-                ", utente=" + utente +
-                ", viaggio=" + viaggio +
+                "viaggio=" + viaggio +
                 ", annullato=" + annullato +
                 '}';
     }

@@ -22,7 +22,6 @@ public class Mezzo {
     private int capienza;
 
 
-
     @OneToMany(mappedBy = "mezzo")
     private List<Manutenzione> manutenzioni;
 

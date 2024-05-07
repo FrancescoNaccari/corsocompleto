@@ -1,6 +1,7 @@
 package entity.mezzi;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -16,11 +17,11 @@ public class Manutenzione {
     @JoinColumn(name = "mezzo_id")
     private Mezzo mezzo;
 
-    private Date dataInizio;
+    private LocalDate dataInizio;
 
-    private Date dataFine;
+    private LocalDate dataFine;
 
-    public Manutenzione(Mezzo mezzo, Date dataInizio, Date dataFine) {
+    public Manutenzione(Mezzo mezzo, LocalDate dataInizio, LocalDate dataFine) {
         this.mezzo = mezzo;
         this.dataInizio = dataInizio;
         this.dataFine = dataFine;
@@ -41,19 +42,19 @@ public class Manutenzione {
         this.mezzo = mezzo;
     }
 
-    public Date getDataInizio() {
+    public LocalDate getDataInizio() {
         return dataInizio;
     }
 
-    public void setDataInizio(Date dataInizio) {
+    public void setDataInizio(LocalDate dataInizio) {
         this.dataInizio = dataInizio;
     }
 
-    public Date getDataFine() {
+    public LocalDate getDataFine() {
         return dataFine;
     }
 
-    public void setDataFine(Date dataFine) {
+    public void setDataFine(LocalDate dataFine) {
         this.dataFine = dataFine;
     }
 

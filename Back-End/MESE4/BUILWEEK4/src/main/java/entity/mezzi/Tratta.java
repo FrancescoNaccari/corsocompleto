@@ -1,9 +1,10 @@
 package entity.mezzi;
 
-import entity.Abbonamento;
+import entity.biglietto.Abbonamento;
 import entity.biglietto.Biglietto;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -102,11 +103,21 @@ public class Tratta {
     }
 
     public List<Viaggio> getViaggi() {
-        return viaggi;
+
+        if (viaggi != null) {
+            return this.viaggi;
+        } else {
+            System.err.println("Lista viaggi vuota");
+            return  new ArrayList<>();
+        }
+
     }
 
     public void setViaggi(List<Viaggio> viaggi) {
-        this.viaggi = viaggi;
+
+
+ this.viaggi = viaggi;
+
     }
 
     @Override

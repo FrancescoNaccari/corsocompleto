@@ -1,6 +1,6 @@
 package Dao;
 
-import entity.Abbonamento;
+import entity.biglietto.Abbonamento;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import java.util.List;

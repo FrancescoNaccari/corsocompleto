@@ -1,6 +1,6 @@
 package Dao;
 
-import entity.Distributore;
+import entity.rivenditori.Distributore;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import java.util.List;

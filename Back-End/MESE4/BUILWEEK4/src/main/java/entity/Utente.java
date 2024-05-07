@@ -1,6 +1,9 @@
 package entity;
 
+import entity.biglietto.Abbonamento;
 import entity.biglietto.Biglietto;
+import entity.biglietto.Ticket;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -23,26 +26,26 @@ public class Utente {
     private Tessera tessera;
 
     @OneToMany(mappedBy = "utente")
-    private List<Biglietto> biglietti;
-
-    @OneToMany(mappedBy = "utente")
-    private List<Abbonamento> abbonamenti;
+    private List<Ticket> tickets;
 
 
-
-    public Utente() {
-    }
-
-    public Utente(String nome, String cognome, Tessera tessera, List<Biglietto> biglietti, List<Abbonamento> abbonamenti) {
+    public Utente(String nome, String cognome, Tessera tessera, List<Ticket> tickets) {
         this.nome = nome;
         this.cognome = cognome;
         this.tessera = tessera;
-        this.biglietti = biglietti;
-        this.abbonamenti = abbonamenti;
+        this.tickets = tickets;
     }
 
-    public int getId() {
+    public Utente() {
+
+    }
+
+    public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNome() {
@@ -69,31 +72,12 @@ public class Utente {
         this.tessera = tessera;
     }
 
-    public List<Biglietto> getBiglietti() {
-        return biglietti;
+    public List<Ticket> getTickets() {
+        return tickets;
     }
 
-    public void setBiglietti(List<Biglietto> biglietti) {
-        this.biglietti = biglietti;
-    }
-
-    public List<Abbonamento> getAbbonamenti() {
-        return abbonamenti;
-    }
-
-    public void setAbbonamenti(List<Abbonamento> abbonamenti) {
-        this.abbonamenti = abbonamenti;
-    }
-
-    @Override
-    public String toString() {
-        return "Utente{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
-                ", cognome='" + cognome + '\'' +
-                ", tessera=" + tessera +
-                ", biglietti=" + biglietti +
-                ", abbonamenti=" + abbonamenti +
-                '}';
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
     }
 }
+
