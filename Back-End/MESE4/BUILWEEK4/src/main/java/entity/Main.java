@@ -28,8 +28,8 @@ public class Main {
         BigliettoDao bigliettoDao = new BigliettoDao(em);
         UtenteDao utenteDao = new UtenteDao(em);
         TesseraDao tesseraDao = new TesseraDao(em);
-        ViaggioDao viaggioDao=new ViaggioDao(em);
-        AbbonamentoDao abbonamentoDao=new AbbonamentoDao(em);
+        ViaggioDao viaggioDao = new ViaggioDao(em);
+        AbbonamentoDao abbonamentoDao = new AbbonamentoDao(em);
         TrattaDao trattaDao = new TrattaDao(em);
         RivenditoreDao rivenditoreDao = new RivenditoreDao(em);
         ManutenzioneDao manutenzioneDao = new ManutenzioneDao(em);
@@ -38,7 +38,7 @@ public class Main {
         TicketDao ticketDao = new TicketDao(em);
         AtmDao atmDao = new AtmDao(em);
 
-        //MEZZO
+        //MEZZI
         //AUTOBUS
         Mezzo mezzoAutobus = new Mezzo();
         mezzoAutobus.setTipoMezzo(TipoMezzo.AUTOBUS);
@@ -51,7 +51,7 @@ public class Main {
         Mezzo mezzoTram = new Mezzo();
         mezzoTram.setTipoMezzo(TipoMezzo.TRAM);
         mezzoTram.setCapienza(300);
-        //   mezzoTram.setManutenzioni(List.of(manutenzioneDao.getById(1)));
+       mezzoTram.setManutenzioni(List.of(manutenzioneDao.getById(4)));
         mezzoTram.setInServizio(false);
         mezzoDao.save(mezzoTram);
 
@@ -76,7 +76,7 @@ public class Main {
         viaggi.add(viaggioDao.getById(1));
 
         viaggio1.setData(LocalDate.of(2024,5,7));
-        viaggio1.setTratta(trattaDao.getById(1));
+        viaggio1.setTratta(trattaDao.getById(4));
         viaggio1.setTempoEffettivoPercorrenza(40);
         try {
             viaggioDao.save(viaggio1);
@@ -91,7 +91,8 @@ public class Main {
         tratta1.setMezzo(mezzoTram);
         tratta1.setCapolinea("Stazione centrale");
         tratta1.setZonaPartenza("Stazione Notarbartolo");
-        tratta1.setBiglietto(bigliettoDao.getById(1));
+        tratta1.setTicket(abbonamentoDao.getById(11));
+        tratta1.setViaggi(List.of(viaggioDao.getById(5)));
         trattaDao.save(tratta1);
 
 
@@ -103,10 +104,9 @@ public class Main {
 //            List<Utente> utenti = new ArrayList<>();
 //            utenti.add(utenteDao.getById(1));
 
-
         utente1.setNome("Elena");
         utente1.setCognome("Kekic");
-        utente1.setTessera(tesseraDao.getById(1));
+        utente1.setTessera(tesseraDao.getById("A123456"));
         utenteDao.save(utente1);
 
 
@@ -117,10 +117,12 @@ public class Main {
         biglietto1.setCodiceUnivoco("rv");
         biglietto1.setPrezzo(2.2);
         biglietto1.setDataEmissione(LocalDate.of(2024,5,7));
-        biglietto1.setViaggio(viaggioDao.getById(1));
-        biglietto1.setUtente(utenteDao.getById(1));
-        biglietto1.setDistributore(distributoreDao.getById(1));
+        biglietto1.setVidimato(true);
+        //biglietto1.setMezzo(mezzoAutobus);
+     //   biglietto1.setUtente(utenteDao.getById(6));
+        biglietto1.setDistributore(atmDao.getById(14));
         ticketDao.save(biglietto1);
+
 
 
         //TESSERRA
@@ -128,35 +130,90 @@ public class Main {
         tessera1.setNumeroTessera("A123456");
         tessera1.setDataEmissione(LocalDate.of(2024, 5, 7));
         tessera1.setDataScadenza(LocalDate.of(2025, 5, 7));
-        tesseraDao.save(tessera1);
+
+        try {
+            tesseraDao.save(tessera1);
+
+            System.out.println("Tessera salvato correttamente");
+        }catch (Exception e){
+            System.err.println("Tessera già esistente ");
+        }
+
 
 
         //DISTRIBUTORE
+        //ATM
         Atm atm1 = new Atm();
-        atm1.setTickets(List.of(ticketDao.getById(7)));
         atm1.setAttivo(true);
         atm1.setFuoriServizio(false);
-        distributoreDao.save(atm1);
+        try {
+            distributoreDao.save(atm1);
+            System.out.println("Atm salvato correttamente");
+        }catch (Exception e){
+            System.err.println("Atm già esistente ");
+        }
+
 
 
         //RIVENDITORE
         Rivenditore rivenditore1 = new Rivenditore();
-        rivenditore1.setTickets(List.of(ticketDao.getById(7)));
-        rivenditoreDao.save(rivenditore1);
+        rivenditore1.setNome("Rivenditore Piazza Garibaldi");
+        try {
+            distributoreDao.save(rivenditore1);
+            System.out.println("Rivenditore salvato correttamente");
+        }catch (Exception e){
+            System.err.println("Rivenditore già esistente ");
+        }
+
 
 
         //ABBONAMENTO
         Abbonamento abbonamento1 = new Abbonamento();;
         abbonamento1.setTipoAbbonamento(TipoAbbonamento.MENSILE);
         abbonamento1.setCodiceUnivoco("A1523");
-        abbonamento1.setDistributore(distributoreDao.getById(1));
+        abbonamento1.setDistributore(atmDao.getById(9));
         abbonamento1.setPrezzo(70);
         abbonamento1.setDataEmissione(LocalDate.of(2024,5,7));
         abbonamento1.setDataScadenza(LocalDate.of(2024,6,7));
-        abbonamento1.setUtente(utenteDao.getById(1));
+        abbonamento1.setUtente(utenteDao.getById(11));
+
         ticketDao.save(abbonamento1);
 
+        // Conta il numero totale di biglietti emessi nel periodo specificato
+        Long totalTickets = bigliettoDao.countTotalTickets(LocalDate.of(2024, 1, 1),
+                LocalDate.of(2024, 12, 31));
+        System.out.println("Numero totale di biglietti emessi: " + totalTickets);
 
+        // Conta il numero totale di abbonamenti emessi nel periodo specificato
+        Long totalSubscriptions = abbonamentoDao.countTotalSubscriptions(LocalDate.of(2024, 1, 1),
+                LocalDate.of(2024, 12, 31));
+        System.out.println("Numero totale di abbonamenti emessi: " + totalSubscriptions);
+
+        // Conta il numero di biglietti emessi dal distributore specificato nel periodo specificato
+        Long ticketsByDistributor = ticketDao.countTicketsByDistributor(LocalDate.of(2024, 1, 1),
+                LocalDate.of(2024, 12, 31), distributoreDao.getById(14));
+        System.out.println("Numero di biglietti emessi dal ATM ID " + distributoreDao.getById(14)
+                + ": " + ticketsByDistributor);
+
+        // Conta il numero di abbonamenti emessi dal distributore specificato nel periodo specificato
+        Long subscriptionsByDistributor = abbonamentoDao.countSubscriptionsByDistributor(LocalDate.of(2024,
+                        1, 1),
+                LocalDate.of(2024, 12, 31), distributoreDao.getById(15));
+        System.out.println("Numero di abbonamenti emessi dal distributore ID " + distributoreDao.getById(15)
+                + ": " + subscriptionsByDistributor);
+
+
+        try {
+
+            // Esegui il test del metodo verificaValiditaAbbonamento
+            boolean abbonamentoValido = ticketDao.verificaValiditaAbbonamento("A123456");
+            System.out.println("L'abbonamento è valido? " + abbonamentoValido);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            em.getTransaction().rollback();
+            e.printStackTrace();
+
+        }
     }
 }
 

@@ -1,5 +1,6 @@
 package entity.biglietto;
 
+import entity.mezzi.Mezzo;
 import entity.rivenditori.Distributore;
 import entity.Utente;
 import entity.mezzi.Viaggio;
@@ -12,45 +13,46 @@ import java.time.LocalDate;
 @Table(name = "biglietti")
 public class Biglietto extends Ticket {
 
-
     @ManyToOne
-    @JoinColumn(name = "viaggio_id")
-    private Viaggio viaggio;
+    @JoinColumn(name = "mezzo_id")
+    private Mezzo mezzo;
 
-    private boolean annullato;
+    private boolean vidimato;
 
 
-    public Biglietto(String codiceUnivoco, double prezzo, LocalDate dataEmissione, Utente utente, Distributore distributore, Viaggio viaggio, boolean annullato) {
+    public Biglietto(String codiceUnivoco, double prezzo, LocalDate dataEmissione, Utente utente,
+                     Distributore distributore, Mezzo mezzo, boolean vidimato) {
         super(codiceUnivoco, prezzo, dataEmissione, utente, distributore);
-        this.viaggio = viaggio;
-        this.annullato = annullato;
+        this.mezzo = mezzo;
+        this.vidimato = vidimato;
     }
+
 
     public Biglietto() {
         super();
     }
 
-    public Viaggio getViaggio() {
-        return viaggio;
+    public Mezzo getMezzo() {
+        return mezzo;
     }
 
-    public void setViaggio(Viaggio viaggio) {
-        this.viaggio = viaggio;
+    public void setMezzo(Mezzo mezzo) {
+        this.mezzo = mezzo;
     }
 
-    public boolean isAnnullato() {
-        return annullato;
+    public boolean isVidimato() {
+        return vidimato;
     }
 
-    public void setAnnullato(boolean annullato) {
-        this.annullato = annullato;
+    public void setVidimato(boolean vidimato) {
+        this.vidimato = vidimato;
     }
 
     @Override
     public String toString() {
         return "Biglietto{" +
-                "viaggio=" + viaggio +
-                ", annullato=" + annullato +
+                "mezzo=" + mezzo +
+                ", vidimato=" + vidimato +
                 '}';
     }
 }

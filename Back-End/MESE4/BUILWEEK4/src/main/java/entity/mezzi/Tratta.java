@@ -2,6 +2,7 @@ package entity.mezzi;
 
 import entity.biglietto.Abbonamento;
 import entity.biglietto.Biglietto;
+import entity.biglietto.Ticket;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -23,12 +24,8 @@ public class Tratta {
     private String capolinea;
 
     @OneToOne
-    @JoinColumn(name = "biglietto_id")
-    private Biglietto biglietto;
-
-    @OneToOne
-    @JoinColumn(name = "abbonamento_id")
-    private Abbonamento abbonamento;
+    @JoinColumn(name = "ticket_id")
+    private Ticket ticket;
 
     @OneToOne
     @JoinColumn(name = "mezzo_id")
@@ -37,12 +34,11 @@ public class Tratta {
     @OneToMany(mappedBy = "tratta")
     private List<Viaggio> viaggi;
 
-    public Tratta(String zonaPartenza, Integer tempoMedio, String capolinea, Biglietto biglietto, Abbonamento abbonamento, Mezzo mezzo, List<Viaggio> viaggi) {
+    public Tratta(String zonaPartenza, Integer tempoMedio, String capolinea, Ticket ticket, Mezzo mezzo, List<Viaggio> viaggi) {
         this.zonaPartenza = zonaPartenza;
         this.tempoMedio = tempoMedio;
         this.capolinea = capolinea;
-        this.biglietto = biglietto;
-        this.abbonamento = abbonamento;
+        this.ticket = ticket;
         this.mezzo = mezzo;
         this.viaggi = viaggi;
     }
@@ -78,20 +74,12 @@ public class Tratta {
         this.capolinea = capolinea;
     }
 
-    public Biglietto getBiglietto() {
-        return biglietto;
+    public Ticket getTicket() {
+        return ticket;
     }
 
-    public void setBiglietto(Biglietto biglietto) {
-        this.biglietto = biglietto;
-    }
-
-    public Abbonamento getAbbonamento() {
-        return abbonamento;
-    }
-
-    public void setAbbonamento(Abbonamento abbonamento) {
-        this.abbonamento = abbonamento;
+    public void setTicket(Ticket ticket) {
+        this.ticket = ticket;
     }
 
     public Mezzo getMezzo() {
@@ -127,8 +115,7 @@ public class Tratta {
                 ", zonaPartenza='" + zonaPartenza + '\'' +
                 ", tempoMedio=" + tempoMedio +
                 ", capolinea='" + capolinea + '\'' +
-                ", biglietto=" + biglietto +
-                ", abbonamento=" + abbonamento +
+                ", ticket=" + ticket +
                 ", mezzo=" + mezzo +
                 ", viaggi=" + viaggi +
                 '}';

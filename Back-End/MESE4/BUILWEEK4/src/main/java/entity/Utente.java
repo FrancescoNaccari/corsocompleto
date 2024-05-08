@@ -22,7 +22,7 @@ public class Utente {
     private String cognome;
 
     @OneToOne
-    @JoinColumn(name = "tessera_id")
+    @JoinColumn(name = "tessera_numero_tessera")
     private Tessera tessera;
 
     @OneToMany(mappedBy = "utente")

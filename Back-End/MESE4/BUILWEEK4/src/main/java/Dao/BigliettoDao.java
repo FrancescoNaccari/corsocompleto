@@ -3,6 +3,8 @@ package Dao;
 import entity.biglietto.Biglietto;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
+import java.time.LocalDate;
 import java.util.List;
 
 public class BigliettoDao {
@@ -41,4 +43,16 @@ public class BigliettoDao {
         em.remove(biglietto);
         et.commit();
     }
+
+    public Long countTotalTickets(LocalDate startDate, LocalDate endDate) {
+        Query query = em.createQuery(
+                "SELECT COUNT(b) FROM Biglietto b " +
+                        "WHERE b.dataEmissione BETWEEN :startDate AND :endDate"
+        );
+        query.setParameter("startDate", startDate);
+        query.setParameter("endDate", endDate);
+        return (Long) query.getSingleResult();
+    }
+
+
 }

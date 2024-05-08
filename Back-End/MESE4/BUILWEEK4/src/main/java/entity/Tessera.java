@@ -9,9 +9,6 @@ import java.util.Date;
 
 public class Tessera {
     @Id
-    @GeneratedValue
-    private Integer id;
-
     @Column(name = "numero_tessera")
     private String numeroTessera;
 
@@ -33,9 +30,7 @@ public class Tessera {
 
     }
 
-    public Integer getId() {
-        return id;
-    }
+
 
     public String getNumeroTessera() {
         return numeroTessera;

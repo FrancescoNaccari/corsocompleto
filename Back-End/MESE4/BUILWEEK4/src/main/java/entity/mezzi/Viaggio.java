@@ -19,17 +19,14 @@ public class Viaggio {
 
     private LocalDate data;
 
+    @Column(name = "tempo_effettivo_percorrenza")
     private Integer tempoEffettivoPercorrenza;
 
-    @OneToMany(mappedBy = "viaggio")
-    private List<Biglietto> bigliettiVidimati;
 
-    public Viaggio(Tratta tratta,  LocalDate data, Integer tempoEffettivoPercorrenza, List<Biglietto> bigliettiVidimati) {
+    public Viaggio(Tratta tratta, LocalDate data, Integer tempoEffettivoPercorrenza) {
         this.tratta = tratta;
-
         this.data = data;
         this.tempoEffettivoPercorrenza = tempoEffettivoPercorrenza;
-        this.bigliettiVidimati = bigliettiVidimati;
     }
 
     public Viaggio() {
@@ -65,13 +62,6 @@ public class Viaggio {
     }
 
 
-    public List<Biglietto> getBigliettiVidimati() {
-        return bigliettiVidimati;
-    }
-
-    public void setBigliettiVidimati(List<Biglietto> bigliettiVidimati) {
-        this.bigliettiVidimati = bigliettiVidimati;
-    }
 
     @Override
     public String toString() {
@@ -81,7 +71,6 @@ public class Viaggio {
 
                 ", data=" + data +
                 ", tempoEffettivoPercorrenza=" + tempoEffettivoPercorrenza +
-                ", bigliettiVidimati=" + bigliettiVidimati +
                 '}';
     }
 }

@@ -1,8 +1,12 @@
 package Dao;
 
 import entity.biglietto.Abbonamento;
+import entity.rivenditori.Distributore;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
+import java.time.LocalDate;
 import java.util.List;
 
 public class AbbonamentoDao {
@@ -41,4 +45,26 @@ public class AbbonamentoDao {
         em.remove(abbonamento);
         et.commit();
     }
+    public Long countTotalSubscriptions(LocalDate startDate, LocalDate endDate) {
+        Query query = em.createQuery(
+                "SELECT COUNT(a) FROM Abbonamento a " +
+                        "WHERE a.dataEmissione BETWEEN :startDate AND :endDate"
+        );
+        query.setParameter("startDate", startDate);
+        query.setParameter("endDate", endDate);
+        return (Long) query.getSingleResult();
+    }
+    public Long countSubscriptionsByDistributor(LocalDate startDate, LocalDate endDate, Distributore distributore) {
+        Query query = em.createQuery(
+                "SELECT COUNT(t) FROM Ticket t " +
+                        "WHERE t.distributore = :distributore " +
+                        "AND t.dataEmissione BETWEEN :startDate AND :endDate"
+        );
+        query.setParameter("distributore", distributore);
+        query.setParameter("startDate", startDate);
+        query.setParameter("endDate", endDate);
+        return (Long) query.getSingleResult();
+    }
+
+
 }

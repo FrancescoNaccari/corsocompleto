@@ -19,7 +19,7 @@ public class TesseraDao {
         et.commit();
     }
 
-    public Tessera getById(Integer id){
+    public Tessera getById(String id){
 
         return em.find(Tessera.class,id);
     }

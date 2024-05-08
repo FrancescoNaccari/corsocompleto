@@ -1,5 +1,6 @@
 package entity.mezzi;
 
+import entity.biglietto.Biglietto;
 import enums.TipoMezzo;
 
 import javax.persistence.*;
@@ -21,15 +22,17 @@ public class Mezzo {
 
     private int capienza;
 
+    @OneToMany(mappedBy = "mezzo")
+    private List<Biglietto> bigliettiVidimati;
 
     @OneToMany(mappedBy = "mezzo")
     private List<Manutenzione> manutenzioni;
 
-    public Mezzo(TipoMezzo tipoMezzo, Boolean inServizio, int capienza, List<Manutenzione> manutenzioni) {
+    public Mezzo(TipoMezzo tipoMezzo, Boolean inServizio, int capienza, List<Biglietto> bigliettiVidimati, List<Manutenzione> manutenzioni) {
         this.tipoMezzo = tipoMezzo;
         this.inServizio = inServizio;
         this.capienza = capienza;
-
+        this.bigliettiVidimati = bigliettiVidimati;
         this.manutenzioni = manutenzioni;
     }
 
@@ -81,7 +84,7 @@ public class Mezzo {
                 ", tipoMezzo=" + tipoMezzo +
                 ", inServizio=" + inServizio +
                 ", capienza=" + capienza +
-
+                ", bigliettiVidimati=" + bigliettiVidimati +
                 ", manutenzioni=" + manutenzioni +
                 '}';
     }
