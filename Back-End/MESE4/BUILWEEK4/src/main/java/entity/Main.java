@@ -51,7 +51,6 @@ public class Main {
         }
 
 
-
         //TRAM
         Mezzo mezzoTram = new Mezzo();
         mezzoTram.setTipoMezzo(TipoMezzo.TRAM);
@@ -120,9 +119,8 @@ public class Main {
 
         //UTENTE
         Utente utente1=new Utente();
-//            List<Utente> utenti = new ArrayList<>();
-//            utenti.add(utenteDao.getById(1));
-
+        List<Utente> utenti = new ArrayList<>();
+        utenti.add(utenteDao.getById(10));
         utente1.setNome("Elena");
         utente1.setCognome("Kekic");
         utente1.setTessera(tesseraDao.getById("A123456"));
@@ -130,7 +128,7 @@ public class Main {
             utenteDao.save(utente1);
             System.out.println("Utente " + utente1.getNome() + " " + utente1.getCognome() + "è stato/a aggiunto/a con successo");
         }catch (Exception e){
-            System.out.println("Errore nel salvataggio della ");
+            System.out.println("Errore nel salvataggio di Utente");
         }
 
 
@@ -143,15 +141,15 @@ public class Main {
         biglietto1.setDataEmissione(LocalDate.of(2024,5,7));
         biglietto1.setVidimato(true);
         biglietto1.setMezzo(mezzoAutobus);
-       biglietto1.setUtente(utenteDao.getById(6));
+        biglietto1.setUtente(utenteDao.getById(6));
         biglietto1.setDistributore(atmDao.getById(14));
         try {
             ticketDao.save(biglietto1);
-            System.out.println("Abbonamento salvato correttamente");
+            System.out.println("Biglietto è stato salvato correttamente");
         }catch (Exception e){
-            System.err.println("Abbonamento già esistente ");
+            System.err.println("Biglietto già esistente ");
         }
-        
+
 
         //TESSERRA
         Tessera tessera1 = new Tessera();
@@ -262,7 +260,6 @@ public class Main {
         for (PeriodoServizio periodo : periodiServizio) {
             System.out.println(periodo);
         }
-
     }
 }
 
