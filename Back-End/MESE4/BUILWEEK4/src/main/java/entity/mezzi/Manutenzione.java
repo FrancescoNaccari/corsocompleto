@@ -16,8 +16,10 @@ public class Manutenzione {
     @ManyToOne
     @JoinColumn(name = "mezzo_id")
     private Mezzo mezzo;
+
     @Column(name = "data_inizio")
     private LocalDate dataInizio;
+
     @Column(name = "data_fine")
     private LocalDate dataFine;
 

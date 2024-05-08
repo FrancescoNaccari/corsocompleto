@@ -3,10 +3,7 @@ package entity;
 import Dao.*;
 import entity.biglietto.Abbonamento;
 import entity.biglietto.Biglietto;
-import entity.mezzi.Manutenzione;
-import entity.mezzi.Mezzo;
-import entity.mezzi.Tratta;
-import entity.mezzi.Viaggio;
+import entity.mezzi.*;
 import entity.rivenditori.Atm;
 import entity.rivenditori.Rivenditore;
 import enums.TipoAbbonamento;
@@ -22,7 +19,7 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("build_week_jpa");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("build_week_jpa2");
         EntityManager em = emf.createEntityManager();
 
         BigliettoDao bigliettoDao = new BigliettoDao(em);
@@ -37,23 +34,37 @@ public class Main {
         MezzoDao mezzoDao = new MezzoDao(em);
         TicketDao ticketDao = new TicketDao(em);
         AtmDao atmDao = new AtmDao(em);
+        PeriodoServizioDao periodoServizioDao = new PeriodoServizioDao(em);
 
         //MEZZI
         //AUTOBUS
         Mezzo mezzoAutobus = new Mezzo();
         mezzoAutobus.setTipoMezzo(TipoMezzo.AUTOBUS);
         mezzoAutobus.setCapienza(30);
-        mezzoAutobus.setInServizio(true);
-        mezzoDao.save(mezzoAutobus);
+        mezzoAutobus.aggiungiPeriodoServizio(LocalDate.of(2024, 1, 1), LocalDate.of(2024, 1, 31));
+        mezzoAutobus.aggiungiPeriodoServizio(LocalDate.of(2024, 2, 1), LocalDate.of(2024, 2, 29));
+        try {
+            mezzoDao.save(mezzoAutobus);
+            System.out.println("Il mezzo AUTOBUS è stato aggiunto con successo");
+        }catch (Exception e){
+            System.out.println("Errore nel salvataggio del mezzo AUTOBUS");
+        }
+
 
 
         //TRAM
         Mezzo mezzoTram = new Mezzo();
         mezzoTram.setTipoMezzo(TipoMezzo.TRAM);
         mezzoTram.setCapienza(300);
-       mezzoTram.setManutenzioni(List.of(manutenzioneDao.getById(4)));
-        mezzoTram.setInServizio(false);
-        mezzoDao.save(mezzoTram);
+        mezzoTram.setManutenzioni(List.of(manutenzioneDao.getById(3)));
+        mezzoTram.aggiungiPeriodoServizio(LocalDate.of(2024, 1, 1), LocalDate.of(2024, 1, 31));
+        mezzoTram.aggiungiPeriodoServizio(LocalDate.of(2024, 2, 1), LocalDate.of(2024, 2, 29));
+        try {
+            mezzoDao.save(mezzoTram);
+            System.out.println("Il mezzo TRAM è stato aggiunto con successo");
+        }catch (Exception e){
+            System.out.println("Errore nel salvataggio del mezzo TRAM");
+        }
 
         //MANUTENZIONE
         List<Manutenzione> manutenzioni = new ArrayList<>();
@@ -63,11 +74,15 @@ public class Main {
         manutenzione1.setDataInizio(LocalDate.of(2024, 2,4));
         manutenzione1.setDataFine(LocalDate.of(2024,5,12));
         manutenzione1.setMezzo(mezzoTram);
-        manutenzioneDao.save(manutenzione1);
+        try {
+            manutenzioneDao.save(manutenzione1);
+            System.out.println("La manutenzione è stata aggiunta con successo");
+        }catch (Exception e){
+            System.out.println("Errore nel salvataggio della manutenzione");
+        }
 
         mezzoAutobus.setManutenzioni(manutenzioni);
         mezzoDao.update(mezzoAutobus);
-
 
 
         //VIAGGIO
@@ -92,9 +107,13 @@ public class Main {
         tratta1.setCapolinea("Stazione centrale");
         tratta1.setZonaPartenza("Stazione Notarbartolo");
         tratta1.setTicket(abbonamentoDao.getById(11));
-        tratta1.setViaggi(List.of(viaggioDao.getById(5)));
-        trattaDao.save(tratta1);
-
+        tratta1.setViaggi(List.of(viaggioDao.getById(4)));
+        try {
+            trattaDao.save(tratta1);
+            System.out.println("La Tratta è stata aggiunta con successo");
+        }catch (Exception e){
+            System.out.println("Errore nel salvataggio della Tratta");
+        }
 
         tratta1.setViaggi(viaggi);
         trattaDao.update(tratta1);
@@ -107,7 +126,12 @@ public class Main {
         utente1.setNome("Elena");
         utente1.setCognome("Kekic");
         utente1.setTessera(tesseraDao.getById("A123456"));
-        utenteDao.save(utente1);
+        try {
+            utenteDao.save(utente1);
+            System.out.println("Utente " + utente1.getNome() + " " + utente1.getCognome() + "è stato/a aggiunto/a con successo");
+        }catch (Exception e){
+            System.out.println("Errore nel salvataggio della ");
+        }
 
 
         //BIGLIETTI
@@ -118,19 +142,22 @@ public class Main {
         biglietto1.setPrezzo(2.2);
         biglietto1.setDataEmissione(LocalDate.of(2024,5,7));
         biglietto1.setVidimato(true);
-        //biglietto1.setMezzo(mezzoAutobus);
-     //   biglietto1.setUtente(utenteDao.getById(6));
+        biglietto1.setMezzo(mezzoAutobus);
+       biglietto1.setUtente(utenteDao.getById(6));
         biglietto1.setDistributore(atmDao.getById(14));
-        ticketDao.save(biglietto1);
-
-
+        try {
+            ticketDao.save(biglietto1);
+            System.out.println("Abbonamento salvato correttamente");
+        }catch (Exception e){
+            System.err.println("Abbonamento già esistente ");
+        }
+        
 
         //TESSERRA
         Tessera tessera1 = new Tessera();
         tessera1.setNumeroTessera("A123456");
         tessera1.setDataEmissione(LocalDate.of(2024, 5, 7));
         tessera1.setDataScadenza(LocalDate.of(2025, 5, 7));
-
         try {
             tesseraDao.save(tessera1);
 
@@ -214,6 +241,28 @@ public class Main {
         } catch (Exception e) {
             System.err.println("Errore: "+e.getMessage());
         }
+
+        PeriodoServizio periodoServizio = new PeriodoServizio();
+        periodoServizio.setInizio(LocalDate.of(2024,03,01));
+        periodoServizio.setFine(LocalDate.of(2024,07,02));
+        try {
+            periodoServizioDao.save(periodoServizio);
+            System.out.println("Periodo servizio è stato salvato correttamente");
+        }catch (Exception e){
+            System.err.println("Periodo servizio già esistente ");
+        }
+
+
+            // Ottieni le manutenzioni del mezzo
+            List<Manutenzione> manutenzioni1 = mezzoDao.getManutenzioniByMezzo(mezzoTram);
+            System.out.println("Manutenzioni del mezzo: " + manutenzioni1);
+
+        List<PeriodoServizio> periodiServizio = periodoServizioDao.getPeriodiServizioByMezzo(mezzoAutobus);
+        System.out.println("Periodi di servizio del mezzo " + mezzoAutobus+ ":");
+        for (PeriodoServizio periodo : periodiServizio) {
+            System.out.println(periodo);
+        }
+
     }
 }
 

@@ -1,8 +1,10 @@
 package Dao;
 
+import entity.mezzi.Manutenzione;
 import entity.mezzi.Mezzo;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import java.time.LocalDate;
 import java.util.List;
 
 public class MezzoDao {
@@ -41,4 +43,18 @@ public class MezzoDao {
         em.remove(mezzo);
         et.commit();
     }
+
+    public List<Manutenzione> getManutenzioniByMezzo(Mezzo mezzo) {
+        return em.createQuery("SELECT m FROM Manutenzione m WHERE m.mezzo = :mezzo", Manutenzione.class)
+                .setParameter("mezzo", mezzo)
+                .getResultList();
+    }
+
+//    public List<Mezzo> getPeriodiServizioByMezzo(Mezzo mezzo) {
+//        return em.createQuery("SELECT p FROM Periodi m WHERE mezzo = :mezzo", Mezzo.class)
+//                .setParameter("mezzo", mezzo)
+//                .getResultList();
+//    }
+
+    
 }
