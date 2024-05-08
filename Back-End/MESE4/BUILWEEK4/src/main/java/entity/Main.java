@@ -176,8 +176,13 @@ public class Main {
         abbonamento1.setDataEmissione(LocalDate.of(2024,5,7));
         abbonamento1.setDataScadenza(LocalDate.of(2024,6,7));
         abbonamento1.setUtente(utenteDao.getById(11));
+        try {
+            ticketDao.save(abbonamento1);
+            System.out.println("Abbonamento salvato correttamente");
+        }catch (Exception e){
+            System.err.println("Abbonamento già esistente ");
+        }
 
-        ticketDao.save(abbonamento1);
 
         // Conta il numero totale di biglietti emessi nel periodo specificato
         Long totalTickets = bigliettoDao.countTotalTickets(LocalDate.of(2024, 1, 1),
@@ -202,17 +207,12 @@ public class Main {
         System.out.println("Numero di abbonamenti emessi dal distributore ID " + distributoreDao.getById(15)
                 + ": " + subscriptionsByDistributor);
 
-
+        //controllo valido di un abbonamento
         try {
-
-            // Esegui il test del metodo verificaValiditaAbbonamento
             boolean abbonamentoValido = ticketDao.verificaValiditaAbbonamento("A123456");
             System.out.println("L'abbonamento è valido? " + abbonamentoValido);
-            em.getTransaction().commit();
         } catch (Exception e) {
-            em.getTransaction().rollback();
-            e.printStackTrace();
-
+            System.err.println("Errore: "+e.getMessage());
         }
     }
 }

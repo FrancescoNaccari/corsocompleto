@@ -10,6 +10,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 public class TicketDao {
 
@@ -68,23 +69,39 @@ public class TicketDao {
     }
 
     public boolean verificaValiditaAbbonamento(String numeroTessera) {
-        em.getTransaction().begin();
 
-        // Esegui la query per trovare l'utente con il numero di tessera specificato
-        Abbonamento abbonamento = em.createQuery(
-                        "SELECT a FROM Abbonamento a JOIN a.utente u WHERE u.tessera = :tessera", Abbonamento.class)
-                .setParameter("tessera", numeroTessera)
-                .getSingleResult();
-
-        if (abbonamento == null) {
-            // Abbonamento non trovato, quindi non è valido
-            return false;
+        // Assicurati che non ci siano transazioni attive prima di iniziare una nuova transazione
+        if (em.getTransaction().isActive()) {
+            em.getTransaction().rollback(); // Annulla la transazione attiva
         }
+        em.getTransaction().begin(); // Inizia una nuova transazione
+        try {
+            // Esegui il codice della transazione
 
-        // Verifica la data di scadenza dell'abbonamento per determinare la sua validità
-        LocalDate dataScadenza = abbonamento.getDataScadenza();
-        LocalDate oggi = LocalDate.now();
-        return !oggi.isAfter(dataScadenza); // L'abbonamento è valido se la data attuale non supera la data di scadenza
+            // Esegui il test del metodo verificaValiditaAbbonamento
+            Abbonamento abbonamento = em.createQuery("SELECT a FROM Abbonamento a ", Abbonamento.class)
+                    .getResultStream().filter(abbonamento1 ->abbonamento1.getUtente().getTessera().getNumeroTessera().equals(numeroTessera) )
+                    .findFirst().orElse(null);
+
+            if (abbonamento==null) {
+                // Utente non trovato o non ha un abbonamento, quindi non è valido
+                em.getTransaction().commit(); // Concludi la transazione
+                return false;
+            }
+
+            // Verifica la data di scadenza dell'abbonamento per determinare la sua validità
+
+            LocalDate dataScadenza = abbonamento.getDataScadenza();
+            LocalDate oggi = LocalDate.now();
+            boolean abbonamentoValido = !oggi.isAfter(dataScadenza); // L'abbonamento è valido se la data attuale non supera la data di scadenza
+
+            em.getTransaction().commit(); // Concludi la transazione
+            return abbonamentoValido;
+        } catch (Exception e) {
+            em.getTransaction().rollback(); // Annulla la transazione in caso di errore
+            throw e; // Rilancia l'eccezione per gestirla più in alto nel codice
+        }
     }
+
 }
 
