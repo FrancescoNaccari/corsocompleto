@@ -17,7 +17,8 @@ public class Biglietto extends Ticket {
     @JoinColumn(name = "mezzo_id")
     private Mezzo mezzo;
 
-    private boolean vidimato;
+
+    private boolean vidimato = false;
 
 
     public Biglietto(String codiceUnivoco, double prezzo, LocalDate dataEmissione, Utente utente,
@@ -54,5 +55,14 @@ public class Biglietto extends Ticket {
                 "mezzo=" + mezzo +
                 ", vidimato=" + vidimato +
                 '}';
+    }
+
+    public void obliterazione(){
+        if (!vidimato) {
+            vidimato = true;
+            System.out.println("Biglietto obliterato");
+        } else {
+            System.out.println("Il biglietto è stato già obliterato");
+        }
     }
 }

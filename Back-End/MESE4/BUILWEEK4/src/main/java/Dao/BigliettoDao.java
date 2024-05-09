@@ -1,6 +1,8 @@
 package Dao;
 
 import entity.biglietto.Biglietto;
+import entity.mezzi.Mezzo;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
@@ -54,5 +56,17 @@ public class BigliettoDao {
         return (Long) query.getSingleResult();
     }
 
+    public long countVidimatiByMezzo(Mezzo mezzo) {
+        return (long) em.createQuery("SELECT COUNT(b) FROM Biglietto b WHERE b.mezzo = :mezzo AND b.vidimato = true")
+                .setParameter("mezzo", mezzo)
+                .getSingleResult();
+    }
+
+    public long countVidimatiByPeriod(LocalDate startDate, LocalDate endDate) {
+        return (long) em.createQuery("SELECT COUNT(b) FROM Biglietto b WHERE b.dataEmissione BETWEEN :startDate AND :endDate AND b.vidimato = true")
+                .setParameter("startDate", startDate)
+                .setParameter("endDate", endDate)
+                .getSingleResult();
+    }
 
 }
