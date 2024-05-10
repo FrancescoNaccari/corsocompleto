@@ -18,7 +18,7 @@ public class Tratta {
 
     @Column(name = "zona_partenza")
     private String zonaPartenza;
-
+    @Column(name = "tempo_medio")
     private Integer tempoMedio;
 
     private String capolinea;
@@ -27,19 +27,14 @@ public class Tratta {
     @JoinColumn(name = "ticket_id")
     private Ticket ticket;
 
-    @OneToOne
-    @JoinColumn(name = "mezzo_id")
-    private Mezzo mezzo;
-
     @OneToMany(mappedBy = "tratta")
     private List<Viaggio> viaggi;
 
-    public Tratta(String zonaPartenza, Integer tempoMedio, String capolinea, Ticket ticket, Mezzo mezzo, List<Viaggio> viaggi) {
+    public Tratta(String zonaPartenza, Integer tempoMedio, String capolinea, Ticket ticket, List<Viaggio> viaggi) {
         this.zonaPartenza = zonaPartenza;
         this.tempoMedio = tempoMedio;
         this.capolinea = capolinea;
         this.ticket = ticket;
-        this.mezzo = mezzo;
         this.viaggi = viaggi;
     }
 
@@ -82,14 +77,6 @@ public class Tratta {
         this.ticket = ticket;
     }
 
-    public Mezzo getMezzo() {
-        return mezzo;
-    }
-
-    public void setMezzo(Mezzo mezzo) {
-        this.mezzo = mezzo;
-    }
-
     public List<Viaggio> getViaggi() {
 
         if (viaggi != null) {
@@ -116,7 +103,6 @@ public class Tratta {
                 ", tempoMedio=" + tempoMedio +
                 ", capolinea='" + capolinea + '\'' +
                 ", ticket=" + ticket +
-                ", mezzo=" + mezzo +
                 ", viaggi=" + viaggi +
                 '}';
     }

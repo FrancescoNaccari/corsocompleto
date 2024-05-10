@@ -16,14 +16,17 @@ public class Mezzo {
     @GeneratedValue
     private Integer id;
 
+    @OneToMany(mappedBy = "mezzo")
+    private List<Viaggio> viaggi;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "tipo_mezzo")
     private TipoMezzo tipoMezzo;
 
-    @Column (name = "inzio_servizio")
+    @Column(name = "inizio_servizio")
     private LocalDate inizioServizio;
 
-    @Column (name = "fine_servizio")
+    @Column(name = "fine_servizio")
     private LocalDate fineServizio;
 
     @OneToMany(mappedBy = "mezzo")
@@ -44,25 +47,28 @@ public class Mezzo {
         this.periodiServizio = new ArrayList<>();
         this.bigliettiVidimati = new ArrayList<>();
         this.manutenzioni = new ArrayList<>();
+        this.viaggi = new ArrayList<>();
+
     }
 
-    public Mezzo(TipoMezzo tipoMezzo, LocalDate inizioServizio, LocalDate fineServizio, List<PeriodoServizio> periodiServizio, int capienza, List<Biglietto> bigliettiVidimati, List<Manutenzione> manutenzioni) {
+    public Mezzo(TipoMezzo tipoMezzo, LocalDate inizioServizio, LocalDate fineServizio,
+                 int capienza) {
         this.tipoMezzo = tipoMezzo;
         this.inizioServizio = inizioServizio;
         this.fineServizio = fineServizio;
-        this.periodiServizio = periodiServizio;
         this.capienza = capienza;
-        this.bigliettiVidimati = bigliettiVidimati;
-        this.manutenzioni = manutenzioni;
+        this.periodiServizio = new ArrayList<>();
+        this.bigliettiVidimati = new ArrayList<>();
+        this.manutenzioni = new ArrayList<>();
+        this.viaggi = new ArrayList<>();
     }
 
     public void aggiungiPeriodoServizio(LocalDate inizioServizio, LocalDate fineServizio) {
         // Creazione di un nuovo oggetto PeriodoServizio con le date fornite
         PeriodoServizio periodo = new PeriodoServizio(inizioServizio, fineServizio);
 
-        // Aggiunta del periodo alla lista dei periodi di servizio del mezzo
         if (periodiServizio == null) {
-            periodiServizio = new ArrayList<>();  // Inizializza la lista se non è stata ancora creata
+            periodiServizio = new ArrayList<>();
         }
         periodiServizio.add(periodo);
     }
@@ -126,16 +132,30 @@ public class Mezzo {
     }
 
 
+    public List<Viaggio> getViaggi() {
+        return viaggi;
+    }
+
+    public void setViaggi(List<Viaggio> viaggi) {
+        this.viaggi = viaggi;
+    }
+
+    public void setPeriodiServizio(List<PeriodoServizio> periodiServizio) {
+        this.periodiServizio = periodiServizio;
+    }
+
     @Override
     public String toString() {
         return "Mezzo{" +
                 "id=" + id +
+//                ", viaggi=" + viaggi +
                 ", tipoMezzo=" + tipoMezzo +
                 ", inizioServizio=" + inizioServizio +
                 ", fineServizio=" + fineServizio +
-                ", periodiServizio=" + periodiServizio +
+//                ", periodiServizio=" + periodiServizio +
                 ", capienza=" + capienza +
-                ", bigliettiVidimati=" + bigliettiVidimati +
+//                ", bigliettiVidimati=" + bigliettiVidimati +
+//                ", manutenzioni=" + manutenzioni +
                 '}';
     }
 }

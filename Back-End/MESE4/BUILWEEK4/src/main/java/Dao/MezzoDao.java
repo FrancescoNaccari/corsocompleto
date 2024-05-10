@@ -2,6 +2,8 @@ package Dao;
 
 import entity.mezzi.Manutenzione;
 import entity.mezzi.Mezzo;
+import entity.mezzi.Tratta;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import java.time.LocalDate;
@@ -50,11 +52,10 @@ public class MezzoDao {
                 .getResultList();
     }
 
-//    public List<Mezzo> getPeriodiServizioByMezzo(Mezzo mezzo) {
-//        return em.createQuery("SELECT p FROM Periodi m WHERE mezzo = :mezzo", Mezzo.class)
-//                .setParameter("mezzo", mezzo)
-//                .getResultList();
-//    }
+
+    public Integer countViaggiByMezzoAndTratta(Mezzo mezzo, Tratta tratta) {
+        return mezzo.getViaggi().stream().filter(v -> v.getTratta().equals(tratta)).toList().size();
+    }
 
     
 }

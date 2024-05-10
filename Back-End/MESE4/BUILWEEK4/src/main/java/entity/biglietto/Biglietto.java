@@ -48,15 +48,6 @@ public class Biglietto extends Ticket {
     public void setVidimato(boolean vidimato) {
         this.vidimato = vidimato;
     }
-
-    @Override
-    public String toString() {
-        return "Biglietto{" +
-                "mezzo=" + mezzo +
-                ", vidimato=" + vidimato +
-                '}';
-    }
-
     public void obliterazione(){
         if (!vidimato) {
             vidimato = true;
@@ -65,4 +56,13 @@ public class Biglietto extends Ticket {
             System.out.println("Il biglietto è stato già obliterato");
         }
     }
+    @Override
+    public String toString() {
+        return "Biglietto{" +
+                "mezzo=" + mezzo +
+                ", vidimato=" + vidimato +
+                '}';
+    }
+
+
 }
