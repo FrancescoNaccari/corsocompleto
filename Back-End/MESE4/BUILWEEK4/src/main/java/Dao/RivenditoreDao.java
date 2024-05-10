@@ -24,6 +24,11 @@ public class RivenditoreDao {
         return em.find(Rivenditore.class,id);
     }
 
+    public Rivenditore getByName(String name){
+
+        return em.find(Rivenditore.class,name);
+    }
+
     public void update(Rivenditore rivenditore){
         EntityTransaction et=em.getTransaction();
         et.begin();

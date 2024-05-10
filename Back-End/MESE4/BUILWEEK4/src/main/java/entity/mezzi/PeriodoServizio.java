@@ -28,6 +28,14 @@ public class PeriodoServizio {
     public PeriodoServizio() {
     }
 
+    public Mezzo getMezzo() {
+        return mezzo;
+    }
+
+    public void setMezzo(Mezzo mezzo) {
+        this.mezzo = mezzo;
+    }
+
     public LocalDate getInizio() {
         return inizio;
     }
