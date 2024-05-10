@@ -3,6 +3,7 @@ package Dao;
 import entity.Tessera;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import java.time.LocalDate;
 import java.util.List;
 
 public class TesseraDao {
@@ -40,5 +41,17 @@ public class TesseraDao {
         et.begin();
         em.remove(tessera);
         et.commit();
+    }
+
+
+    public List<Tessera> getRinnovoScadenzaTessera() {
+        LocalDate oggi = LocalDate.now();
+        return em.createQuery(
+                        "SELECT t FROM Tessera t " +
+                                "WHERE t.dataEmissione IS NOT NULL " +  // Assicurati che la data di emissione non sia nulla
+                                "AND (t.dataScadenza < :oggi OR t.dataScadenza = :oggi)",  // Se è scaduta o scade oggi
+                        Tessera.class)
+                .setParameter("oggi", oggi)
+                .getResultList();
     }
 }

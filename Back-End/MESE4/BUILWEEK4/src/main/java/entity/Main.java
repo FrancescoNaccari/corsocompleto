@@ -198,6 +198,19 @@ public class Main {
 //            System.err.println("Tessera già esistente ");
 //        }
 //
+        //        //TESSERRA2
+//        Tessera tessera2 = new Tessera();
+//        tessera2.setNumeroTessera("B123456");
+//        tessera2.setDataEmissione(LocalDate.of(2023, 5, 7));
+//        tessera2.setDataScadenza(LocalDate.of(2024, 5, 7));
+//        try {
+//            tesseraDao.save(tessera2);
+//            System.out.println("Tessera salvato correttamente");
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            System.err.println("Tessera già esistente ");
+//        }
+
 //        //UTENTE
 //        Utente utente1 = new Utente();
 //        List<Utente> utenti = new ArrayList<>();
@@ -326,6 +339,17 @@ public class Main {
 
         System.out.println("--------------------------------------------------------------------");
 
+        List<Tessera> rinnovoScadenzaTessera=tesseraDao.getRinnovoScadenzaTessera();;
+        System.out.println("Tessere da rinnovare:");
+        for (Tessera tessera : rinnovoScadenzaTessera) {
+            System.out.println(tessera);
+            // Rinnova la tessera
+            tessera.setDataScadenza(tessera.getDataScadenza().plusYears(1));
+            tesseraDao.update(tessera);
+            System.out.println("Tessera rinnovata per un altro anno.");
+        }
+
+        System.out.println("--------------------------------------------------------------------");
         System.out.println();
         System.out.println("Conta il numero totale di biglietti emessi nel periodo specificato");
         System.out.println();
@@ -361,7 +385,7 @@ public class Main {
         //controllo valido di un abbonamento
         try {
             boolean abbonamentoValido = ticketDao.verificaValiditaAbbonamento("A123456");
-            System.out.println("L'abbonamento è valido? " + abbonamentoValido);
+            System.out.println("L'abbonamento A123456 è valido? " + abbonamentoValido);
         } catch (Exception e) {
             e.printStackTrace();
             System.err.println("Errore: " + e.getMessage());
@@ -405,7 +429,7 @@ public class Main {
         try {
             long vidimatiByPeriod = bigliettoDao.countVidimatiByPeriod(LocalDate.of(2024, 1, 1),
                     LocalDate.of(2024, 12, 31));
-            System.out.println("Numero di biglietti vidimati nel periodo: " + vidimatiByPeriod);
+            System.out.println("Numero di biglietti vidimati nel periodo 01-01-2024 - 31-12-2024: " + vidimatiByPeriod);
         } catch (Exception e) {e.printStackTrace();
             System.err.println("Errore durante l'esecuzione delle query: " + e.getMessage());
         }
