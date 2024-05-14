@@ -5,6 +5,7 @@ import nextDevs.lezioneSpring.bean.Aula;
 import nextDevs.lezioneSpring.bean.Computer;
 import nextDevs.lezioneSpring.bean.Smartphone;
 import nextDevs.lezioneSpring.bean.Studente;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -14,13 +15,13 @@ import java.util.List;
 @Configuration
 public class AppConfig {
 
-    @Bean
+    @Bean("Mario")
     @Primary
    // @Scope("prototype")
-    public Studente getStudente() {
+    public Studente getStudente(@Value("${studente1.nome}") String nome,@Value("${studente1.cognome}")  String cognome) {
         Studente studente = new Studente();
-        studente.setNome("Mario");
-        studente.setCognome("Rossi");
+        studente.setNome(nome);
+        studente.setCognome(cognome);
         studente.setIndirizzo("Via Roma");
         studente.setDispositivi(List.of(getComputer(), getSmartphone()));
 
@@ -36,7 +37,7 @@ public class AppConfig {
         return studente;
     }
 
-    @Bean
+    @Bean("computer")
     public Computer getComputer() {
         Computer computer = new Computer();
         computer.setNome("MacBook Pro");
@@ -47,7 +48,7 @@ public class AppConfig {
         return computer;
     }
 
-    @Bean
+    @Bean("smartphone")
     public Smartphone getSmartphone() {
         Smartphone smartphone = new Smartphone();
         smartphone.setNome("Samsung Galaxy S10");
@@ -57,11 +58,11 @@ public class AppConfig {
     }
 
 //    @Bean
-    public Aula getAula() {
-        Aula aula = new Aula();
-        aula.setNome("A1");
-        aula.setStudenti(List.of(getStudente(), getStudente2()));
-        return aula;
-    }
+//    public Aula getAula() {
+//        Aula aula = new Aula();
+//        aula.setNome("A1");
+//        aula.setStudenti(List.of(getStudente(), getStudente2()));
+//        return aula;
+//    }
 
 }
