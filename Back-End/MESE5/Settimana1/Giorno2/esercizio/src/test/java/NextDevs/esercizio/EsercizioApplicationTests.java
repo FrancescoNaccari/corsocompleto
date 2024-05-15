@@ -10,17 +10,17 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 @SpringBootTest
 class EsercizioApplicationTests {
 	static ApplicationContext ctx;
-	@BeforeAll
-	public static void accediAlContesto(){
-		ctx=new AnnotationConfigApplicationContext(EsercizioApplication.class);
-		System.out.println("Accesso al contesto avvenuto");
-	}
+//	@BeforeAll
+//	public static void accediAlContesto(){
+//		ctx=new AnnotationConfigApplicationContext(EsercizioApplication.class);
+//		System.out.println("Accesso al contesto avvenuto");
+//	}
 	@Test
 	void contextLoads() {
 	}
-	@AfterAll
-	public static void chiudiContesto(){
-		ctx=null;
-		System.out.println("Contesto chiuso");
-	}
+//	@AfterAll
+//	public static void chiudiContesto(){
+//		ctx=null;
+//		System.out.println("Contesto chiuso");
+//	}
 }

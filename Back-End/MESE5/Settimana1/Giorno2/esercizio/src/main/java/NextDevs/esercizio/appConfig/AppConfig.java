@@ -190,7 +190,7 @@ public class AppConfig {
         ordine.setNumeroOrdine(1);
         ordine.setStatoOrdine(StatoOrdine.IN_CORSO);
         ordine.setTavolo(creaTavolo());
-        ordine.setOrderedProducts(new ArrayList<>(menu.getPizze())); // Esempio di aggiunta di pizze all'ordine
+        ordine.setOrderedProducts(new ArrayList<>(menu.getPizze())); 
         ordine.setNumCoperti(4);
         ordine.setOraAcquisizione(LocalTime.now());
         ordine.calcolaImportoTotale(creaTavolo().getCostoCoperto());

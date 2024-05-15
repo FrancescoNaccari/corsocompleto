@@ -1,40 +1,36 @@
 package NextDevs.esercizio.bean;
 
-import NextDevs.esercizio.appConfig.AppConfig;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import NextDevs.esercizio.EsercizioApplication;
+
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Component;
 
 @Component
 public class OrdineRunner implements CommandLineRunner {
 
-    private static final Logger logger = LoggerFactory.getLogger(OrdineRunner.class);
-
-    private final Menu menu;
-    private final AppConfig appConfig;
-
-    public OrdineRunner(Menu menu, AppConfig appConfig) {
-        this.menu = menu;
-        this.appConfig = appConfig;
-    }
-
     @Override
     public void run(String... args) throws Exception {
-        logger.info("Inizializzazione del menu...");
+        // Inizializzazione del contesto dell'applicazione
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(EsercizioApplication.class);
+
+        // Ottenimento dei bean dopo l'inizializzazione del contesto
+        Menu menu = ctx.getBean(Menu.class);
+        Ordine ordine = ctx.getBean(Ordine.class);
+
+        // Utilizzo dei bean ottenuti per stampare le informazioni
+        System.out.println("Inizializzazione del menu...");
         menu.stampaMenu();
 
-        // Creazione di un ordine
-        Ordine ordine = appConfig.creaOrdine(menu);
-        logger.info("Ordine creato:");
-        logger.info("Numero ordine: {}", ordine.getNumeroOrdine());
-        logger.info("Stato ordine: {}", ordine.getStatoOrdine());
-        logger.info("Numero coperti: {}", ordine.getNumCoperti());
-        logger.info("Ora acquisizione: {}", ordine.getOraAcquisizione());
-        logger.info("Importo totale: {}", ordine.getImportoTotale());
+        System.out.println("Ordine creato:");
+        System.out.println("Numero ordine: " + ordine.getNumeroOrdine());
+        System.out.println("Stato ordine: " + ordine.getStatoOrdine());
+        System.out.println("Numero coperti: " + ordine.getNumCoperti());
+        System.out.println("Ora acquisizione: " + ordine.getOraAcquisizione());
+        System.out.println("Importo totale: " + ordine.getImportoTotale());
 
-        // Stampa dettagli ordine
-        logger.info("Dettagli ordine:");
-        ordine.getOrderedProducts().forEach(item -> logger.info("Prodotto: {}, Prezzo: {}", item, item.getPrezzo()));
+        System.out.println("Dettagli ordine:");
+        ordine.getOrderedProducts().forEach(item -> System.out.println("Prodotto: " + item + ", Prezzo: " + item.getPrezzo()));
     }
 }
