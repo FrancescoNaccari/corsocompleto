@@ -1,6 +1,8 @@
 package NextDevs.esercizio;
 
+import NextDevs.esercizio.bean.Pizza;
 import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,17 +12,22 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 @SpringBootTest
 class EsercizioApplicationTests {
 	static ApplicationContext ctx;
-//	@BeforeAll
-//	public static void accediAlContesto(){
-//		ctx=new AnnotationConfigApplicationContext(EsercizioApplication.class);
-//		System.out.println("Accesso al contesto avvenuto");
-//	}
-	@Test
-	void contextLoads() {
+	@BeforeAll
+	public static void accediAlContesto(){
+		ctx=new AnnotationConfigApplicationContext(EsercizioApplication.class);
+		System.out.println("Accesso al contesto avvenuto");
 	}
-//	@AfterAll
-//	public static void chiudiContesto(){
-//		ctx=null;
-//		System.out.println("Contesto chiuso");
-//	}
+	@Test
+	void verificaNomePizza() {
+		Pizza pizza=ctx.getBean("Margherita",Pizza.class);
+		Assertions.assertEquals("Margherita",pizza.getNome());
+		System.out.println("verificata pizza Margherita");
+	}
+
+
+	@AfterAll
+	public static void chiudiContesto(){
+		ctx=null;
+		System.out.println("Contesto chiuso");
+	}
 }
