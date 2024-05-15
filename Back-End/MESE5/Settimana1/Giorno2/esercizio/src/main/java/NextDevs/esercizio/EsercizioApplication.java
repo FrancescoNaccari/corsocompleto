@@ -1,10 +1,7 @@
 package NextDevs.esercizio;
 
 import NextDevs.esercizio.appConfig.AppConfig;
-import NextDevs.esercizio.bean.Drink;
-import NextDevs.esercizio.bean.Menu;
-import NextDevs.esercizio.bean.Pizza;
-import NextDevs.esercizio.bean.Topping;
+import NextDevs.esercizio.bean.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -16,9 +13,9 @@ public class EsercizioApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EsercizioApplication.class, args);
 
-
-		ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
-//		System.out.println("-------------------------------");
+//
+//		ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+////		System.out.println("-------------------------------");
 //		System.out.println("TOPPING: ");
 //		Topping pomodoro = ctx.getBean("pomodoro",Topping.class);
 //		Topping salame = ctx.getBean("salame",Topping.class);
@@ -55,9 +52,24 @@ public class EsercizioApplication {
 //		System.out.println(menu);
 //
 
-		Menu menu = ctx.getBean(Menu.class);
-		menu.stampaMenu();
-
+//		Menu menu = ctx.getBean(Menu.class);
+//		menu.stampaMenu();
+////
+//		AppConfig appConfig;
+//
+//		Menu menu1 = appConfig.getMenu();
+//		Tavolo tavolo = appConfig.creaTavolo();
+//
+//		Ordine ordine = appConfig.creaOrdine(menu1);
+//		LOGGER.info("Ordine creato: {}", ordine);
+//
+//		// Simuliamo il cambio di stato dell'ordine
+//		ordine.setStatoOrdine(StatoOrdine.PRONTO);
+//		LOGGER.info("Stato dell'ordine cambiato a PRONTO: {}", ordine);
+//
+//		// Simuliamo il cambio di stato del tavolo
+//		tavolo.setStatoTavolo(NextDevs.esercizio.bean.StatoTavolo.OCCUPATO);
+//		LOGGER.info("Stato del tavolo cambiato a OCCUPATO: {}", tavolo);
 
 
 	}

@@ -1,13 +1,12 @@
 package NextDevs.esercizio.appConfig;
 
-import NextDevs.esercizio.bean.Drink;
-import NextDevs.esercizio.bean.Menu;
-import NextDevs.esercizio.bean.Pizza;
-import NextDevs.esercizio.bean.Topping;
+import NextDevs.esercizio.bean.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -171,7 +170,33 @@ public class AppConfig {
         return menu;
 
 
-
-
     }
+
+
+    @Bean
+    public Tavolo creaTavolo() {
+        Tavolo tavolo = new Tavolo();
+        tavolo.setNumeroTavolo(1);
+        tavolo.setNumeroCopertiMax(6);
+        tavolo.setStatoTavolo(StatoTavolo.LIBERO);
+        tavolo.setCostoCoperto(tavolo.getCostoCoperto());
+        return tavolo;
+    }
+
+
+    @Bean
+    public Ordine creaOrdine(Menu menu) {
+        Ordine ordine = new Ordine();
+        ordine.setNumeroOrdine(1);
+        ordine.setStatoOrdine(StatoOrdine.IN_CORSO);
+        ordine.setTavolo(creaTavolo());
+        ordine.setOrderedProducts(new ArrayList<>(menu.getPizze())); // Esempio di aggiunta di pizze all'ordine
+        ordine.setNumCoperti(4);
+        ordine.setOraAcquisizione(LocalTime.now());
+        ordine.calcolaImportoTotale(creaTavolo().getCostoCoperto());
+        return ordine;
+    }
+
+
+
 }
