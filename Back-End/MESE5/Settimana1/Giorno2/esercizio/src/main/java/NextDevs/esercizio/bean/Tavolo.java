@@ -14,5 +14,5 @@ public class Tavolo {
     private int numeroCopertiMax;
     private StatoTavolo statoTavolo;
     @Value("${costo.coperto}")
-    private int costoCoperto;
+    private Double costoCoperto;
 }

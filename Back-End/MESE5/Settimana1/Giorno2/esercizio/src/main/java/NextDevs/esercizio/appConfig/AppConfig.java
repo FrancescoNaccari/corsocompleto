@@ -184,6 +184,7 @@ public class AppConfig {
     }
 
 
+
     @Bean
     public Ordine creaOrdine(Menu menu) {
         Ordine ordine = new Ordine();
