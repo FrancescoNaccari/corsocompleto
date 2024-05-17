@@ -1,4 +1,4 @@
-package nextDevs.GestionePrenotazioni;
+package nextDevs.gestionePrenotazioni;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
