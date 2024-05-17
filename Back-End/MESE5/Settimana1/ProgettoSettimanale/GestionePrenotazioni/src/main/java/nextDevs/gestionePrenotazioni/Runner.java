@@ -43,7 +43,7 @@ private UtenteService utenteService;
         edificio1.setCitta("Roma");
         edificioService.inserisciEdificio(edificio1);
 
-        // Creazione e salvataggio di una postazione
+
         Postazione postazione1 = ctx.getBean(Postazione.class);
         postazione1.setCodiceUnivoco(54);
         postazione1.setDescrizione("Postazione Privata");
@@ -52,14 +52,14 @@ private UtenteService utenteService;
         postazione1.setEdificio(edificio1);
         postazioneService.inserisciPostazione(postazione1);
 
-        // Creazione e salvataggio di un utente
+
         Utente utente1 = ctx.getBean(Utente.class);
         utente1.setUsername("jdoe");
         utente1.setNomeCompleto("John Doe");
         utente1.setEmail("jdoe@example.com");
         utenteService.inserisciUtente(utente1);
 
-        // Creazione e salvataggio di un'altra postazione
+
         Postazione postazione2 = ctx.getBean(Postazione.class);
         postazione2.setCodiceUnivoco(45);
         postazione2.setDescrizione("Postazione Open Space");
