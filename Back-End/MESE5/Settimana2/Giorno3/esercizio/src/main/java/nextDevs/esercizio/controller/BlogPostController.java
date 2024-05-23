@@ -2,14 +2,20 @@ package nextDevs.esercizio.controller;
 
 
 import nextDevs.esercizio.dto.BlogPostDto;
+
+import nextDevs.esercizio.exception.BadRequestException;
 import nextDevs.esercizio.exception.BlogPostNonTrovatoException;
 import nextDevs.esercizio.model.BlogPost;
 import nextDevs.esercizio.service.BlogPostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.Optional;
 
 
@@ -22,7 +28,11 @@ public class BlogPostController {
 
     @PostMapping("/blogposts")
     @ResponseStatus(HttpStatus.CREATED)
-    public String saveBlogPost(@RequestBody BlogPostDto blogPostDto) {
+    public String saveBlogPost(@RequestBody @Validated BlogPostDto blogPostDto, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            throw new BadRequestException(bindingResult.getAllErrors().stream()
+                    .map(e -> e.getDefaultMessage()).reduce("",((s1,s2) -> s1+s2)));
+        }
         return blogPostService.saveBlogPost(blogPostDto);
     }
 
@@ -47,7 +57,11 @@ public class BlogPostController {
 
     @PutMapping("/blogposts/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public BlogPost updateBlogPost(@PathVariable int id, @RequestBody BlogPostDto blogPostDto) throws BlogPostNonTrovatoException {
+    public BlogPost updateBlogPost(@PathVariable int id, @RequestBody @Validated BlogPostDto blogPostDto, BindingResult bindingResult) throws BlogPostNonTrovatoException {
+        if(bindingResult.hasErrors()){
+            throw new BadRequestException(bindingResult.getAllErrors().stream()
+                    .map(e -> e.getDefaultMessage()).reduce("",((s1,s2) -> s1+s2)));
+        }
      return blogPostService.updateBlogPost(id, blogPostDto);
     }
 
@@ -56,4 +70,10 @@ public class BlogPostController {
         return blogPostService.deleteBlogPost(id);
     }
 
+    @PatchMapping ("/blogposts/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public String patchCoverBlogPost(@RequestBody MultipartFile cover, @PathVariable int id) throws IOException {
+        return blogPostService.patchCoverBlogPost(id, cover);
+
+    }
 }

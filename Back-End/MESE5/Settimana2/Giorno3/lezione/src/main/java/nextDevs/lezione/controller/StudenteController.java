@@ -3,16 +3,19 @@ package nextDevs.lezione.controller;
 
 
 import nextDevs.lezione.dto.StudenteDto;
+import nextDevs.lezione.exception.BadRequestException;
 import nextDevs.lezione.exception.StudenteNonTrovaroException;
 import nextDevs.lezione.model.Studente;
 import nextDevs.lezione.service.StudenteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.List;
+import java.io.IOException;
 import java.util.Optional;
 
 @RestController
@@ -22,7 +25,11 @@ public class StudenteController {
 
     @PostMapping("/api/studenti")
     @ResponseStatus(HttpStatus.CREATED)
-    public String saveStudente(@RequestBody StudenteDto StudenteDto) {
+    public String saveStudente(@RequestBody @Validated StudenteDto StudenteDto , BindingResult bindingResult) throws BadRequestException {
+        if(bindingResult.hasErrors()){
+            throw new BadRequestException(bindingResult.getAllErrors().stream()
+                    .map(e -> e.getDefaultMessage()).reduce("",((s1,s2) -> s1+s2)));
+        }
         return studenteService.saveStudente( StudenteDto);
     }
 
@@ -47,14 +54,26 @@ public class StudenteController {
 
     @PutMapping ( "/api/studenti/{matricola}")
     @ResponseStatus(HttpStatus.OK)
-    public Studente updateStudente(@PathVariable int matricola, @RequestBody StudenteDto studenteDto) throws StudenteNonTrovaroException {
-      return  studenteService.updateStudente(matricola, studenteDto);
+    public Studente updateStudente(@PathVariable int matricola, @RequestBody @Validated StudenteDto studenteDto, BindingResult bindingResult) throws StudenteNonTrovaroException {
+        if(bindingResult.hasErrors()){
+            throw new BadRequestException(bindingResult.getAllErrors().stream()
+                    .map(e -> e.getDefaultMessage()).reduce("",((s1,s2) -> s1+s2)));
+        }
+        return  studenteService.updateStudente(matricola, studenteDto);
     }
 
     @DeleteMapping ("/api/studenti/{matricola}")
     public String deleteStudente(@PathVariable int matricola) throws StudenteNonTrovaroException {
         return studenteService.deleteStudente(matricola);
     }
+
+    @PatchMapping ("/api/studenti/{matricola}")
+    @ResponseStatus(HttpStatus.OK)
+    public String patchFotoStudente(@RequestBody MultipartFile foto, @PathVariable int matricola) throws IOException {
+        return studenteService.patchFotoStudente(matricola, foto);
+
+    }
+
 
 //
 //    @GetMapping("/api")

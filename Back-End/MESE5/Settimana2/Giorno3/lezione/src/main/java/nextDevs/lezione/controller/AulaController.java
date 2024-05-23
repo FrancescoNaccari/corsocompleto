@@ -1,10 +1,13 @@
 package nextDevs.lezione.controller;
 
 import nextDevs.lezione.dto.AulaDto;
+import nextDevs.lezione.exception.BadRequestException;
 import nextDevs.lezione.model.Aula;
 import nextDevs.lezione.service.AulaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,7 +20,11 @@ public class AulaController {
     private AulaService aulaService;
 
     @PostMapping("/api/aule")
-    public String saveAuto(@RequestBody AulaDto aulaDto) {
+    public String saveAuto(@RequestBody @Validated AulaDto aulaDto, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            throw new BadRequestException(bindingResult.getAllErrors().stream()
+                    .map(e -> e.getDefaultMessage()).reduce("",((s1,s2) -> s1+s2)));
+        }
         return aulaService.saveAula(aulaDto);
     }
 
@@ -39,7 +46,11 @@ public class AulaController {
     }
 
     @PutMapping ("/api/aule/{id}")
-    public Aula updateAula(@PathVariable int id, @RequestBody AulaDto aulaDto){
+    public Aula updateAula(@PathVariable int id, @RequestBody @Validated AulaDto aulaDto, BindingResult bindingResult) {
+        if(bindingResult.hasErrors()){
+            throw new BadRequestException(bindingResult.getAllErrors().stream()
+                    .map(e -> e.getDefaultMessage()).reduce("",((s1,s2) -> s1+s2)));
+        }
         return aulaService.updateAula(id,aulaDto);
     }
 

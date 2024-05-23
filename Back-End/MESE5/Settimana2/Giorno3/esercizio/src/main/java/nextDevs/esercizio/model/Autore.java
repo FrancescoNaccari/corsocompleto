@@ -21,7 +21,7 @@ public class Autore {
     private String cognome;
     private String email;
     private LocalDate dataDiNascita;
-    private String avatar ="https://ui-avatars.com/api/?name="+nome+"+"+cognome;
+    private String avatar ;
 
     @OneToMany(mappedBy = "autore")
     private List<BlogPost> blogPosts;

@@ -1,6 +1,7 @@
 package nextDevs.esercizio.service;
 
 
+import com.cloudinary.Cloudinary;
 import nextDevs.esercizio.dto.BlogPostDto;
 import nextDevs.esercizio.exception.AutoreNonTrovatoException;
 import nextDevs.esercizio.exception.BlogPostNonTrovatoException;
@@ -14,8 +15,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 
+import java.io.IOException;
+import java.util.Collections;
 import java.util.Optional;
 
 
@@ -25,6 +29,12 @@ public class BlogPostService {
   private BlogPostRepository blogPostRepository;
     @Autowired
     private AutoreRepository autoreRepository;
+    @Autowired
+    private Cloudinary cloudinary ;
+
+
+
+
 
     public String saveBlogPost(BlogPostDto blogPostDto) {
     BlogPost blogPost = new BlogPost();
@@ -32,6 +42,7 @@ public class BlogPostService {
     blogPost.setContenuto(blogPostDto.getContenuto());
     blogPost.setCategoria(blogPostDto.getCategoria());
     blogPost.setTempoDiLettura(blogPostDto.getTempoDiLettura());
+    blogPost.setCover("https://picsum.photos/200/300");
     blogPostRepository.save(blogPost);
 
 
@@ -40,6 +51,7 @@ public class BlogPostService {
         Autore autore = autoreOpt.get();
         blogPost.setAutore(autore);
         blogPostRepository.save(blogPost);
+
         return "BlogPost "+ blogPost.getId()+ "salvato con successo";
     }else {
     throw new AutoreNonTrovatoException("Autorecon id" + blogPost.getId()+"non trovata");
@@ -94,7 +106,20 @@ public class BlogPostService {
         }
     }
 
+    public String patchCoverBlogPost(int id, MultipartFile cover) throws IOException {
+        Optional<BlogPost> blogPostOpt = getBlogPostById(id);
+        if (blogPostOpt.isPresent()) {
 
+            String url = (String) cloudinary.uploader().upload(cover.getBytes(), Collections.emptyMap()).get("url");
+            BlogPost blogPost= blogPostOpt.get();
+            blogPost.setCover(url);
+            blogPostRepository.save(blogPost);
+            return "BlogPost con id" +id +" aggiornato correttamente la cover inviata";
+        }else {
+            throw new BlogPostNonTrovatoException("Studente non trovato");
+        }
+
+    }
 
 
 

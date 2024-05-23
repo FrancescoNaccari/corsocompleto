@@ -16,7 +16,7 @@ public class BlogPost {
 //    private static int contatore;
     private String categoria;
     private String titolo;
-    private String cover= "https://picsum.photos/200/300";
+    private String cover;
     private String contenuto;
     private Duration tempoDiLettura;
 

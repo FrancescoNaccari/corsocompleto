@@ -18,10 +18,14 @@ public class Studente {
     private String cognome;
     private LocalDate dataDiNascita;
 
+    private String foto;
+private String email;
     @ManyToOne
     @JoinColumn(name = "aula_id")
     @JsonIgnore
     private Aula aula;
+
+
 
 //    public Studente(String nome, String cognome, LocalDate dataDiNascita) {
 //        this.nome = nome;
