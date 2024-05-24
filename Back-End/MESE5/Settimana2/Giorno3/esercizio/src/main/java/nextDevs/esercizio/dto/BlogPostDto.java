@@ -23,6 +23,6 @@ public class BlogPostDto {
     @NotNull(message = "Il tempo di lettura non può essere vuoto")
     private Duration tempoDiLettura;
 
-    @NotNull(message = "L'autoreId non può essere vuoto")
+
     private int autoreId;
 }

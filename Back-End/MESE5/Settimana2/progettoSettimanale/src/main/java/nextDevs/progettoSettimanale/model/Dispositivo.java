@@ -3,9 +3,11 @@ package nextDevs.progettoSettimanale.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
+import nextDevs.progettoSettimanale.enums.StatoDispositivo;
 
 @Data
 @Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Dispositivo {
 
     @Id

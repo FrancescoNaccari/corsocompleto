@@ -13,6 +13,7 @@ import java.util.List;
 public class Dipendente {
     @Id
     @GeneratedValue
+    private Integer id;
     private String username;
     private String nome;
     private String cognome;

@@ -6,5 +6,5 @@ import lombok.Data;
 @Data
 @Entity
 public class Tablet extends Dispositivo{
-    private int schermo;
+
 }

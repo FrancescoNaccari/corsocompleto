@@ -7,6 +7,5 @@ import lombok.Data;
 @Entity
 public class Laptop extends Dispositivo{
 
-    private int ram;
-    private String cpu;
+
 }
