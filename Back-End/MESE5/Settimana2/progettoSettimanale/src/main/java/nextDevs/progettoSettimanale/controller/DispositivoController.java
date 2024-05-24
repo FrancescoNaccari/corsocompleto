@@ -71,12 +71,18 @@ public class DispositivoController {
     public String deleteDispositivo(@PathVariable int id) throws DispositivoNonTrovatoException {
         return dispositivoService.deleteDispositivo(id);
     }
-    @PostMapping("/{dispositivoId}/assegna/{id}")
-    public ResponseEntity<Dispositivo> assignDispositivo(@PathVariable Integer dispositivoId, @PathVariable Integer id) {
-        Optional<Dipendente> dipendenteOpt = dipendenteService.getDipendenteById(id);
+
+    @PostMapping("/dispositivi/{dispositivoId}/assegna/{dipendenteId}")
+    public ResponseEntity<Dispositivo> assegnaIlDispositivoAlDipendente(@PathVariable int dispositivoId, @PathVariable int dipendenteId) {
+        Optional<Dipendente> dipendenteOpt = dipendenteService.getDipendenteById(dipendenteId);
         if (dipendenteOpt.isPresent()) {
-            Dispositivo dispositivo = dispositivoService.assegnaIlDispositivoAlDipendente(dispositivoId, dipendenteOpt.get());
-            return new ResponseEntity<>(dispositivo, HttpStatus.OK);
+            Dipendente dipendente = dipendenteOpt.get();
+            try {
+                Dispositivo dispositivo = dispositivoService.assegnaIlDispositivoAlDipendente(dispositivoId, dipendente);
+                return new ResponseEntity<>(dispositivo, HttpStatus.OK);
+            } catch (DispositivoNonTrovatoException e) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
