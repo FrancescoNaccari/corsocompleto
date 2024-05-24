@@ -1,0 +1,26 @@
+package nextDevs.progettoSettimanale.model;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import lombok.Data;
+
+@Data
+@Entity
+public abstract class Dispositivo {
+
+    @Id
+    @GeneratedValue
+    private Integer id;
+    private String nome;
+    private String marca;
+    @Enumerated(EnumType.STRING)
+    private StatoDispositivo stato;
+
+
+
+
+    @ManyToOne
+    @JoinColumn(name = "dipendente_username")
+    @JsonIgnore
+    private Dipendente dipendente;
+}

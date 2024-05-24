@@ -1,4 +1,4 @@
-package nextDevs.esercizio.model;
+package nextDevs.progettoSettimanale.model;
 
 import lombok.Data;
 import org.springframework.http.HttpStatus;
@@ -10,6 +10,4 @@ public class Error {
     private String message;
     private LocalDate dateErrore;
     private HttpStatus httpErrore;
-
-
 }
