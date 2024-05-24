@@ -32,6 +32,7 @@ public class DispositivoService {
             default -> throw new IllegalArgumentException("Tipo di dispositivo non supportato");
         };
 
+        dispositivo.setTipoDispositivo(dispositivoDto.getTipoDispositivo());
         dispositivo.setNome(dispositivoDto.getNome());
         dispositivo.setMarca(dispositivoDto.getMarca());
         dispositivo.setStato(dispositivoDto.getStato());

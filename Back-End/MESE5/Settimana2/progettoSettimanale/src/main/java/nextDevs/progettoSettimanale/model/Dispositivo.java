@@ -18,7 +18,7 @@ public abstract class Dispositivo {
     @Enumerated(EnumType.STRING)
     private StatoDispositivo stato;
 
-
+    private String tipoDispositivo;
 
 
     @ManyToOne
