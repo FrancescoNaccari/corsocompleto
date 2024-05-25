@@ -21,6 +21,6 @@ public class DispositivoDto {
 
 
     private int dipendenteId;
-
+    @NotNull
     private String tipoDispositivo;
 }

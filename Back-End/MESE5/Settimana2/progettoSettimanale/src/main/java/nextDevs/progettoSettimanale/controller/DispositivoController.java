@@ -30,12 +30,12 @@ public class DispositivoController {
 
     @PostMapping("/dispositivi")
     @ResponseStatus(HttpStatus.CREATED)
-    public String saveDispositivo(@RequestBody @Validated DispositivoDto blogPostDto, BindingResult bindingResult) {
+    public String saveDispositivo(@RequestBody @Validated DispositivoDto dispositivoDto, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
             throw new BadRequestException(bindingResult.getAllErrors().stream()
                     .map(e -> e.getDefaultMessage()).reduce("",((s1,s2) -> s1+s2)));
         }
-        return dispositivoService.saveDispositivo(blogPostDto);
+        return dispositivoService.saveDispositivo(dispositivoDto);
     }
 
     @GetMapping("/dispositivi")
