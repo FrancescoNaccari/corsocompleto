@@ -8,6 +8,8 @@ import nextdevs.esercizio.security.JwtTool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AuthService {
 
@@ -18,13 +20,18 @@ public class AuthService {
     private JwtTool jwtTool;
 
     public String authenticateDipendenteAndCreateToken(DipendenteLoginDto dipendenteLoginDto) {
-        Dipendente dipendente= dipendenteService.getDipendenteByEmail(dipendenteLoginDto.getEmail());
+       Optional <Dipendente> dipendenteOptional = dipendenteService.getDipendenteByEmail(dipendenteLoginDto.getEmail());
+      if (dipendenteOptional.isEmpty()) {
+          throw new UnauthorizedException("Error in authorization, relogin!");
+      }else{
+          Dipendente dipendente= dipendenteOptional.get();
+          if (dipendente.getPassword().equals(dipendenteLoginDto.getPassword())){
+              return jwtTool.createToken(dipendente);
+          }else {
+              throw new UnauthorizedException("Error in authorization, relogin!");
+          }
+      }
 
-        if (dipendente.getPassword().equals(dipendenteLoginDto.getPassword())){
-            return jwtTool.createToken(dipendente);
-        }else {
-            throw new UnauthorizedException("Error in authorization, relogin!");
-        }
 
     }
 

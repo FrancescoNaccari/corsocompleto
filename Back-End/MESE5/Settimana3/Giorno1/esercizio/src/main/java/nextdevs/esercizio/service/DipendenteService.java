@@ -3,6 +3,7 @@ package nextdevs.esercizio.service;
 
 import com.cloudinary.Cloudinary;
 import nextdevs.esercizio.dto.DipendenteDto;
+import nextdevs.esercizio.exception.BadRequestException;
 import nextdevs.esercizio.exception.DipendenteNonTrovatoException;
 import nextdevs.esercizio.model.Dipendente;
 import nextdevs.esercizio.repository.DipendeteRepository;
@@ -32,18 +33,24 @@ public class DipendenteService {
     private JavaMailSenderImpl javaMailSender;
 
     public String saveDipendente(DipendenteDto dipendenteDto) {
-        Dipendente dipendente = new Dipendente();
-        dipendente.setUsername(dipendenteDto.getUsername());
-        dipendente.setNome(dipendenteDto.getNome());
-        dipendente.setCognome(dipendenteDto.getCognome());
-        dipendente.setEmail(dipendenteDto.getEmail());
-        dipendente.setPassword(dipendenteDto.getPassword());
 
-        dipendente.setAvatar("https://ui-avatars.com/api/?name="+dipendenteDto.getNome()+"+"+dipendenteDto.getCognome());
-        sendMail(dipendente.getEmail());
+        if(getDipendenteByEmail(dipendenteDto.getEmail()).isEmpty()) {
+            Dipendente dipendente = new Dipendente();
+            dipendente.setUsername(dipendenteDto.getUsername());
+            dipendente.setNome(dipendenteDto.getNome());
+            dipendente.setCognome(dipendenteDto.getCognome());
+            dipendente.setEmail(dipendenteDto.getEmail());
+            dipendente.setPassword(dipendenteDto.getPassword());
 
-        dipendenteRepository.save(dipendente);
-        return "Dipendente  con id"+dipendente.getId()+"creata con successo";
+            dipendente.setAvatar("https://ui-avatars.com/api/?name="+dipendenteDto.getNome()+"+"+dipendenteDto.getCognome());
+            sendMail(dipendente.getEmail());
+
+            dipendenteRepository.save(dipendente);
+            return "Dipendente  con id"+dipendente.getId()+"creata con successo";
+        }else{
+            throw new BadRequestException("Dipendente con email "+dipendenteDto.getEmail()+" già esistente");
+        }
+
     }
 
     public Optional<Dipendente> getDipendenteById(int id){
@@ -109,14 +116,10 @@ public class DipendenteService {
         javaMailSender.send(message);
     }
 
-    public Dipendente getDipendenteByEmail(String email) {
-        Optional<Dipendente> userOptional= dipendenteRepository.findByEmail(email);
+    public Optional <Dipendente> getDipendenteByEmail(String email) {
+        Optional<Dipendente> dipendenteOptional= dipendenteRepository.findByEmail(email);
 
-        if (userOptional.isPresent()){
-            return userOptional.get();
-        }else {
-            throw new DipendenteNonTrovatoException("User with email=" + email + " not found");
-        }
+       return dipendenteOptional;
     }
 
 
