@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -30,6 +31,7 @@ public class DispositivoController {
 
     @PostMapping("/dispositivi")
     @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String saveDispositivo(@RequestBody @Validated DispositivoDto dispositivoDto, BindingResult bindingResult) {
         if(bindingResult.hasErrors()){
             throw new BadRequestException(bindingResult.getAllErrors().stream()
@@ -39,6 +41,7 @@ public class DispositivoController {
     }
 
     @GetMapping("/dispositivi")
+    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
     public Page<Dispositivo> getAllDispositivo(@RequestParam (defaultValue = "0") int page,
                                                @RequestParam (defaultValue = "15") int size,
                                                @RequestParam (defaultValue = "id") String sortBy) {
@@ -47,6 +50,7 @@ public class DispositivoController {
 
 
     @GetMapping("/dispositivi/{id}")
+    @PreAuthorize("hasAnyAuthority('ADMIN','USER')")
     public Dispositivo getDispositivoById(@PathVariable int id) throws DispositivoNonTrovatoException {
         Optional<Dispositivo> blogPostOpt = dispositivoService.getDispositivoById(id);
         if (blogPostOpt.isPresent()) {
@@ -59,6 +63,7 @@ public class DispositivoController {
 
     @PutMapping("/dispositivi/{id}")
     @ResponseStatus(HttpStatus.OK)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public Dispositivo updateDispositivo(@PathVariable int id, @RequestBody @Validated DispositivoDto blogPostDto, BindingResult bindingResult) throws DispositivoNonTrovatoException {
         if(bindingResult.hasErrors()){
             throw new BadRequestException(bindingResult.getAllErrors().stream()
@@ -68,11 +73,13 @@ public class DispositivoController {
     }
 
     @DeleteMapping("/dispositivi/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String deleteDispositivo(@PathVariable int id) throws DispositivoNonTrovatoException {
         return dispositivoService.deleteDispositivo(id);
     }
 
     @PostMapping("/dispositivi/{dispositivoId}/assegna/{dipendenteId}")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public ResponseEntity<Dispositivo> assegnaIlDispositivoAlDipendente(@PathVariable int dispositivoId, @PathVariable int dipendenteId) {
         Optional<Dipendente> dipendenteOpt = dipendenteService.getDipendenteById(dipendenteId);
         if (dipendenteOpt.isPresent()) {

@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import nexDevs.esercizio.exception.DipendenteNonTrovatoException;
 
+import nexDevs.esercizio.exception.UnauthorizedException;
 import nexDevs.esercizio.model.Dipendente;
 import nexDevs.esercizio.service.DipendenteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,7 @@ public class JwtFilter extends OncePerRequestFilter  {
             Authentication authentication= new UsernamePasswordAuthenticationToken(dipendente,null, dipendente.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }else{
-            throw new DipendenteNonTrovatoException("user with id="+ dipendeteId + " not found!");
+            throw new UnauthorizedException("Utente non trovato , ri-loggati ");
         }
 
         filterChain.doFilter(request, response);
