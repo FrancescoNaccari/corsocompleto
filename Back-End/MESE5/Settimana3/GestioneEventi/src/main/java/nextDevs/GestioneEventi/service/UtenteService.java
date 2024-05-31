@@ -9,6 +9,8 @@ import nextDevs.GestioneEventi.excepion.BadRequestException;
 import nextDevs.GestioneEventi.excepion.NotFoundException;
 import nextDevs.GestioneEventi.repository.UtenteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,8 @@ public class UtenteService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private JavaMailSenderImpl javaMailSender;
     public String saveUtente(UtenteDto utenteDto) {
 
         if(getUtenteByEmail(utenteDto.getEmail()).isEmpty()) {
@@ -34,6 +38,8 @@ public class UtenteService {
             utente.setEmail(utenteDto.getEmail());
             utente.setRole(Role.USER);
             utente.setPassword( passwordEncoder.encode(utenteDto.getPassword()));
+
+            sendMail(utente.getEmail());
             utenteRepository.save(utente);
             return "Utente with id=" + utente.getId() + "correctly saved";
         }else{
@@ -57,6 +63,7 @@ public class UtenteService {
             u.setName(utenteDto.getName());
             u.setSurname(utenteDto.getSurname());
             u.setEmail(utenteDto.getEmail());
+
             u.setPassword( passwordEncoder.encode(utenteDto.getPassword()));
 
             return utenteRepository.save(u);
@@ -104,4 +111,14 @@ public class UtenteService {
             throw new NotFoundException("Utente with id=" + utenteId + " not found");
         }
     }
+
+    private void sendMail(String email) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(email);
+        message.setSubject("Registrazione Servizio rest");//oggetto dell' email
+        message.setText("Registrazione al servizio rest avvenuta con successo");//corpo dell'email
+
+        javaMailSender.send(message);
+    }
+
 }
