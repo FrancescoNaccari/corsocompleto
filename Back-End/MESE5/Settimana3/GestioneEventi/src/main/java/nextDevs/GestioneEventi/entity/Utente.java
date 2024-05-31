@@ -1,17 +1,19 @@
-package nexDevs.lezione.entity;
+package nextDevs.GestioneEventi.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import nextDevs.GestioneEventi.enums.Role;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 @Data
 @Entity
-public class User implements UserDetails {
+public class Utente implements UserDetails {
 
     @Id
     @GeneratedValue
@@ -24,6 +26,13 @@ public class User implements UserDetails {
     @Enumerated(EnumType.STRING)
     private Role role;
 
+    @ManyToMany
+    @JoinTable(
+            name = "utente_evento",
+            joinColumns = @JoinColumn(name = "utente_id"),
+            inverseJoinColumns = @JoinColumn(name = "evento_id")
+    )
+    private List<Evento> eventiPrenotati = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -32,7 +41,7 @@ public class User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     @Override
@@ -58,5 +67,13 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public void prenotaEvento(Evento evento) {
+        eventiPrenotati.add(evento);
+    }
+
+    public void annullaPrenotazione(int eventoId) {
+        eventiPrenotati.removeIf(evento -> evento.getId() == eventoId);
     }
 }
