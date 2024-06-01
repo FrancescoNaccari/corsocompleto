@@ -42,7 +42,7 @@ public class AuthController {
                     reduce("", (s, s2) -> s+s2));
         }
 
-        return authService.authenticateUtentiAndCreateToken(utenteLoginDto);
+        return authService.authenticateUtenteAndCreateToken(utenteLoginDto);
     }
 
 

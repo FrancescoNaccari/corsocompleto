@@ -60,6 +60,7 @@ public class UtenteController {
     public String deleteUtente(@PathVariable int id){
         return utenteService.deleteUtente(id);
     }
+
     @GetMapping("/api/utenti/{id}/eventi-prenotati")
     @PreAuthorize("hasAuthority('USER')")
     public List<Evento> getEventiPrenotati(@PathVariable int id) {
