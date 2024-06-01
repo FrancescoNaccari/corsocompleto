@@ -16,7 +16,7 @@ import java.util.Optional;
 public class AuthService {
 
     @Autowired
-   DipendenteService dipendenteService;
+  private DipendenteService dipendenteService;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired

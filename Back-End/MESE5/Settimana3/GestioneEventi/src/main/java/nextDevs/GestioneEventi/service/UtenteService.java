@@ -33,7 +33,7 @@ public class UtenteService {
         if(getUtenteByEmail(utenteDto.getEmail()).isEmpty()) {
             Utente utente = new Utente();
             utente.setName(utenteDto.getName());
-            utente.setName(utenteDto.getName());
+            utente.setSurname(utenteDto.getName());
             utente.setSurname(utenteDto.getSurname());
             utente.setEmail(utenteDto.getEmail());
             utente.setRole(Role.USER);
@@ -43,7 +43,7 @@ public class UtenteService {
             utenteRepository.save(utente);
             return "Utente with id=" + utente.getId() + "correctly saved";
         }else{
-            throw new BadRequestException("Dipendente con email "+utenteDto.getEmail()+" già esistente");
+            throw new BadRequestException("Utente con email "+utenteDto.getEmail()+" già esistente");
         }
     }
 
